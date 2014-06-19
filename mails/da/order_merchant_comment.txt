@@ -1,0 +1,10 @@
+Hej {firstname} {lastname}
+ 
+Besked fra {shop_name}
+ 
+Du har modtaget en ny besked fra {shop_name} angående ordren med referencen {order_name}.
+
+Besked:
+{message}
+ 
+{shop_name} powered by PrestaShop™

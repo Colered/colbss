@@ -1,0 +1,30 @@
+Hej {firstname} {lastname}
+
+Tak fordi du handlede hos {shop_name}!
+ 
+Ordreoversigt
+ 
+Ordre: {order_name} placeret {date}
+Betaling: {payment}
+ 
+  	Varer: 	{total_products}
+  	Rabatter: 	{total_discounts}
+  	Gaveindpakning: 	{total_wrapping}
+  	Forsendelse: 	{total_shipping}
+  	Betalt i alt: 	{total_paid}
+ 
+Forsendelsesmåde: {carrier}
+ 
+Leveringsadresse:
+
+{delivery_block_txt} 
+
+Fakturaadresse:
+
+{invoice_block_txt}
+ 
+Du kan se din ordre og downloade din faktura fra  "Ordreoversigt" under din konto ved at klikke på  "Min konto" i vores webshop.
+
+Hvis du har en gæstekonto, kan du følge din ordre via "Gæstesporing" i vores webshop.
+ 
+{shop_name} powered by PrestaShop™

@@ -1,0 +1,15 @@
+{firstname_friend} {lastname_friend}, slut dig til os!
+
+Din ven friend {firstname} {lastname} vil anbefale dig {shop_url}.
+
+Bliv anbefalet, og optjen en rabatkupon på {discount}!
+
+Det er meget nemt at tilmelde sig. Klik på nedenstående link:
+
+{shop_url}{link}
+
+Når du tilmelder dig, glem så ikke at oplyse e-mail-adressen på din anbefalende ven/veninde: {email}.
+
+
+
+{shop_url} powered by PrestaShop™

@@ -1,0 +1,71 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p style="line-height: 17px;"><a href="{shop_url}" title="{shop_name}"><img alt="{shop_name}" src="{shop_logo}" style="border: none;" /></a><br />
+<br />
+Tillykke! En ny ordre blev placeret p&aring; <b>{shop_name}</b> af f&oslash;lgende kunde:<br />
+<strong style="color: #db3484;">{firstname} {lastname} ({email})</strong></p>
+
+<p style="background-color: #db3484; width: 540px; color: #fff; font-size: 12px; font-weight: bold; padding: 5px;">Ordre detaljer</p>
+
+<p>Ordre: <b><span style="color: #db3484;">#{order_name}</span> placeret den {date}</b></p>
+
+<p>Betalingsm&aring;de: <b>{payment}</b></p>
+
+<table style="width: 100%; font-size: 11px; color: #374953;">
+	<tbody>
+		<tr style="background-color: #b9babe; text-align: center;">
+			<th style="width: 15%; padding: 0.6em;">Reference</th>
+			<th>Vare</th>
+			<th style="width: 15%; padding: 0.6em;">Pris</th>
+			<th style="width: 15%; padding: 0.6em;">Antal</th>
+			<th style="width: 20%; padding: 0.6em;">Total pris</th>
+		</tr>
+		<tr>
+			<td>{items}</td>
+		</tr>
+		<tr style="text-align: right;">
+			<td colspan="4" style="background-color: #b9babe; padding: 0.6em 0.4em;">Varer</td>
+			<td style="background-color: #b9babe; padding: 0.6em 0.4em;">{total_products}</td>
+		</tr>
+		<tr style="text-align: right;">
+			<td colspan="4" style="background-color: #ebecee; padding: 0.6em 0.4em;">Rabat</td>
+			<td style="background-color: #ebecee; padding: 0.6em 0.4em;">{total_discounts}</td>
+		</tr>
+		<tr style="text-align: right;">
+			<td colspan="4" style="background-color: #ebecee; padding: 0.6em 0.4em;">Gaveindpakning</td>
+			<td style="background-color: #ebecee; padding: 0.6em 0.4em;">{total_wrapping}</td>
+		</tr>
+		<tr style="text-align: right;">
+			<td colspan="4" style="background-color: #dde2e6; padding: 0.6em 0.4em;">Forsendelse</td>
+			<td style="background-color: #dde2e6; padding: 0.6em 0.4em;">{total_shipping}</td>
+		</tr>
+		<tr style="text-align: right; font-weight: bold;">
+			<td colspan="4" style="background-color: #f1aecf; padding: 0.6em 0.4em;">I alt</td>
+			<td style="background-color: #f1aecf; padding: 0.6em 0.4em;">{total_paid}</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Forsendelsesm&aring;de: <b>{carrier}</b></p>
+
+<table style="width: 100%; font-size: 11px; color: #374953;">
+	<tbody>
+		<tr style="background-color: #b9babe; text-transform: uppercase;">
+			<th style="text-align: left; padding: 0.3em 1em;">Leveringsadresse</th>
+			<th style="text-align: left; padding: 0.3em 1em;">faktureringsadresse</th>
+		</tr>
+		<tr>
+			<td style="padding: 0.5em 0 0.5em 0.5em; background-color: #ebecee;">{delivery_block_html}</td>
+			<td style="padding: 0.5em 0 0.5em 0.5em; background-color: #ebecee;">{invoice_block_html}</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="background-color: #db3484; width: 540px; color: #fff; font-size: 12px; font-weight: bold; padding: 5px;">Kundebesked: <b>{message}</b></p>
+
+<p style="width: 100%; text-align: center;"><a href="{shop_url}" style="color: #db3484; font-weight: bold; text-decoration: none;">{shop_name}</a> powered with <a href="http://www.prestashop.com/" style="text-decoration: none; color: #374953;">PrestaShop&trade;</a></p>
+</body>
+</html>

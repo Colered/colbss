@@ -1,0 +1,9 @@
+Hej {firstname} {lastname},
+ 
+Du er en af vores bedste kunder, og derfor vil vi gerne takke dig for din fortsatte protektion.
+
+For at påskønne din loyalitet, vil vi gerne tilbyde dig en rabat på {amount}% fratrukket din næste ordre! Dette tilbud er gældende i {days} dage, så tøv ikke!
+ 
+Her er din kode: {voucher_num}
+
+Indtast denne kode i din indkøbskurv, for at opnå rabatten.

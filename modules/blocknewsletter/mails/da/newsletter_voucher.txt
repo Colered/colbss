@@ -1,0 +1,7 @@
+Hej
+ 
+Abonnement på nyhedsbrev
+ 
+I forbindelse med din tilmelding af vores nyhedsbrev , er vi glade for at kunne tilbyde dig denne rabatkupon: {discount}
+ 
+{shop_name} powered by PrestaShop™

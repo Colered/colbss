@@ -1,0 +1,23 @@
+Hej {firstname} {lastname}
+ 
+Din ordre med referencen {order_name} - Afventer indbetaling
+ 
+ 
+ 
+Vær opmærksom på, at du har valgt at betale via bankoverførsel. Send venligst betalingen til:
+
+Beløb: {total_paid}
+
+Ejer af konto: {bankwire_owner}
+
+Kontooplysninger:
+
+{bankwire_details}
+
+Bankens adresse: {bankwire_address}
+ 
+Du kan se din ordre og downloade din faktura fra  "Ordreoversigt" under din konto ved at klikke på  "Min konto" i vores webshop.
+
+Hvis du har en gæstekonto, kan du følge din ordre via  "Gæstesporing" i vores webshop.
+ 
+{shop_name} powered by PrestaShop™

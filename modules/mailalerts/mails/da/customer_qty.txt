@@ -1,0 +1,12 @@
+Hej,
+
+Varen {product} er igen tilgængelig.
+Denne vare er igen på lager.
+
+Du kan tilgå varen på: {product_link}
+
+Du kan bestille varen med det samme online i vores butik.
+
+
+
+{shop_url} powered by PrestaShop™

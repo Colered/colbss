@@ -1,0 +1,26 @@
+*ERROR* 	2014/02/28 - 16:07:20: Unknown column 'sa.position' in 'field list'<br /><br /><pre>
+		SELECT SQL_CALC_FOUND_ROWS
+		a.`id_category`,`name`,`description`,sa.position as position,`active`
+		
+		FROM `ps_category` a
+		LEFT JOIN `ps_category_lang` b ON (b.`id_category` = a.`id_category` AND b.`id_lang` = 1)
+		
+		
+		WHERE 1 
+		
+		
+		ORDER BY a.`id_category` ASC LIMIT 0,50</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/28 - 16:10:17: Unknown column 'id_parent' in 'where clause'<br /><br /><pre>
+		SELECT SQL_CALC_FOUND_ROWS
+		 a.*
+		, sa.position position
+		FROM `ps_configuration` a
+		
+		 LEFT JOIN `ps_category_shop` sa ON (a.`id_category` = sa.`id_category` AND sa.id_shop = a.id_shop_default)  
+		
+		WHERE 1  AND `id_parent` = 2 
+		
+		
+		ORDER BY a.`id_configuration` ASC LIMIT 0,50</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/28 - 18:25:03: Method of module can't be found at line 682 in file controllers/admin/AdminModulesController.php
+*ERROR* 	2014/02/28 - 18:25:14: Method of module can't be found at line 682 in file controllers/admin/AdminModulesController.php

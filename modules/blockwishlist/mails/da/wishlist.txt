@@ -1,0 +1,8 @@
+Hej,
+
+{firstname} {lastname} nævnte, at du måske havde lyst til at se hans/hendes ønskeliste {wishlist} :
+{message}
+
+
+
+{shop_url} Powered by PrestaShop™

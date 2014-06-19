@@ -1,0 +1,13 @@
+Hej {firstname} {lastname}
+ 
+Din ordre med referencen {order_name} - Undervejs
+ 
+Din ordre med reference {order_name} er nu undervejs..
+
+Du kan spore din forsendelse ved at klikke på følgende link: {followup}
+ 
+Du kan se din ordre og downloade din faktura fra  "Ordreoversigt" under din konto ved at klikke på  "Min konto" i vores webshop.
+
+Hvis du har en gæstekonto, kan du følge din ordre via "Gæstesporing" i vores webshop.
+ 
+{shop_name} powered by PrestaShop™

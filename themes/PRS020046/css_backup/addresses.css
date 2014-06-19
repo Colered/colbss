@@ -1,0 +1,127 @@
+div.addresses {
+  
+   padding:15px;
+   border:1px solid #D7CBB5;
+   background:#fff
+}
+
+ul.address {
+   list-style-type:none;
+   float:left;
+   position:relative;
+   width:48%;
+   border:1px solid #D7CBB5;
+   margin-bottom: 10px;
+   padding-bottom:8px;
+   background:#fff;
+}
+#address_delivery {margin-right:26px;}
+#address_invoice {margin-right:0}
+#delivery_address {margin-right:65px;}
+
+ul.address li {
+	padding:0 15px;
+	line-height:18px;
+}
+
+ul.address li.address_title {
+   line-height:29px;
+   color:#555;
+   background:#EBE3D3;
+}
+ul.address .address_alias {
+	font-weight: normal;
+	text-transform: none;
+}
+ul.address >li:first-child + li {
+	margin-top:8px
+}
+
+ul.address  li.address_update {
+	margin-top:20px
+}
+ul.address  li.address_update,
+ul.address li.address_delete {
+   text-transform:none;
+   float:left;
+   
+}
+.address_add {
+   padding: 20px 0;
+  width:100%;
+ 
+}
+.address_select {
+	border:1px solid #D7CBB5;
+	width: 200px;
+	margin-left: 10px;
+}
+label[for=id_address_delivery], label[for=id_address_invoice] {
+	float: left;
+	width: 225px;
+}
+.addressesAreEquals label {
+	margin-left: 5px;
+}
+
+.addressesAreEquals .ez-checkbox {
+	margin-top: 5px;
+}
+
+.addressesAreEquals input {
+	float: left;
+}
+p.address_delivery, p.addressesAreEquals {
+	padding-bottom: 14px
+}
+/* PAGE ADRESSES ******************************************************************************* */
+.addresses ul.address {
+	list-style-type:none;
+	float:left;
+	position:relative;
+	margin:30px 30px 0 0;
+	width:47%;
+}
+.addresses ul.address.alternate_item,
+.addresses ul.address.last_item {margin-right:0}
+.addresses ul.address li {
+	padding:0 15px;
+	line-height:18px;
+	text-transform:uppercase
+}
+.addresses ul.address .address_title {
+	margin-bottom:5px;
+	line-height:29px;
+	color:#555;
+	background:#EBE3D3;
+	border-bottom:1px solid #D7CBB5;
+}
+.addresses ul.address .address_update {}
+.addresses ul.address .address_update,
+.addresses ul.address .address_delete {
+   text-transform:none;
+   padding:0px 15px 10px;
+    margin-top:15px;
+}
+
+.addresses ul.address a{
+	position:relative;
+	display:inline-block;
+	padding:0px 10px;
+	height:28px;
+	line-height:28px;
+	width: auto;
+	overflow: visible;
+	font-weight:normal;
+	outline: 0;
+}
+.addresses ul.address a:hover,
+.addresses ul.address a:focus,
+.addresses ul.address a:active,
+.addresses ul.address a.active,
+.addresses ul.address a.disabled,
+.addresses ul.address a[disabled] {
+  text-decoration:none;
+}
+.addresses ul.address .address_delete{float: right;}
+.addresses ul.address .address_update{float: left;}

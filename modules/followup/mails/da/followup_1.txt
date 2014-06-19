@@ -1,0 +1,13 @@
+Hej {firstname} {lastname},
+ 
+Vi har bemærket, at du ved dit seneste besøg på {shop_url}, ikke færdiggjorde din ordre.
+
+Din kurv er gemt, og du kan genskabe din ordre ved at besøge vores butik:
+
+{shop_url}
+
+For at øge din interesse, tilbyder vi en rabat på {amount}% fratrukket din næste ordre! Dette tilbud er gældende i {days} dage, så tøv ikke!
+
+Her er din rabatkode: {voucher_num}
+
+Indtast rabatkoden i din indkøbskurv for at opnå rabatten

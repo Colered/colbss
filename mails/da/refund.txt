@@ -1,0 +1,11 @@
+Hej {firstname} {lastname}
+ 
+Tilbagebetaling gennemført for din ordre med referencen {order_name}
+ 
+Vi har behandlet din tilbagebetaling hos {shop_name} for ordren med reference {order_name}.
+ 
+Du kan se din ordre og downloade din faktura fra  "Ordreoversigt" under din konto ved at klikke på  "Min konto" i vores webshop.
+
+Hvis du har en gæstekonto, kan du følge din ordre via "Gæstesporing" i vores webshop.
+ 
+{shop_name} powered by PrestaShop™

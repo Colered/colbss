@@ -1,0 +1,1529 @@
+*ERROR* 	2014/02/11 - 14:50:36: Table 'ps_avalara_product_cache' already exists<br /><br /><pre>
+		CREATE TABLE `ps_avalara_product_cache` (
+		`id_cache` int(10) unsigned NOT NULL auto_increment,
+		`id_product` int(10) unsigned NOT NULL,
+		`tax_rate` float(8, 2) unsigned NOT NULL,
+		`region` varchar(2) NOT NULL,
+		`id_address` int(10) unsigned NOT NULL,
+		`update_date` datetime,
+		PRIMARY KEY (`id_cache`),
+		UNIQUE (`id_product`, `region`),
+		KEY `id_product2` (`id_product`,`region`,`id_address`))
+		ENGINE=InnoDB DEFAULT CHARSET=utf8</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 14:50:37: Table 'ps_avalara_product_cache' already exists<br /><br /><pre>
+		CREATE TABLE `ps_avalara_product_cache` (
+		`id_cache` int(10) unsigned NOT NULL auto_increment,
+		`id_product` int(10) unsigned NOT NULL,
+		`tax_rate` float(8, 2) unsigned NOT NULL,
+		`region` varchar(2) NOT NULL,
+		`id_address` int(10) unsigned NOT NULL,
+		`update_date` datetime,
+		PRIMARY KEY (`id_cache`),
+		UNIQUE (`id_product`, `region`),
+		KEY `id_product2` (`id_product`,`region`,`id_address`))
+		ENGINE=InnoDB DEFAULT CHARSET=utf8</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 14:50:38: Table 'ps_avalara_product_cache' already exists<br /><br /><pre>
+		CREATE TABLE `ps_avalara_product_cache` (
+		`id_cache` int(10) unsigned NOT NULL auto_increment,
+		`id_product` int(10) unsigned NOT NULL,
+		`tax_rate` float(8, 2) unsigned NOT NULL,
+		`region` varchar(2) NOT NULL,
+		`id_address` int(10) unsigned NOT NULL,
+		`update_date` datetime,
+		PRIMARY KEY (`id_cache`),
+		UNIQUE (`id_product`, `region`),
+		KEY `id_product2` (`id_product`,`region`,`id_address`))
+		ENGINE=InnoDB DEFAULT CHARSET=utf8</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 14:50:43: Table 'ps_log_email' already exists<br /><br /><pre>
+		CREATE TABLE ps_log_email (
+		`id_log_email` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+		`id_email_type` INT UNSIGNED NOT NULL ,
+		`id_cart_rule` INT UNSIGNED NOT NULL ,
+		`id_customer` INT UNSIGNED NULL ,
+		`id_cart` INT UNSIGNED NULL ,
+		`date_add` DATETIME NOT NULL,
+		 INDEX `date_add`(`date_add`),
+		 INDEX `id_cart`(`id_cart`)
+		) ENGINE=InnoDB</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 14:58:19: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:00:25: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:00:30: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:01: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:04: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:05: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:05: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:06: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:06: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:06: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:06: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:07: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:07: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:07: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:07: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:07: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:08: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:08: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:08: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:08: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:08: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:08: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:09: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:09: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:09: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:06:09: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:38:58: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:42:44: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:43:55: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:47:21: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:47:36: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:52:27: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:58:51: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 2)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=2) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 2 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:59:12: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:59:24: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:59:32: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 7
+						AND c.nright <= 8
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 15:59:44: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 7
+						AND c.nright <= 8
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 16:02:21: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 3
+						AND c.nright <= 4
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/02/11 - 16:02:33: Table 'cidot_bookstore.ps_layered_product_attribute' doesn't exist<br /><br /><pre>
+					SELECT COUNT(DISTINCT p.id_product) nbr, lpa.id_attribute_group,
+					a.color, al.name attribute_name, agl.public_name attribute_group_name , lpa.id_attribute, ag.is_color_group,
+					liagl.url_name name_url_name, liagl.meta_title name_meta_title, lial.url_name value_url_name, lial.meta_title value_meta_title, m.name, psi.price_min, psi.price_max
+
+					FROM ps_layered_product_attribute lpa
+					INNER JOIN ps_attribute a
+					ON a.id_attribute = lpa.id_attribute
+					INNER JOIN ps_attribute_lang al
+					ON al.id_attribute = a.id_attribute
+					AND al.id_lang = 3
+					INNER JOIN ps_product as p
+					ON p.id_product = lpa.id_product
+					INNER JOIN ps_attribute_group ag
+					ON ag.id_attribute_group = lpa.id_attribute_group
+					INNER JOIN ps_attribute_group_lang agl
+					ON agl.id_attribute_group = lpa.id_attribute_group
+					AND agl.id_lang = 3
+					LEFT JOIN ps_layered_indexable_attribute_group_lang_value liagl
+					ON (liagl.id_attribute_group = lpa.id_attribute_group AND liagl.id_lang = 3)
+					LEFT JOIN ps_layered_indexable_attribute_lang_value lial
+					ON (lial.id_attribute = lpa.id_attribute AND lial.id_lang = 3)  INNER JOIN ps_product_shop product_shop
+		ON (product_shop.id_product = p.id_product AND product_shop.id_shop = 1)
+LEFT JOIN `ps_manufacturer` m ON (m.id_manufacturer = p.id_manufacturer) 
+			INNER JOIN `ps_layered_price_index` psi 
+			ON (psi.id_product = p.id_product AND psi.id_currency = 1 AND psi.id_shop=1) 
+WHERE a.id_attribute_group = 1 AND lpa.`id_shop` = 1 AND product_shop.active = 1 AND product_shop.`visibility` IN ("both", "catalog")
+					AND p.id_product IN (
+						SELECT id_product
+						FROM ps_category_product cp
+						INNER JOIN ps_category c ON (c.id_category = cp.id_category AND 
+						c.nleft >= 7
+						AND c.nright <= 8
+						AND c.active = 1)
+					) 
+
+					GROUP BY lpa.id_attribute
+					ORDER BY ag.`position` ASC, a.`position` ASC</pre> at line 613 in file classes/db/Db.php

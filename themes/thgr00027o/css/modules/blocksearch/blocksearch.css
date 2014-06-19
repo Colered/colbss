@@ -1,0 +1,47 @@
+/* block top search */
+#search_block_top {
+	position:absolute;
+	top:50px;
+	left:60px;
+}
+#search_block_top p {padding:0;}
+#search_block_top #search_query_top {
+	padding:0 5px;
+	height:33px;
+	width:300px;/* 310 */
+	border:1px solid #fff;
+	border-right: 0 !important;
+	color:#666;
+	background:url(img/bg_search_input.png) repeat-x 0 0 #fff;
+	float: left;	
+	-moz-border-radius-topleft: 17px;
+	-webkit-border-top-left-radius: 17px;
+	border-top-left-radius: 17px;	
+	-moz-border-radius-bottomleft: 17px;
+	-webkit-border-radius-bottomleft: 17px;	
+	border-bottom-left-radius: 17px;
+	
+}
+
+
+#search_block_top .button {
+	border:none;
+	color:#fff;
+	text-transform:uppercase;
+	/*background:url(img/bg_search_submit.png) repeat-x 0 0 #101010;*/
+	background:url(img/search_zoom.png) no-repeat center #fff;
+	float: left;
+	height: 35px;
+	width: 35px;
+	border-radius:0;
+	-moz-border-radius-topright: 17px;
+	-webkit-border-top-right-radius: 17px;
+	border-top-right-radius: 17px;	
+	-moz-border-radius-bottomright: 17px;
+	-webkit-border-radius-bottomright: 17px;
+	border-bottom-right-radius: 17px;
+}
+	
+/*\*//*/div.madiv {
+#search_block_top .button {top: 5px;} /* hack ie 8 */
+}/* */

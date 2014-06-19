@@ -1,0 +1,7 @@
+Hej {firstname} {lastname}
+ 
+Der er blevet genereret en ny ordre til dig.
+ 
+Klik på {order_link} for at færdiggøre betalingen.
+ 
+{shop_name} powered by PrestaShop™

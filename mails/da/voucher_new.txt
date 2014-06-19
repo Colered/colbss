@@ -1,0 +1,8 @@
+Hej {firstname} {lastname}
+ 
+Du får denne besked, da der er blevet oprettet en rabatkupon.
+ 
+Her er rabatkoden: {voucher_num}.
+Du skal blot kopiere og indsætte koden i ordreforløbet, når du skal betale for din næste ordre.
+ 
+{shop_name} powered with PrestaShop™

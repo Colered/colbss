@@ -1,0 +1,12 @@
+Hej {firstname} {lastname},
+
+Vi har oprettet en rabatkupon i dit navn, for at anbefale en ven.
+
+Her er din rabatkode : {voucher_num}, med en værdi på {voucher_amount}.
+Bare copy/paste denne kode i løbet af betalingsprocessen ved din næste ordre
+
+Tak fordi du handlede hos {shop_name}.
+
+
+
+{shop_url} powered by PrestaShop™

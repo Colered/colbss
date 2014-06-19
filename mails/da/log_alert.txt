@@ -1,0 +1,9 @@
+Hej
+ 
+Du har modtaget en ny logbesked
+ 
+Advarsel: Du har modtaget en logbesked i dit bagkontor.
+ 
+Du kan finde den under fanebladet "Værktøjer" > "Logs" i Bagkontoret.
+ 
+{shop_name} powered by PrestaShop™

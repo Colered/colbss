@@ -1,0 +1,11 @@
+{shop_name}
+ 
+Hej {firstname} {lastname},
+ 
+Din ordre med referencen {order_name} - Kreditnota oprettet
+ 
+Vi har oprettet en kreditnota i dit navn for ordren med referencen {order_name}.
+ 
+Du kan se denne kreditnota og downloade den fra "Mine kreditnotaer" under din konto ved at klikke på "Min konto" i vores webshop.
+ 
+{shop_name} powered by PrestaShop™

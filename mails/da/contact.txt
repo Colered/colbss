@@ -1,0 +1,9 @@
+{shop_name}
+ 
+Kundebesked fra {shop_name}
+ 
+Kundens e-mail-adresse: {email}
+
+Kundens besked: {message}
+ 
+{shop_name} powered by PrestaShop™

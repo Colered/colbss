@@ -1,0 +1,9 @@
+Hej {firstname} {lastname},
+ 
+Tak for din ordre hos {shop_name}
+ 
+Som vores måde at sige tak på, vil vi gerne tilbyde dig en rabat på {amount}% på din næste ordre! Dette tilbud er gældende i {days} dage, så tøv ikke!
+ 
+Her er din rabatkode: {voucher_num}
+
+Indtast denne kode i din indkøbskurv, for at opnå rabatten.

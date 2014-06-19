@@ -1,0 +1,13 @@
+Hej {name},
+
+
+{customer} har sendt et varelink, som han/hun tror interesserer dig.
+
+{product}: {product_link}
+
+
+{shop_name} - {shop_url}
+
+
+
+{shop_url} powered by PrestaShop™

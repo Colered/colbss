@@ -1,0 +1,139 @@
+div.addresses {
+	position:relative;
+	padding:25px;
+	border:1px solid #ccc;
+	font-size:12px;
+	background:#f8f8f8;
+   	-moz-border-radius: 17px;
+	-webkit-border-radius: 17px;
+	border-radius: 17px;
+}
+
+ul.address {
+   list-style-type:none;
+   float:left;
+   position:relative;
+   width:345px !important;
+   	-moz-border-radius: 17px;
+	-webkit-border-radius: 17px;
+	border-radius: 17px;
+	background:#fff
+}
+#address_delivery {
+	margin-right:35px;
+	background:#fff;
+	-moz-border-radius-bottomright: 17px;
+	-webkit-border-radius-bottomright: 17px;
+	border-bottom-right-radius: 17px;
+	-moz-border-radius-bottomleft: 17px;
+	-webkit-border-radius-bottomleft: 17px;	
+	border-bottom-left-radius: 17px;}
+#address_invoice {margin-right:0}
+#delivery_address {margin-right:65px;}
+
+ul.address li {
+	padding:0 15px;
+	font-weight:bold;
+	line-height:18px;
+	text-transform:uppercase
+}
+
+ul.address li.address_title {
+   height: 29px;
+   font-weight: bold;
+   line-height:29px;
+   color:#fff;
+    text-shadow:0 1px 0 #666;
+   background:url(../img/bg_table_th.png) repeat-x 0 -10px #999;
+   	-moz-border-radius-topleft: 17px;
+	-webkit-border-top-left-radius: 17px;
+	border-top-left-radius: 17px;
+		
+	-moz-border-radius-topright: 17px;
+	-webkit-border-top-right-radius: 17px;
+	border-top-right-radius: 17px;
+}
+
+ul.address li.address_firstname,
+ul.address li.address_company {
+	margin-top:8px
+}
+
+ul.address  li.address_update {
+	margin-top:20px
+}
+ul.address  li.address_update,
+ul.address li.address_delete {
+	font-size:11px;
+   text-transform:none
+}
+
+.address_add {
+   padding:20px 0
+}
+
+.address_select {
+	border:1px solid #ccc;
+	width: 200px;
+	margin-left: 10px;
+}
+label[for=id_address_delivery], label[for=id_address_invoice] {
+	float: left;
+	width: 225px;
+}
+.addressesAreEquals label {
+	margin-left: 5px;
+}
+.addressesAreEquals input {
+	float: left;
+}
+p.address_delivery, p.addressesAreEquals {
+	padding-bottom: 14px
+}
+
+/* PAGE ADRESSES ******************************************************************************* */
+.addresses ul.address {
+   list-style-type:none;
+   float:left;
+   position:relative;
+	margin:30px 30px 0 0;
+   width:325px !important;
+   	background:#fff;
+	-moz-border-radius-bottomright: 17px;
+	-webkit-border-radius-bottomright: 17px;
+	border-bottom-right-radius: 17px;
+	-moz-border-radius-bottomleft: 17px;
+	-webkit-border-radius-bottomleft: 17px;	
+	border-bottom-left-radius: 17px;
+}
+.addresses ul.address.alternate_item,
+.addresses ul.address.last_item {margin-right:0}
+.addresses ul.address li {
+	padding:0 15px;
+	font-weight:bold;
+	line-height:18px;
+	text-transform:uppercase
+}
+.addresses ul.address .address_title {
+	margin-bottom:5px;
+	height: 29px;
+   font-weight: bold;
+   line-height:29px;
+   color:#fff;
+    text-shadow:0 1px 0 #666;
+   background:url(../img/bg_table_th.png) repeat-x 0 -10px #999;
+   	-moz-border-radius-topleft: 17px;
+	-webkit-border-top-left-radius: 17px;
+	border-top-left-radius: 17px;
+		
+	-moz-border-radius-topright: 17px;
+	-webkit-border-top-right-radius: 17px;
+	border-top-right-radius: 17px;
+}
+.addresses ul.address .address_update {margin-top:20px}
+.addresses ul.address .address_update,
+.addresses ul.address .address_delete {
+	font-size:11px;
+   text-transform:none
+}
+

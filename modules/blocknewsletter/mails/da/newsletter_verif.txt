@@ -1,0 +1,6 @@
+Hej,
+
+Tak fordi du vil abonnere på vores nyhedsbrev. Bekræft venligst din anmodning ved at klikke på linket herunder:
+{verif_url}
+
+{shop_name} Powered by PrestaShop™

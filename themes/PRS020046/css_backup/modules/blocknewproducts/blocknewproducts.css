@@ -1,0 +1,18 @@
+/* Block new products */
+#new-products_block_right ul {list-style-type:none;}
+
+#new-products_block_right dd a.lnk_more {
+	padding-right: 10px;
+	background:none;
+}
+
+#new-products_block_right p.title_block, #new-products_block_right h4  {
+	padding:6px 11px;
+	text-align:left;
+}
+#new-products_block_right .button_large {
+	padding:0;
+	border:none;
+	background:none;
+}
+#new-products_block_right .button_large:hover {text-decoration:underline}

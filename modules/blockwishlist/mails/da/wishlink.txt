@@ -1,0 +1,7 @@
+Hej,
+
+{shop_name} tilbyder dig at sende dette link til dine venner, så de kan se din ønskeliste {wishlist} :
+
+{message}
+
+{shop_url} realised by PrestaShop™

@@ -1,0 +1,11 @@
+Hej,
+
+Varen {product} er næsten udgået fra lageret.
+Det resterende lager er nu under minimumslageret på {last_qty}.
+Tilbageværende antal : {qty}
+
+Du bliver derfor anbefalet at tilrette varens lager og minimumslager.
+
+
+
+{shop_url} powered by PrestaShop™

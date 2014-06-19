@@ -1,0 +1,14 @@
+Hej {firstname} {lastname}
+ 
+Oprettelse af din kundekonto
+ 
+Din gæstekonto hos {shop_name} er blevet konverteret til en kundekonto.
+ 
+E-mail-addresse: {email}
+Adgangskode: {passwd}
+ 
+Vær påpasselig med at dele disse login-oplysinger med andre.
+
+Du kan få adgang til din kundekonto i vores webshop: {shop_url}
+ 
+{shop_name} powered by PrestaShop™

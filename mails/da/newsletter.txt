@@ -1,0 +1,5 @@
+Nyhedsbrev fra {shop_name}
+ 
+{message}
+ 
+{shop_name} powered by PrestaShop™

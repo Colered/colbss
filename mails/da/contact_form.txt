@@ -1,0 +1,19 @@
+{shop_name}
+ 
+Din besked er afsendt succesfuldt til {shop_name} Kundeservice
+ 
+Afsendelse af din besked er gennemført.
+
+Din besked:
+
+{message}
+
+Ordre ID: {order_name}
+
+Vedhæftet fil: {attached_file}
+ 
+Vi vil svare så hurtigt som muligt.
+
+Med venlig hilsen
+ 
+{shop_name} powered by PrestaShop™

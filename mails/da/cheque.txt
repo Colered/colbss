@@ -1,0 +1,25 @@
+Hej {firstname} {lastname}
+ 
+Din ordre med referencen {order_name} - Afventer check
+ 
+Tak fordi du handler hos {shop_name}!
+
+Din ordre med reference {order_name} er blevet placeret og vil blive afsendt, så snart vi har modtaget din betaling.
+ 
+Du har valgt at betale med check. Anfør venligst følgende på checken:
+
+Beløb: {total_paid}
+
+Modtager: {cheque_name}
+
+Send checken til:
+
+{cheque_address}
+ 
+Du kan se din ordre og downloade din faktura fra "Orderoversigt" under din konto ved at klikke på "Min konto" i vores webshop.
+
+Hvis du har en gæstekonto, kan du følge din ordre via "Gæstesporing" i vores webshop.
+
+{shop_name} - {shop_url}
+ 
+{shop_name} powered by PrestaShop™

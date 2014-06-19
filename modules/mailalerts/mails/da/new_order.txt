@@ -1,0 +1,30 @@
+Hej,
+
+Du har fået en ny ordre fra {firstname} {lastname} ({email}) på {shop_name}.
+
+Ordre: {order_name}
+Placeret den : {date}
+Forsendelsesfirma : {carrier}
+Betaling: {payment}
+Rabat: {total_discounts}
+Forsendelse: {total_shipping}
+Varer: {total_products}
+Gaveindpakning: {total_wrapping}
+I alt: {total_paid}
+
+Leveringsadresse:
+
+{delivery_block_txt}
+
+Faktureringsadresse:
+
+{invoice_block_txt}
+
+Kundebesked:
+
+{message}
+
+
+
+{shop_url} powered by PrestaShop™
+

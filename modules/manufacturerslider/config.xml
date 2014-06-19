@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <module>
+            <name>manufacturerslider</name>
+            <displayName><![CDATA[Carousel of manufacturer/brand images]]></displayName>
+            <version><![CDATA[1]]></version>
+            <description><![CDATA[For Prestashop version 1.5. Displays a carousel of manufacturers/brands images in homepage. www.bossthemes.co.uk]]></description>
+            <author><![CDATA[BOSS Themes]]></author>
+            <tab><![CDATA[slideshows]]></tab>
+            <is_configurable>0</is_configurable>
+            <need_instance>1</need_instance>
+	<limited_countries></limited_countries>
+        </module>

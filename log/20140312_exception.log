@@ -1,0 +1,1 @@
+*ERROR* 	2014/03/12 - 15:58:17: Table 'cidot_bookstore.ps_ps_brands' doesn't exist<br /><br /><pre>INSERT INTO `ps_ps_brands` (`name`, `date_add`, `date_upd`, `active`) VALUES ('test1', '', '', '1')</pre> at line 613 in file classes/db/Db.php

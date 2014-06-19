@@ -1,0 +1,71 @@
+/* block top user information */
+
+#header_right #header_user {
+	clear:both;
+	float: right;
+	position:absolute;
+	right:0;
+	top:40px;
+}
+
+#header_right #header_user.header_user_catalog {
+	margin-top: 15px;
+    min-height: 60px;
+}
+
+#header_user #header_nav {
+	list-style-type:none;
+	float:right;
+}
+
+/* cart */
+.lt-ie6 #shopping_cart {width: 130px;}
+#shopping_cart .ajax_cart_a{
+	background-image: url("../../../img/sprite.png");
+    background-position: -11px -54px;
+    background-repeat: no-repeat;
+   cursor: pointer;
+    display: block;
+    padding: 10px 15px 10px 35px;
+}
+#shopping_cart .ajax_cart_a:hover{
+
+}	
+	
+#shopping_cart .ajax_cart_a:hover span{text-decoration: none}
+#header_user #shopping_cart .ajax_cart_quantity { font-weight:bold; }
+#header_user #shopping_cart .ajax_cart_total { display:none !important; }
+
+
+/* account */
+#header_user_info a.your_account { background:url(../../../img/header_pipe.jpg) no-repeat scroll left 5px transparent;}
+
+/* user infos */ 
+#header_user_info {
+	clear: both;
+    float: right;
+    margin-top: 10px;
+    padding: 0;
+    position: absolute;
+    right: 20px;
+    top: 165px;
+	color:#B70707;
+}
+#header_user_info a {
+	display:inline-block;
+	margin:0 0 0 2px;
+	padding:0px 3px 0 7px;
+	color:#333;
+}
+
+#header_user_info a:hover{ text-decoration:none;color:#840202;}
+
+#header_user_info a.account {
+	border: none;
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+.header-main .block .block_content
+{ background:none; border-radius:0}

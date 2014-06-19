@@ -1,0 +1,8 @@
+*ERROR* 	2014/03/20 - 11:47:20: Unknown column 'p1.name' in 'field list'<br /><br /><pre>SELECT p.id_profile,p1.name
+							FROM ps_profile p
+							INNER JOIN ps_profile_lang pl ON ( p.id_profile = pl.id_profile )
+							GROUP BY p.id_profile
+							ORDER BY p.id_profile</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/03/20 - 14:56:25: Table 'cidot_bookstore.profile_product_tabs' doesn't exist<br /><br /><pre>SELECT product_tabs from profile_product_tabs where id_profile =1 LIMIT 1</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/03/20 - 16:15:24: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':5:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"3";i:3;s:1:"6";i:4;s:1:"9";} WHERE id_profi' at line 1<br /><br /><pre>UPDATE ps_profile_product_tabs set product_tabs = a:5:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"3";i:3;s:1:"6";i:4;s:1:"9";} WHERE id_profile = 6</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/03/20 - 16:23:29: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1";i:1;s:1:"2";i:2;s:1:"3";i:3;s:1:"4";i:4;s:1:"5";i:5;s:1:"6";i:6;s:1:"9";}" WH' at line 1<br /><br /><pre>UPDATE ps_profile_product_tabs set product_tabs = "a:7:{i:0;s:1:"1";i:1;s:1:"2";i:2;s:1:"3";i:3;s:1:"4";i:4;s:1:"5";i:5;s:1:"6";i:6;s:1:"9";}" WHERE id_profile = 6</pre> at line 613 in file classes/db/Db.php

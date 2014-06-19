@@ -1,0 +1,10 @@
+Hej,
+
+Varen {product} er næsten udgået fra lageret.
+Lageret har nået et absolut minimum på {warning_coverage}.
+Nuværende lagerbeholdning : {current_coverage}
+
+
+
+
+{shop_url} powered by PrestaShop™

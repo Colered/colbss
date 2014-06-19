@@ -1,0 +1,7 @@
+Hej,
+
+Dette er en test-e-mail fra din webshop.
+
+Hvis du kan læse dette, er testen lykkedes.
+ 
+{shop_name} powered by PrestaShop™

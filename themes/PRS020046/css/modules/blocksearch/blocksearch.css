@@ -1,0 +1,69 @@
+/* block top search */
+#search_block_top {
+	
+    border-radius: 5px 5px 5px 5px;
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    top: -12px;
+}
+/*.left_img{background:url(../../../img/search-_leftside.png) no-repeat scroll 0 0 transparent;width:4px;height:6px;border:1px solid;}*/
+#search_block_top p {padding:0;background:none repeat scroll 0 0 #B70707;
+padding:6px 5px;
+float:left;
+}
+#search_block_top #search_query_top {
+	background:none repeat scroll 0 0 #530404;
+
+    color: #FFFFFF;
+    float: left;
+    padding-right: 30px;
+    width: 260px;
+	-moz-box-shadow: 1px 1px 1px rgba(206, 2, 2, 0.66);
+	-webkit-box-shadow: 1px 1px 1px rgba(206, 2, 2, 0.66);
+	-o-box-shadow: 1px 1px 1px rgba(206, 2, 2, 0.66);
+	box-shadow: 1px 1px 1px rgba(206, 2, 2, 0.66);
+	border:none;
+}
+
+.ie7 #search_block_top #search_query_top	{ width:224px;}
+#search_block_top .button {
+	border:none;
+	border-radius:0;
+	color:#fff;
+	text-transform:uppercase;
+	background:url("../../../img/sprite.png") no-repeat scroll -170px -297px transparent;
+	float: left;
+	height:30px;
+	width:35px;
+	text-indent: -959px;
+	padding:0;
+	margin:0 10px 0 5px;
+	position:absolute;
+	right:0;
+	z-index:3;
+	overflow:hidden;
+	
+}
+#search_block_top .button:active,
+#search_block_top .button:focus{ box-shadow:none; }
+form#searchbox
+{
+	/*width:200px;
+	background:#FBFBFB;
+	float: left;
+	border: 1px solid #eee;*/
+}
+form#searchbox label{color:#333;margin-bottom:1px}
+form#searchbox input#search_query_block{
+	-webkit-border-radius:3px !important;
+	-moz-border-radius:3px !important;
+	border-radius:3px !important;
+    height: 18px;
+	margin-top:10px;
+}
+form#searchbox input#search_button{padding: 1px 4px;}
+.ie7 #search_block_top p{width:95%;}
+.ie7 #search_block_top .button{top:10px;}
+.right_img{ background:url(../../../img/search-_rightside.png) no-repeat scroll right top transparent;width:4px ;height:6px;float:left;}
+.left_img{ background: url(../../../img/search-_leftside.png) no-repeat scroll left top transparent;width:4px ;height:6px;float:left;}
