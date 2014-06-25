@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-06-19 11:38:27
+<?php /* Smarty version Smarty-3.1.14, created on 2014-06-25 12:38:54
          compiled from "D:\xampp\htdocs\bookstore\modules\tmrightbanner\tmrightbanner.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:5453a27e5b59df93-59758965%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:105253aa758642f250-02583718%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '5453a27e5b59df93-59758965',
+  'nocache_hash' => '105253aa758642f250-02583718',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.14',
-  'unifunc' => 'content_53a27e5b5ec1d0_21162376',
+  'unifunc' => 'content_53aa75864a4555_34563113',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53a27e5b5ec1d0_21162376')) {function content_53a27e5b5ec1d0_21162376($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['tmrightbanner_slides']->value)){?>
+<?php if ($_valid && !is_callable('content_53aa75864a4555_34563113')) {function content_53aa75864a4555_34563113($_smarty_tpl) {?><?php if (isset($_smarty_tpl->tpl_vars['tmrightbanner_slides']->value)){?>
 <div id="tm_rightbanner">
 	<ul>
 	<?php $_smarty_tpl->tpl_vars['ItemsPerLine'] = new Smarty_variable(1, null, 0);?>

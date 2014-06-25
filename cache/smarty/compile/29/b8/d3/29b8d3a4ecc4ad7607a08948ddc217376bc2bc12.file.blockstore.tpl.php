@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-06-19 14:34:34
+<?php /* Smarty version Smarty-3.1.14, created on 2014-06-25 16:17:09
          compiled from "D:\xampp\htdocs\bookstore\modules\blockstore\blockstore.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:3269453a2a7a2b23b69-04976720%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:679153aaa8add0bf57-29707170%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '3269453a2a7a2b23b69-04976720',
+  'nocache_hash' => '679153aaa8add0bf57-29707170',
   'function' => 
   array (
   ),
@@ -23,9 +23,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.14',
-  'unifunc' => 'content_53a2a7a2b91165_78600526',
+  'unifunc' => 'content_53aaa8add81334_79580806',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53a2a7a2b91165_78600526')) {function content_53a2a7a2b91165_78600526($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'D:\\xampp\\htdocs\\bookstore\\tools\\smarty\\plugins\\modifier.escape.php';
+<?php if ($_valid && !is_callable('content_53aaa8add81334_79580806')) {function content_53aaa8add81334_79580806($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'D:\\xampp\\htdocs\\bookstore\\tools\\smarty\\plugins\\modifier.escape.php';
 ?>
 
 <!-- Block stores module -->

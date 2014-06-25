@@ -1,5 +1,5 @@
 {*
-* 2007-2013 PrestaShop
+* 2007-2014 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,30 +18,21 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2013 PrestaShop SA
+*  @copyright  2007-2014 PrestaShop SA
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
 {if $status == 'ok'}
-<p>{l s='Your order on %s is complete.' sprintf=$shop_name mod='bankpopular'}
-		<br /><br />
-		{l s='Please send us a bank popular with' mod='bankpopular'}
-		<br /><br />- {l s='Amount' mod='bankpopular'} <span class="price"> <strong>{$total_to_pay}</strong></span>
-		<br /><br />- {l s='Name of account owner' mod='bankpopular'}  <strong>{if $bankwireOwner}{$bankwireOwner}{else}___________{/if}</strong>
-		<br /><br />- {l s='Include these details' mod='bankpopular'}  <strong>{if $bankwireDetails}{$bankwireDetails}{else}___________{/if}</strong>
-		<br /><br />- {l s='Bank name' mod='bankpopular'}  <strong>{if $bankwireAddress}{$bankwireAddress}{else}___________{/if}</strong>
-		{if !isset($reference)}
-			<br /><br />- {l s='Do not forget to insert your order number #%d in the subject of your bank popular' sprintf=$id_order mod='bankpopular'}
-		{else}
-			<br /><br />- {l s='Do not forget to insert your order reference %s in the subject of your bank popular.' sprintf=$reference mod='bankpopular'}
-		{/if}		<br /><br />{l s='An email has been sent with this information.' mod='bankpopular'}
-		<br /><br /> <strong>{l s='Your order will be sent as soon as we receive payment.' mod='bankpopular'}</strong>
-		<br /><br />{l s='If you have questions, comments or concerns, please contact our' mod='bankpopular'} <a href="{$link->getPageLink('contact', true)|escape:'html'}">{l s='expert customer support team. ' mod='bankpopular'}</a>.
+	<p>{l s='Your order on %s is complete.' sprintf=$shop_name mod='bankpopular'}
+		<br /><br />{l s='Your order reference is <b>%s</b>.' sprintf=$reference mod='bankpopular'}
+		<br /><br />{l s='An email has been sent to you with this information.' mod='bankpopular'}
+		<br /><br /><strong>{l s='Your order will be sent as soon as we receive your payment.' mod='bankpopular'}</strong>
+		<br /><br />{l s='For any questions or for further information, please contact our' mod='bankpopular'} <a href="{$link->getPageLink('contact', true)|escape:'html'}">{l s='customer service department.' mod='bankpopular'}</a>.
 	</p>
 {else}
 	<p class="warning">
-		{l s='We noticed a problem with your order. If you think this is an error, feel free to contact our' mod='bankpopular'} 
-		<a href="{$link->getPageLink('contact', true)|escape:'html'}">{l s='expert customer support team. ' mod='bankpopular'}</a>.
+		{l s='We have noticed that there is a problem with your order. If you think this is an error, you can contact our' mod='bankpopular'} 
+		<a href="{$link->getPageLink('contact', true)|escape:'html'}">{l s='customer service department.' mod='bankpopular'}</a>.
 	</p>
 {/if}

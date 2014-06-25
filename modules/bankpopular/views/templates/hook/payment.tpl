@@ -1,5 +1,5 @@
 {*
-* 2007-2013 PrestaShop
+* 2007-2014 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -18,14 +18,14 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2013 PrestaShop SA
+*  @copyright  2007-2014 PrestaShop SA
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
 <p class="payment_module">
-	<a href="{$link->getModuleLink('bankpopular', 'payment')|escape:'html'}" title="{l s='Pay by bank popular' mod='bankpopular'}">
-		<img src="{$this_path_bw}bankpopular.jpg" alt="{l s='Pay by bank popular' mod='bankpopular'}" width="86" height="49"/>
+	<a href="{$link->getModuleLink('bankpopular', 'payment', [], true)|escape:'html'}" title="{l s='Pay by bank popular.' mod='bankpopular'}">
+		<img src="{$this_path_bankpopular}bankpopular.jpg" alt="{l s='Pay by bank popular.' mod='bankpopular'}" width="100" height="50" />
 		{l s='Pay by bank popular' mod='bankpopular'}
 	</a>
 </p>

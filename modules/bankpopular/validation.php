@@ -1,6 +1,6 @@
 <?php
 /*
-* 2007-2013 PrestaShop
+* 2007-2014 PrestaShop
 *
 * NOTICE OF LICENSE
 *
@@ -19,7 +19,7 @@
 * needs please refer to http://www.prestashop.com for more information.
 *
 *  @author PrestaShop SA <contact@prestashop.com>
-*  @copyright  2007-2013 PrestaShop SA
+*  @copyright  2007-2014 PrestaShop SA
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 */
@@ -29,6 +29,8 @@
  */
 
 include(dirname(__FILE__).'/../../config/config.inc.php');
+Tools::displayFileAsDeprecated();
+
 include(dirname(__FILE__).'/../../header.php');
 include(dirname(__FILE__).'/bankpopular.php');
 
@@ -50,15 +52,16 @@ foreach (Module::getPaymentModules() as $module)
 if (!$authorized)
 	die($bankpopular->l('This payment method is not available.', 'validation'));
 
-$customer = new Customer((int)$cart->id_customer);
+$customer = new Customer($cart->id_customer);
 
 if (!Validate::isLoadedObject($customer))
 	Tools::redirect('index.php?controller=order&step=1');
 
 $currency = $context->currency;
-$total = (float)($cart->getOrderTotal(true, Cart::BOTH));
+$total = (float)$cart->getOrderTotal(true, Cart::BOTH);
 
-$bankpopular->validateOrder($cart->id, Configuration::get('PS_OS_BANKWIRE'), $total, $bankpopular->displayName, NULL, array(), (int)$currency->id, false, $customer->secure_key);
+$bankpopular->validateOrder((int)$cart->id, Configuration::get('PS_OS_BANKPOPULAR'), $total, $bankpopular->displayName, NULL, array(), (int)$currency->id, false, $customer->secure_key);
 
-$order = new Order($bankpopular->currentOrder);
-Tools::redirect('index.php?controller=order-confirmation&id_cart='.$cart->id.'&id_module='.$bankpopular->id.'&id_order='.$bankpopular->currentOrder.'&key='.$customer->secure_key);
+Tools::redirect('index.php?controller=order-confirmation&id_cart='.(int)($cart->id).'&id_module='.(int)($bankpopular->id).'&id_order='.$bankpopular->currentOrder.'&key='.$customer->secure_key);
+
+
