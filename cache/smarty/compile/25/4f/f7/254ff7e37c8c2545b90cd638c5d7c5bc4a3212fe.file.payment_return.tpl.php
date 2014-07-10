@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-06-25 15:32:03
+<?php /* Smarty version Smarty-3.1.14, created on 2014-07-10 12:46:00
          compiled from "D:\xampp\htdocs\bookstore\modules\bankpopular\views\templates\hook\payment_return.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2853753aa9e1b4ce6e8-85057739%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1286653be3db0d6c935-43540350%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '254ff7e37c8c2545b90cd638c5d7c5bc4a3212fe' => 
     array (
       0 => 'D:\\xampp\\htdocs\\bookstore\\modules\\bankpopular\\views\\templates\\hook\\payment_return.tpl',
-      1 => 1403690517,
+      1 => 1403690538,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2853753aa9e1b4ce6e8-85057739',
+  'nocache_hash' => '1286653be3db0d6c935-43540350',
   'function' => 
   array (
   ),
@@ -24,14 +24,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.14',
-  'unifunc' => 'content_53aa9e1b5439c3_55607249',
+  'unifunc' => 'content_53be3db0de1c23_78371888',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53aa9e1b5439c3_55607249')) {function content_53aa9e1b5439c3_55607249($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_53be3db0de1c23_78371888')) {function content_53be3db0de1c23_78371888($_smarty_tpl) {?>
 
 <?php if ($_smarty_tpl->tpl_vars['status']->value=='ok'){?>
 	<p><?php echo smartyTranslate(array('s'=>'Your order on %s is complete.','sprintf'=>$_smarty_tpl->tpl_vars['shop_name']->value,'mod'=>'bankpopular'),$_smarty_tpl);?>
 
-		<br /><br /><?php echo smartyTranslate(array('s'=>'Your order reference is  <b>%s</b>.','sprintf'=>$_smarty_tpl->tpl_vars['reference']->value,'mod'=>'bankpopular'),$_smarty_tpl);?>
+		<br /><br /><?php echo smartyTranslate(array('s'=>'Your order reference is <b>%s</b>.','sprintf'=>$_smarty_tpl->tpl_vars['reference']->value,'mod'=>'bankpopular'),$_smarty_tpl);?>
 
 		<br /><br /><?php echo smartyTranslate(array('s'=>'An email has been sent to you with this information.','mod'=>'bankpopular'),$_smarty_tpl);?>
 

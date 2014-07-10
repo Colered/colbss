@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-06-25 15:25:00
+<?php /* Smarty version Smarty-3.1.14, created on 2014-07-10 12:33:47
          compiled from "D:\xampp\htdocs\bookstore\themes\PRS020046\product-sort.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:104053aa9c74a79650-22356770%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1440853be3ad3017832-87163021%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '104053aa9c74a79650-22356770',
+  'nocache_hash' => '1440853be3ad3017832-87163021',
   'function' => 
   array (
   ),
@@ -32,9 +32,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.14',
-  'unifunc' => 'content_53aa9c74c27113_03832805',
+  'unifunc' => 'content_53be3ad323a619_31517363',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53aa9c74c27113_03832805')) {function content_53aa9c74c27113_03832805($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'D:\\xampp\\htdocs\\bookstore\\tools\\smarty\\plugins\\modifier.escape.php';
+<?php if ($_valid && !is_callable('content_53be3ad323a619_31517363')) {function content_53be3ad323a619_31517363($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'D:\\xampp\\htdocs\\bookstore\\tools\\smarty\\plugins\\modifier.escape.php';
 ?>
 
 <div id="product-sort-container">

@@ -65,7 +65,7 @@ class AdminIsbnController extends ModuleAdminController {
         return parent::renderView();
     }
 
-    function preProcess() {
+    public function preProcess() {
 
         parent::preProcess();
 
@@ -77,11 +77,20 @@ class AdminIsbnController extends ModuleAdminController {
         $index = count($this->_conf);
 
         $isbn_from_csv = false;
+        $isbn_by_form = false;
         $isbn_values = trim(Tools::getValue('isb_no'));
+        if($isbn_values<>""){
+           $isbn_by_form = true;
+        }
+
+
         $categories = Tools::getValue('categoryChk') ? Tools::getValue('categoryChk') : array();
 
         if(Tools::isSubmit('isbn_data') && $_FILES['csvUpload']['name'] != ""){
         	$csvfileData = $this->readCSVFile();
+			if(empty($csvfileData)){
+				  $this->errors[] = Tools::displayError('Error: Category and ISBN not exist in CSV file.');
+			}
         	$isbn_from_csv = true;
         }
 
@@ -93,11 +102,16 @@ class AdminIsbnController extends ModuleAdminController {
 			'isbn_values' => ''
 		));
 
-        if(Tools::isSubmit('isbn_data') && $isbn_from_csv) {
+		if(Tools::isSubmit('isbn_data') && $isbn_from_csv && $isbn_by_form) {
+
+		  $this->errors[] = Tools::displayError('Error: At a time you can choose either form or CSV file.');
+
+		}else if(Tools::isSubmit('isbn_data') && $isbn_from_csv) {
 
 			foreach($csvfileData as $csvRow)
 			{
 				$pre_insert_error = false;
+				$dataRowCategories = '';
 				$dataRowArr = explode("#",$csvRow);
 				if(trim($dataRowArr[0])<>""){
 					$dataRowCategories = $dataRowArr[0];
@@ -105,13 +119,30 @@ class AdminIsbnController extends ModuleAdminController {
 				if(trim($dataRowArr[1])<>""){
 					$dataRowIsbn = str_replace("-","",$dataRowArr[1]);
 				}
+
+
 				$dataRowCategoriesArr = explode(",",$dataRowCategories);
-				
+
 				$z = 0;
+				$cat_not_exist = false;
+				$cat_NotExistArr = array();
 				foreach($dataRowCategoriesArr as $catarr){
-					$dataRowCategoriesArr[$z] = $catarr + 3;
-				$z++;
+					$dataRowCategoriesArr[$z] = $catarr;
+
+					if(!$this->categoryExists($catarr)){
+					   $cat_not_exist = true;
+					   $cat_NotExistArr[] = $catarr;
+					}
+
+					$z++;
 				}
+
+				if($cat_not_exist){
+                  $pre_insert_error = true;
+				  $this->errors[] = Tools::displayError('Error: '.implode(',',$cat_NotExistArr).' Category not exist against the ISBN '.$dataRowIsbn.'.');
+
+				}
+
 				//print"<pre>";print_r($dataRowIsbn);die;
 
 				if (Tools::isSubmit('isbn_data') && (!is_array($dataRowCategoriesArr) || !count($dataRowCategoriesArr))) {
@@ -119,7 +150,10 @@ class AdminIsbnController extends ModuleAdminController {
                     $pre_insert_error = true;
 				}
 				if (Tools::isSubmit('isbn_data') && !$dataRowIsbn) {
-					$this->errors[] = Tools::displayError('Error: There is no ISBN associated to category "'.implode(',',$dataRowCategoriesArr).'" in CSV file.');
+					$this->errors[] = Tools::displayError('Error: There is no ISBN associated to category '.implode(',',$dataRowCategoriesArr).' in CSV file.');
+					$pre_insert_error = true;
+				}else if (Tools::isSubmit('isbn_data') && (strlen(trim($dataRowIsbn)) < 10 || !is_numeric(trim($dataRowIsbn)))) {
+					$this->errors[] = Tools::displayError('Error: ISBN " '.$dataRowIsbn.' " is not valid.');
 					$pre_insert_error = true;
 				}
 
@@ -132,7 +166,7 @@ class AdminIsbnController extends ModuleAdminController {
 
 
 
-        }else if(Tools::isSubmit('isbn_data') && !$isbn_from_csv){
+        }else if(Tools::isSubmit('isbn_data') && $isbn_by_form){
 
 			if (Tools::isSubmit('isbn_data') && (!is_array($categories) || !count($categories))) {
 			   $this->errors[] = Tools::displayError('Error: You must choose at least one category.');
@@ -143,7 +177,7 @@ class AdminIsbnController extends ModuleAdminController {
 			}
 			if (Tools::isSubmit('isbn_data') && !$isbn_values) {
 			   $this->errors[] = Tools::displayError('Error: Fill the comma separated ISBN values.');
-			}else{
+			}else {
 				 $this->context->smarty->assign(array(
 						'isbn_values' => $isbn_values
 				 ));
@@ -232,15 +266,20 @@ class AdminIsbnController extends ModuleAdminController {
 				  }
 				  $product_name = html_entity_decode($metadata->Items->Item->ItemAttributes->Title);
 				  $final_price = substr($metadata->Items->Item->ItemAttributes->ListPrice->FormattedPrice, 1);
-				  $item_weight = $metadata->Items->Item->ItemAttributes->ItemDimensions->Weight;
+
+				  $item_height = $metadata->Items->Item->ItemAttributes->ItemDimensions->Height/100;
+				  $item_length = $metadata->Items->Item->ItemAttributes->ItemDimensions->Length/100;
+				  $item_weight = $metadata->Items->Item->ItemAttributes->ItemDimensions->Weight/100;
+				  $item_width = $metadata->Items->Item->ItemAttributes->ItemDimensions->Width/100;
 
 				  $item_desc = '';
+				  $item_desc_short = '';
 				  if(isset($metadata->Items->Item->EditorialReviews->EditorialReview->Content)){
-					$item_desc = substr(html_entity_decode($metadata->Items->Item->EditorialReviews->EditorialReview->Content),0,100).'...';
+					$item_desc_short = substr(html_entity_decode($metadata->Items->Item->EditorialReviews->EditorialReview->Content),0,390).'...';
+					$item_desc = html_entity_decode($metadata->Items->Item->EditorialReviews->EditorialReview->Content);
 				  }
 
 				  $meta_keywords = '';
-				  $description_short = $item_desc;
 				  $link_rewrite = "testprod";
 
 
@@ -248,9 +287,12 @@ class AdminIsbnController extends ModuleAdminController {
 					 'isbn_val' => $isbn_val,
 					 'final_price' =>$final_price,
 					 'product_name' => $product_name,
+					 'item_height' => $item_height,
+					 'item_length' => $item_length,
 					 'item_weight' => $item_weight,
+					 'item_width' => $item_width,
 					 'meta_keywords' => $meta_keywords,
-					 'description_short' => $item_desc,
+					 'description_short' => $item_desc_short,
 					 'link_rewrite' => $link_rewrite,
 					 'description' => $item_desc
 				   );
@@ -343,9 +385,9 @@ class AdminIsbnController extends ModuleAdminController {
 		  $prodObj->additional_shipping_cost = 0;
 		  $prodObj->wholesale_price = 0;
 		  $prodObj->ecotax = 0;
-		  $prodObj->width = 0;
-		  $prodObj->height = 0;
-		  $prodObj->depth = 0;
+		  $prodObj->width = $dataArr['item_width'];
+		  $prodObj->height = $dataArr['item_height'];
+		  $prodObj->depth = $dataArr['item_length'];
 		  $prodObj->weight = $dataArr['item_weight'];
 		  $prodObj->out_of_stock = 0;
 		  $prodObj->active = 0;
@@ -368,8 +410,13 @@ class AdminIsbnController extends ModuleAdminController {
 
           $this->_conf[$index]=$this->l('test');
 
+          $prod_id = $prodObj->id;
 
-         return $prodObj->id;
+          $prodObj = null;
+          unset($prodObj);
+
+
+         return $prod_id;
     }
 
 	protected function readCSVFile()
@@ -445,4 +492,20 @@ class AdminIsbnController extends ModuleAdminController {
 		  unlink($tmpfile);
 		  return true;
 	 }
+
+	 /**
+	 * Specify if a category already in base
+	 *
+	 * @param $id_category Category id
+	 * @return boolean
+	 */
+	 public function categoryExists($id_category)
+	 {
+		 $row = Db::getInstance()->getRow('
+		 SELECT `id_category`
+		 FROM '._DB_PREFIX_.'category c
+		 WHERE c.`id_category` = '.(int)$id_category);
+
+		 return isset($row['id_category']);
+    }
 }

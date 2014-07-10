@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-06-25 15:29:29
+<?php /* Smarty version Smarty-3.1.14, created on 2014-07-10 12:36:09
          compiled from "D:\xampp\htdocs\bookstore\modules\bankpopular\views\templates\front\payment_execution.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2856753aa9d81b56a94-79991949%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:276153be3b61d52d87-22206735%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2856753aa9d81b56a94-79991949',
+  'nocache_hash' => '276153be3b61d52d87-22206735',
   'function' => 
   array (
   ),
@@ -28,9 +28,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.14',
-  'unifunc' => 'content_53aa9d81c8f271_58489421',
+  'unifunc' => 'content_53be3b61ea6b04_78102475',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53aa9d81c8f271_58489421')) {function content_53aa9d81c8f271_58489421($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_53be3b61ea6b04_78102475')) {function content_53be3b61ea6b04_78102475($_smarty_tpl) {?>
 
 <?php $_smarty_tpl->_capture_stack[0][] = array('path', null, null); ob_start(); ?><?php echo smartyTranslate(array('s'=>'Bank Popular payment','mod'=>'bankpopular'),$_smarty_tpl);?>
 <?php list($_capture_buffer, $_capture_assign, $_capture_append) = array_pop($_smarty_tpl->_capture_stack[0]);
