@@ -127,8 +127,8 @@
 		<tr>
 			<td class="col-left"><label>{$bullet_common_field} {l s='Reference:'}</label></td>
 			<td style="padding-bottom:5px;">
-				<input size="55" type="text" name="reference" value="{$product->reference|htmlentitiesUTF8}" style="width: 130px; margin-right: 44px;" />
-				<span class="hint" name="help_box">{l s='Special characters allowed:'}.-_#\<span class="hint-pointer">&nbsp;</span></span>
+				<input class="{if !$product->id}copy2friendlyUrl{/if}" size="55" type="text" name="reference" onkeypress="enableSave();" value="{$product->reference|htmlentitiesUTF8}" style="width: 130px;" />
+			<sup> *</sup>
 			</td>
 		</tr>
 		<tr>

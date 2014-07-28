@@ -230,7 +230,12 @@ class AdminIsbnController extends ModuleAdminController {
 
    protected function addProdDataInDB($isbn_val, $categories)
    {
-          $id_lang = (int)(Configuration::get('PS_LANG_DEFAULT'));
+          //check isbn number in database
+		   $result = $this->getReference($isbn_val);
+		   if($result){
+			   $this->errors[] = Tools::displayError('A Product with ISBN ' . $isbn_val . ' already exists in database');
+		   }else{
+		  $id_lang = (int)(Configuration::get('PS_LANG_DEFAULT'));
 		  //check if product already exist in selected category
 		  foreach ($categories as $catid) {
 			  //$sql = 'SELECT reference FROM ' . _DB_PREFIX_ . 'product WHERE reference="' . $isbn_val . '" AND id_category_default="' . $catid . '"';
@@ -319,6 +324,7 @@ class AdminIsbnController extends ModuleAdminController {
 
 			  }
 		  }
+		   }
 
    }
 
@@ -508,4 +514,12 @@ class AdminIsbnController extends ModuleAdminController {
 
 		 return isset($row['id_category']);
     }
+
+	public function getReference($reference)
+	{
+		$sql = "SELECT p.reference from ps_product p where p.reference ='".$reference."'";
+		$res = Db::getInstance()->getValue($sql);
+		return $res;
+	}
+
 }
