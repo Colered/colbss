@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-07-01 22:06:15
+<?php /* Smarty version Smarty-3.1.14, created on 2014-07-21 16:00:55
          compiled from "D:\xampp\htdocs\bookstore\backend\themes\default\template\controllers\products\associations.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:256653b2e37fc01b51-28189926%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:30653ccebdf454f68-08341880%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '256653b2e37fc01b51-28189926',
+  'nocache_hash' => '30653ccebdf454f68-08341880',
   'function' => 
   array (
   ),
@@ -28,9 +28,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.14',
-  'unifunc' => 'content_53b2e37fe86475_31148751',
+  'unifunc' => 'content_53ccebdf67bbe9_22162059',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53b2e37fe86475_31148751')) {function content_53b2e37fe86475_31148751($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'D:\\xampp\\htdocs\\bookstore\\tools\\smarty\\plugins\\modifier.escape.php';
+<?php if ($_valid && !is_callable('content_53ccebdf67bbe9_22162059')) {function content_53ccebdf67bbe9_22162059($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'D:\\xampp\\htdocs\\bookstore\\tools\\smarty\\plugins\\modifier.escape.php';
 ?>
 
 <input type="hidden" name="submitted_tabs[]" value="Associations" />

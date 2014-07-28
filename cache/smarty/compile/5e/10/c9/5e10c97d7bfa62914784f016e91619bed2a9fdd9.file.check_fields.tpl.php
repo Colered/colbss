@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-07-01 22:05:58
+<?php /* Smarty version Smarty-3.1.14, created on 2014-07-21 16:00:41
          compiled from "D:\xampp\htdocs\bookstore\backend\themes\default\template\controllers\products\multishop\check_fields.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1233653b2e36e222548-77806104%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:927453ccebd1afffe3-41478829%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1233653b2e36e222548-77806104',
+  'nocache_hash' => '927453ccebd1afffe3-41478829',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.14',
-  'unifunc' => 'content_53b2e36e2d21e7_77824661',
+  'unifunc' => 'content_53ccebd1b2af66_80952684',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53b2e36e2d21e7_77824661')) {function content_53b2e36e2d21e7_77824661($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_53ccebd1b2af66_80952684')) {function content_53ccebd1b2af66_80952684($_smarty_tpl) {?>
 
 <?php if (isset($_smarty_tpl->tpl_vars['display_multishop_checkboxes']->value)&&$_smarty_tpl->tpl_vars['display_multishop_checkboxes']->value){?>
 	<label style="float: none">

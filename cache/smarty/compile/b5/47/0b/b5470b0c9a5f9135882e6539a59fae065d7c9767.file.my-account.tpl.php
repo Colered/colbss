@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-07-08 17:52:30
+<?php /* Smarty version Smarty-3.1.14, created on 2014-07-21 20:59:00
          compiled from "D:\xampp\htdocs\bookstore\modules\mailalerts\views\templates\hook\my-account.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1130653bbe28687b382-09980266%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2934953cd31bc5ba9f1-48728943%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1130653bbe28687b382-09980266',
+  'nocache_hash' => '2934953cd31bc5ba9f1-48728943',
   'function' => 
   array (
   ),
@@ -22,9 +22,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.14',
-  'unifunc' => 'content_53bbe2868c9587_64050516',
+  'unifunc' => 'content_53cd31bc5ed685_66621555',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53bbe2868c9587_64050516')) {function content_53bbe2868c9587_64050516($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_53cd31bc5ed685_66621555')) {function content_53cd31bc5ed685_66621555($_smarty_tpl) {?>
 
 <li class="mailalerts">
 	<a href="<?php echo htmlspecialchars($_smarty_tpl->tpl_vars['link']->value->getModuleLink('mailalerts','account'), ENT_QUOTES, 'UTF-8', true);?>

@@ -173,7 +173,7 @@ class OrderConfirmationController extends OrderConfirmationControllerCore
 			$dataString .= $dataNTE.PHP_EOL;
 			$dataString .= $dataDTL;
 
-			$filename = '940_'.$order->reference.'.txt';
+			$filename = '940_'.$order->reference.'_'.time().'.txt';
 			$this->writeFile($filename,$dataString);
 
 

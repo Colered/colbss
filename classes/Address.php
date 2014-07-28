@@ -174,7 +174,7 @@ class AddressCore extends ObjectModel
 			Customer::resetAddressCache($this->id_customer);
 		return true;
 	}
-	
+
 	public function update($null_values = false)
 	{
 		// Empty related caches

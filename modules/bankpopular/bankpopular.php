@@ -112,7 +112,7 @@ class BankPopular extends PaymentModule
 		return $this->display(__FILE__, 'infos.tpl');
 	}
 
-	public function getContent()
+	/*public function getContent()
 	{
 		$this->_html = '';
 
@@ -130,7 +130,7 @@ class BankPopular extends PaymentModule
 		//$this->_html .= $this->renderForm();
 
 		return $this->_html;
-	}
+	}*/
 
 	public function hookPayment($params)
 	{
