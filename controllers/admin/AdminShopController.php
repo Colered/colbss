@@ -223,7 +223,7 @@ class AdminShopControllerCore extends AdminController
 			else if (Shop::getTotalShops() == 1)
 				$this->errors[] = Tools::displayError('You cannot disable the last shop.');
 		}*/
-
+		
 		if (Tools::isSubmit('submitAddshopAndStay') || Tools::isSubmit('submitAddshop'))
 		{
 			$shop_group = new ShopGroup((int)Tools::getValue('id_shop_group'));
@@ -490,7 +490,7 @@ class AdminShopControllerCore extends AdminController
 			'zone' => $this->l('Zones'),
 			'cart_rule' => $this->l('Cart rules'),
 		);
-
+		
 		// Hook for duplication of shop data
 		$modules_list = Hook::getHookModuleExecList('actionShopDataDuplication');
 		if (is_array($modules_list) && count($modules_list) > 0)
@@ -498,7 +498,7 @@ class AdminShopControllerCore extends AdminController
 				$import_data['Module'.ucfirst($m['module'])] = Module::getModuleName($m['module']);
 
 		asort($import_data);
-
+				
 		if (!$this->object->id)
 			$this->fields_import_form = array(
 				'radio' => array(
@@ -560,7 +560,7 @@ class AdminShopControllerCore extends AdminController
 
 		if (Tools::isSubmit('id_category_default'))
 			$_POST['id_category'] = (int)Tools::getValue('id_category_default');
-
+	
 		/* Checking fields validity */
 		$this->validateRules();
 
@@ -628,7 +628,7 @@ class AdminShopControllerCore extends AdminController
 			$root_category = new Category($root_categories[0]['id_category']);
 			$children = $root_category->getAllChildren($this->context->language->id);
 			$selected_cat[] = $root_categories[0]['id_category'];
-
+			
 			foreach ($children as $child)
 				$selected_cat[] = $child->id;
 		}

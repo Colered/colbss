@@ -1,0 +1,33 @@
+<?php /* Smarty version Smarty-3.1.14, created on 2014-08-07 17:07:35
+         compiled from "D:\xampp\htdocs\bookstore\backend\themes\default\template\helpers\list\list_action_edit.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:911353e35259918756-63975351%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'c7b2570c8ee102aded8c891f4e8b2f85234ac242' => 
+    array (
+      0 => 'D:\\xampp\\htdocs\\bookstore\\backend\\themes\\default\\template\\helpers\\list\\list_action_edit.tpl',
+      1 => 1407409048,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '911353e35259918756-63975351',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.14',
+  'unifunc' => 'content_53e352599a1313_51495900',
+  'variables' => 
+  array (
+    'href' => 0,
+    'action' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_53e352599a1313_51495900')) {function content_53e352599a1313_51495900($_smarty_tpl) {?>
+<a href="<?php echo $_smarty_tpl->tpl_vars['href']->value;?>
+" class="edit" title="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
+">
+	<img src="../img/admin/edit.gif" alt="<?php echo $_smarty_tpl->tpl_vars['action']->value;?>
+" />
+</a><?php }} ?>

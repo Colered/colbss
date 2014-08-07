@@ -59,7 +59,8 @@ class CartControllerCore extends FrontController
 		$this->id_product = (int)Tools::getValue('id_product', null);
 		$this->id_product_attribute = (int)Tools::getValue('id_product_attribute', Tools::getValue('ipa'));
 		$this->customization_id = (int)Tools::getValue('id_customization');
-		$this->qty = abs(Tools::getValue('qty', 1));
+		//$this->qty = abs(Tools::getValue('qty', 1));
+		$this->qty = Tools::getValue('qty', 1);
 		$this->id_address_delivery = (int)Tools::getValue('id_address_delivery');
 	}
 
@@ -185,6 +186,10 @@ class CartControllerCore extends FrontController
 
 		if ($this->qty == 0)
 			$this->errors[] = Tools::displayError('Null quantity.');
+		elseif (is_numeric($this->qty) === FALSE)
+			$this->errors[] = Tools::displayError('Please provide numeric value only in quantity.');
+		elseif (ctype_digit($this->qty) === FALSE)
+			$this->errors[] = Tools::displayError('Please provide integer value only in quantity.');
 		elseif (!$this->id_product)
 			$this->errors[] = Tools::displayError('Product not found');
 

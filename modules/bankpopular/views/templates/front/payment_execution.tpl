@@ -69,7 +69,7 @@
 	<p>
 		{l s='Order related other information will be displayed on the next page.' mod='bankpopular'}
 		<br /><br />
-		<b>{l s='Please confirm your order by clicking \'I confirm my order\'' mod='bankpopular'}.</b>
+		<!--<b>{l s='Please confirm your order by clicking \'I confirm my order\'' mod='bankpopular'}.</b>-->
 	</p>
 	<p class="cart_navigation" id="cart_navigation">
 		<input type="submit" value="{l s='I confirm my order' mod='bankpopular'}" class="exclusive_large"/>

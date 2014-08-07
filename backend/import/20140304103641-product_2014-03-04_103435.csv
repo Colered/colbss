@@ -1,0 +1,12 @@
+﻿ID;Photo;Name;Reference;Default shop;Base price;Final price;Quantity;Status;
+11;http://172.16.213.79/bookstore/img/p/0.jpg;test-shirt;;Baluch;20.000000;20;;1;
+9;http://172.16.213.79/bookstore/img/p/2/8/28.jpg;test product for store abc;demo_9;abc;2000.000000;2250;;1;
+1;http://172.16.213.79/bookstore/img/p/1/5/15.jpg;iPod Nano;demo_1;Fedena School;124.581940;177.83;160;1;
+4;http://172.16.213.79/bookstore/img/p/6/6.jpg;MacBook;demo_4;Fedena School;1170.568561;1316.89;75;1;
+7;http://172.16.213.79/bookstore/img/p/1/4/14.jpg;Shure SE210 Sound-Isolating Earphones for iPod and iPhone;demo_7;Fedena School;124.581940;140.15;15;1;
+10;http://172.16.213.79/bookstore/img/p/3/0/30.jpg;test;;Fedena School;0.000000;0;0;1;
+2;http://172.16.213.79/bookstore/img/p/2/3/23.jpg;iPod shuffle;demo_2;Fedena School;66.053500;74.31;120;1;
+5;http://172.16.213.79/bookstore/img/p/7/7.jpg;iPod touch;demo_5;Fedena School;241.638796;271.84;120;1;
+8;http://172.16.213.79/bookstore/img/p/2/7/27.jpg;first book for xyz store added by Ravindra;Demo_8;xyz;5.000000;5.63;;1;
+3;http://172.16.213.79/bookstore/img/p/1/1.jpg;MacBook Air;demo_3;Fedena School;1504.180602;1692.2;400;1;
+6;http://172.16.213.79/bookstore/img/p/1/3/13.jpg;Belkin Leather Folio for iPod nano - Black / Chocolate;demo_6;Fedena School;25.041806;28.17;25;1;
