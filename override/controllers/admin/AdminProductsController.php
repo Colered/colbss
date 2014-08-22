@@ -35,7 +35,7 @@ class AdminProductsController extends AdminProductsControllerCore
 	}
 	public function initToolbar()
 	{
-		parent::initToolbar();
+		AdminController::initToolbar();
 		if ($this->display == 'edit' || $this->display == 'add')
 		{
 			if ($product = $this->loadObject(true))

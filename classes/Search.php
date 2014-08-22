@@ -151,7 +151,7 @@ class SearchCore
 					$letters .= $mb_word.' ';
 				else
 					$symbols .= $mb_word.' ';
-		
+
 			if (preg_match_all('/./u', $symbols, $matches))
 				$symbols = implode(' ', $matches[0]);
 
@@ -250,7 +250,7 @@ class SearchCore
 						WHERE id_customer = '.(int)$id_customer.'
 					)');
 		$results = $db->executeS($sql);
-
+        //echo $sql;die;
 		$eligible_products = array();
 		foreach ($results as $row)
 			$eligible_products[] = $row['id_product'];
@@ -304,7 +304,7 @@ class SearchCore
 			$alias = 'product_shop.';
 		else if ($order_by == 'date_upd')
 			$alias = 'p.';
-		$sql = 'SELECT p.*, product_shop.*, stock.out_of_stock, IFNULL(stock.quantity, 0) as quantity, 
+		$sql = 'SELECT p.*, product_shop.*, stock.out_of_stock, IFNULL(stock.quantity, 0) as quantity,
 				pl.`description_short`, pl.`available_now`, pl.`available_later`, pl.`link_rewrite`, pl.`name`,
 			 MAX(image_shop.`id_image`) id_image, il.`legend`, m.`name` manufacturer_name '.$score.', MAX(product_attribute_shop.`id_product_attribute`) id_product_attribute,
 				DATEDIFF(
@@ -676,7 +676,7 @@ class SearchCore
 				)
 				'.Shop::addSqlAssociation('product', 'p', false).'
 				LEFT JOIN `'._DB_PREFIX_.'image` i ON (i.`id_product` = p.`id_product`)'.
-				Shop::addSqlAssociation('image', 'i', false, 'image_shop.cover=1').'		
+				Shop::addSqlAssociation('image', 'i', false, 'image_shop.cover=1').'
 				LEFT JOIN `'._DB_PREFIX_.'image_lang` il ON (i.`id_image` = il.`id_image` AND il.`id_lang` = '.(int)$id_lang.')
 				LEFT JOIN `'._DB_PREFIX_.'manufacturer` m ON (m.`id_manufacturer` = p.`id_manufacturer`)
 				LEFT JOIN `'._DB_PREFIX_.'product_tag` pt ON (p.`id_product` = pt.`id_product`)

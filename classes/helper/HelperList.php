@@ -39,7 +39,7 @@ class HelperListCore extends Helper
 	protected $_filter;
 
 	/** @var array Number of results in list per page (used in select field) */
-	protected $_pagination = array(20, 50, 100, 300);
+	protected $_pagination = array(20, 50, 100, 300,600);
 
 	/** @var string ORDER BY clause determined by field/arrows in list header */
 	public $orderBy;
@@ -457,10 +457,10 @@ class HelperListCore extends Helper
 			'href' => Tools::safeOutput($this->currentIndex.'&'.$this->identifier.'='.$id.'&delete'.$this->table.'&token='.($token != null ? $token : $this->token)),
 			'action' => self::$cache_lang['Delete'],
 		);
-		
+
 		if ($this->specificConfirmDelete !== false)
 			$data['confirm'] = !is_null($this->specificConfirmDelete) ? '\r'.$this->specificConfirmDelete : Tools::safeOutput(self::$cache_lang['DeleteItem'].$name);
-		
+
 		$tpl->assign(array_merge($this->tpl_delete_link_vars, $data));
 
 		return $tpl->fetch();
@@ -505,7 +505,7 @@ class HelperListCore extends Helper
 
 		$total_pages = ceil($this->listTotal / Tools::getValue($this->list_id.'_pagination', ($default_pagination)));
 
-		if (!$total_pages) 
+		if (!$total_pages)
 			$total_pages = 1;
 
 		$identifier = Tools::getIsset($this->identifier) ? '&'.$this->identifier.'='.(int)Tools::getValue($this->identifier) : '';

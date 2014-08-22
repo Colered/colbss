@@ -186,8 +186,8 @@ class CartControllerCore extends FrontController
 
 		if ($this->qty == 0)
 			$this->errors[] = Tools::displayError('Null quantity.');
-		elseif (is_numeric($this->qty) === FALSE)
-			$this->errors[] = Tools::displayError('Please provide numeric value only in quantity.');
+		//elseif (is_numeric($this->qty) === FALSE)
+			//$this->errors[] = Tools::displayError('Please provide numeric value only in quantity.');
 		elseif (ctype_digit($this->qty) === FALSE)
 			$this->errors[] = Tools::displayError('Please provide integer value only in quantity.');
 		elseif (!$this->id_product)
