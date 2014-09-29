@@ -1,5 +1,25 @@
-*ERROR* 	2014/07/03 - 18:02:03: Duplicate entry '3-44' for key 'PRIMARY'<br /><br /><pre>INSERT INTO `ps_category_product` (`id_category`, `id_product`, `position`) VALUES ('3', '44', '4'), ('3', '44', '4')</pre> at line 613 in file classes/db/Db.php
-*ERROR* 	2014/07/03 - 18:02:15: Duplicate entry '3-45' for key 'PRIMARY'<br /><br /><pre>INSERT INTO `ps_category_product` (`id_category`, `id_product`, `position`) VALUES ('3', '45', '4'), ('3', '45', '4')</pre> at line 613 in file classes/db/Db.php
-*ERROR* 	2014/07/03 - 18:04:52: Duplicate entry '3-46' for key 'PRIMARY'<br /><br /><pre>INSERT INTO `ps_category_product` (`id_category`, `id_product`, `position`) VALUES ('3', '46', '0'), ('3', '46', '0')</pre> at line 613 in file classes/db/Db.php
-*ERROR* 	2014/07/03 - 18:09:44: Duplicate entry '3-47' for key 'PRIMARY'<br /><br /><pre>INSERT INTO `ps_category_product` (`id_category`, `id_product`, `position`) VALUES ('3', '47', '0'), ('3', '47', '0')</pre> at line 613 in file classes/db/Db.php
-*ERROR* 	2014/07/03 - 18:25:49: Duplicate entry '3-48' for key 'PRIMARY'<br /><br /><pre>INSERT INTO `ps_category_product` (`id_category`, `id_product`, `position`) VALUES ('3', '48', '0'), ('3', '48', '0'), ('5', '48', '0')</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/07/03 - 11:17:19: Duplicate entry '10-6' for key 'PRIMARY'<br /><br /><pre>
+			INSERT INTO `ps_compare_product` (`id_compare`, `id_product`, `date_add`, `date_upd`)
+			VALUES (10, 6, NOW(), NOW())</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/07/03 - 11:17:20: Duplicate entry '10-6' for key 'PRIMARY'<br /><br /><pre>
+			INSERT INTO `ps_compare_product` (`id_compare`, `id_product`, `date_add`, `date_upd`)
+			VALUES (10, 6, NOW(), NOW())</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/07/03 - 11:17:22: Duplicate entry '10-6' for key 'PRIMARY'<br /><br /><pre>
+			INSERT INTO `ps_compare_product` (`id_compare`, `id_product`, `date_add`, `date_upd`)
+			VALUES (10, 6, NOW(), NOW())</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/07/03 - 11:17:24: Duplicate entry '10-6' for key 'PRIMARY'<br /><br /><pre>
+			INSERT INTO `ps_compare_product` (`id_compare`, `id_product`, `date_add`, `date_upd`)
+			VALUES (10, 6, NOW(), NOW())</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/07/03 - 11:17:28: Duplicate entry '10-6' for key 'PRIMARY'<br /><br /><pre>
+			INSERT INTO `ps_compare_product` (`id_compare`, `id_product`, `date_add`, `date_upd`)
+			VALUES (10, 6, NOW(), NOW())</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/07/03 - 11:17:30: Duplicate entry '10-6' for key 'PRIMARY'<br /><br /><pre>
+			INSERT INTO `ps_compare_product` (`id_compare`, `id_product`, `date_add`, `date_upd`)
+			VALUES (10, 6, NOW(), NOW())</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/07/03 - 12:34:26: Duplicate entry '10-47' for key 'PRIMARY'<br /><br /><pre>
+			INSERT INTO `ps_compare_product` (`id_compare`, `id_product`, `date_add`, `date_upd`)
+			VALUES (10, 47, NOW(), NOW())</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/07/03 - 12:36:49: Duplicate entry '10-48' for key 'PRIMARY'<br /><br /><pre>
+			INSERT INTO `ps_compare_product` (`id_compare`, `id_product`, `date_add`, `date_upd`)
+			VALUES (10, 48, NOW(), NOW())</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/07/03 - 18:05:39: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 1' at line 1<br /><br /><pre>SELECT product_tabs from ps_profile_product_tabs where id_profile = LIMIT 1</pre> at line 613 in file classes/db/Db.php

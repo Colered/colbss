@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-08-20 14:19:14
+<?php /* Smarty version Smarty-3.1.14, created on 2014-09-29 19:16:21
          compiled from "D:\xampp\htdocs\bookstore\backend\themes\default\template\helpers\help_access\button.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:498253f4610a1411c4-09095549%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:19325542962adeb50a8-22228573%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '61df36bc0fd336ed869af9faa43042246970ab2f' => 
     array (
       0 => 'D:\\xampp\\htdocs\\bookstore\\backend\\themes\\default\\template\\helpers\\help_access\\button.tpl',
-      1 => 1407409046,
+      1 => 1411997108,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '498253f4610a1411c4-09095549',
+  'nocache_hash' => '19325542962adeb50a8-22228573',
   'function' => 
   array (
   ),
@@ -28,9 +28,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.14',
-  'unifunc' => 'content_53f4610a2c7c07_91173998',
+  'unifunc' => 'content_542962ae0e67a3_49237628',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53f4610a2c7c07_91173998')) {function content_53f4610a2c7c07_91173998($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'D:\\xampp\\htdocs\\bookstore\\tools\\smarty\\plugins\\modifier.escape.php';
+<?php if ($_valid && !is_callable('content_542962ae0e67a3_49237628')) {function content_542962ae0e67a3_49237628($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'D:\\xampp\\htdocs\\bookstore\\tools\\smarty\\plugins\\modifier.escape.php';
 ?><li class="help-context-<?php echo smarty_modifier_escape($_smarty_tpl->tpl_vars['label']->value, 'htmlall', 'UTF-8');?>
 " style="display:none">
     <a id="desc-<?php echo smarty_modifier_escape($_smarty_tpl->tpl_vars['label']->value, 'htmlall', 'UTF-8');?>

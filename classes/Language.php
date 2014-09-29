@@ -175,7 +175,7 @@ class LanguageCore extends ObjectModel
 	}
 
 	/**
-	  * Return an array of theme 
+	  * Return an array of theme
 	  *
 	  * @return array([theme dir] => array('name' => [theme name]))
 		* @deprecated will be removed in 1.6
@@ -273,6 +273,7 @@ class LanguageCore extends ObjectModel
 			'backoffice_order.html', 'backoffice_order.txt',
 			'bankwire.html', 'bankwire.txt',
 			'cheque.html', 'cheque.txt',
+			'bankpopular.html', 'bankpopular.txt',
 			'contact.html', 'contact.txt',
 			'contact_form.html', 'contact_form.txt',
 			'credit_slip.html', 'credit_slip.txt',
@@ -474,21 +475,21 @@ class LanguageCore extends ObjectModel
 		{
 			if (empty($this->iso_code))
 				$this->iso_code = Language::getIsoById($this->id);
-	
+
 			// Database translations deletion
 			$result = Db::getInstance()->executeS('SHOW TABLES FROM `'._DB_NAME_.'`');
 			foreach ($result as $row)
 				if (isset($row['Tables_in_'._DB_NAME_]) && !empty($row['Tables_in_'._DB_NAME_]) && preg_match('/'.preg_quote(_DB_PREFIX_).'_lang/', $row['Tables_in_'._DB_NAME_]))
 					if (!Db::getInstance()->execute('DELETE FROM `'.$row['Tables_in_'._DB_NAME_].'` WHERE `id_lang` = '.(int)$this->id))
 						return false;
-	
-	
+
+
 			// Delete tags
 			Db::getInstance()->execute('DELETE FROM '._DB_PREFIX_.'tag WHERE id_lang = '.(int)$this->id);
-	
+
 			// Delete search words
 			Db::getInstance()->execute('DELETE FROM '._DB_PREFIX_.'search_word WHERE id_lang = '.(int)$this->id);
-	
+
 			// Files deletion
 			foreach (Language::getFilesList($this->iso_code, _THEME_NAME_, false, false, false, true, true) as $key => $file)
 				if (file_exists($key))
@@ -501,7 +502,7 @@ class LanguageCore extends ObjectModel
 				$files = @scandir(_PS_MODULE_DIR_.$mod.'/mails/');
 				if (count($files) <= 2)
 					Language::recurseDeleteDir(_PS_MODULE_DIR_.$mod.'/mails/');
-	
+
 				if (file_exists(_PS_MODULE_DIR_.$mod.'/'.$this->iso_code.'.php'))
 				{
 					unlink(_PS_MODULE_DIR_.$mod.'/'.$this->iso_code.'.php');
@@ -510,7 +511,7 @@ class LanguageCore extends ObjectModel
 						Language::recurseDeleteDir(_PS_MODULE_DIR_.$mod);
 				}
 			}
-	
+
 			if (file_exists(_PS_MAIL_DIR_.$this->iso_code))
 				Language::recurseDeleteDir(_PS_MAIL_DIR_.$this->iso_code);
 			if (file_exists(_PS_TRANSLATIONS_DIR_.$this->iso_code))
@@ -636,7 +637,7 @@ class LanguageCore extends ObjectModel
 		// That way using only one query we get either the exact wanted language
 		// or a close match.
 		$id_lang = Db::getInstance()->getValue(
-			'SELECT `id_lang` FROM ' 
+			'SELECT `id_lang` FROM '
 			.'`'._DB_PREFIX_.'lang` WHERE LEFT(`language_code`,2) = \''.pSQL($lang).'\' '
 			.'ORDER BY language_code = \''.pSQL($code).'\' DESC'
 		);
@@ -847,7 +848,7 @@ class LanguageCore extends ObjectModel
 				$errors[] = Tools::displayError('An error occurred while creating the language: ').(string)$iso;
 			else
 			{
-				// Reset cache 
+				// Reset cache
 				Language::loadLanguages();
 
 				AdminTranslationsController::checkAndAddMailsFiles($iso, $files_list);

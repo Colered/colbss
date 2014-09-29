@@ -96,7 +96,7 @@ class AdminProductsControllerCore extends AdminController
 
 		//$this->available_tabs = array('Quantities' => 6, 'Warehouses' => 14);
 		$res = array();
-		$this->available_tabs = array('Informations' => 0, 'Seo' =>2, 'Pack' =>7, 'VirtualProduct' =>8,'Warehouses' => 14);
+		$this->available_tabs = array('Informations' => 0, 'Seo' =>2, 'Pack' =>7, 'VirtualProduct' =>8, 'Warehouses' => 14);
 		$my_sql = 'SELECT product_tabs from ps_profile_product_tabs where id_profile ='.$this->context->cookie->profile;
 		$res = Db::getInstance()->getValue($my_sql);
 		//print"<pre>";print_r($res);die("me");
@@ -1996,16 +1996,13 @@ class AdminProductsControllerCore extends AdminController
 		}
 
 		// Check multilingual required fields
-		foreach ($rules['requiredLang'] as $fieldLang){
-			
+		foreach ($rules['requiredLang'] as $fieldLang)
 			if ($this->isProductFieldUpdated($fieldLang, $default_language->id) && !Tools::getValue($fieldLang.'_'.$default_language->id))
 				$this->errors[] = sprintf(
 					Tools::displayError('This %1$s field is required at least in %2$s'),
 					call_user_func(array($className, 'displayFieldName'), $fieldLang, $className),
 					$default_language->name
 				);
-		}
-		
 
 		// Check fields sizes
 		foreach ($rules['size'] as $field => $maxLength)
@@ -2449,7 +2446,6 @@ class AdminProductsControllerCore extends AdminController
 							'confirm' => 1,
 							'js' => 'if (confirm(\''.$this->l('Also copy images').' ?\')) document.location = \''.$this->context->link->getAdminLink('AdminProducts').'&amp;id_product='.(int)$product->id.'&amp;duplicateproduct\'; else document.location = \''.$this->context->link->getAdminLink('AdminProducts').'&amp;id_product='.(int)$product->id.'&amp;duplicateproduct&amp;noimage=1\';'
 						);
-						
 
 					// adding button for preview this product
 					if ($url_preview = $this->getPreviewUrl($product))
@@ -3538,7 +3534,7 @@ class AdminProductsControllerCore extends AdminController
 
 		$product->name['class'] = 'updateCurrentText';
 		if (!$product->id)
-			$product->name['class'] .= 'copy2friendlyUrl';
+			$product->name['class'] .= ' copy2friendlyUrl';
 
 		$images = Image::getImages($this->context->language->id, $product->id);
 

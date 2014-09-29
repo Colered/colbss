@@ -5463,5 +5463,4 @@ class ProductCore extends ObjectModel
 				Pack::addItem($this->id, (int)$item['id'], (int)$item['quantity']);
 		return true;
 	}
-	
 }

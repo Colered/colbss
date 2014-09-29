@@ -86,11 +86,11 @@ if (!isset($_SERVER['REQUEST_URI']) || empty($_SERVER['REQUEST_URI']))
 /* Trying to redefine HTTP_HOST if empty (on some webservers...) */
 if (!isset($_SERVER['HTTP_HOST']) || empty($_SERVER['HTTP_HOST']))
 	$_SERVER['HTTP_HOST'] = @getenv('HTTP_HOST');
-
+	
 $context = Context::getContext();
 
 /* Initialize the current Shop */
-try
+try 
 {
 	$context->shop = Shop::initialize();
 	if (Tools::isEmpty($theme_name = $context->shop->getTheme()) && !defined('_PS_ADMIN_DIR_'))
@@ -147,7 +147,7 @@ else
 		$domains = null;
 		if ($context->shop->domain != $context->shop->domain_ssl)
 		  $domains = array($context->shop->domain_ssl, $context->shop->domain);
-
+		
 		$cookie = new Cookie('ps-s'.$context->shop->id, '', $cookie_lifetime, $domains);
 	}
 }
@@ -196,7 +196,7 @@ if (!defined('_PS_ADMIN_DIR_'))
 	if (!isset($customer) || !Validate::isLoadedObject($customer))
 	{
 		$customer = new Customer();
-
+		
 		// Change the default group
 		if (Group::isFeatureActive())
 			$customer->id_default_group = Configuration::get('PS_UNIDENTIFIED_GROUP');

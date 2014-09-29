@@ -1,0 +1,9 @@
+div.home_categories{margin-bottom: 5px}
+div.home_categories .cr{clear: both;border: 0px none;background:#ececec}
+div.home_categories ul{text-align:center;list-style:none}
+div.home_categories img{width:100px;height:100px}
+div.home_categories li{float:left;margin:5px 0 15px 10px;width:121px;height:130px;}
+div.home_categories h5 a:hover{text-decoration:underline;color:#444}
+div.home_categories div{width:100px;border:1px solid #d2d2d2;border-radius:10px;padding:10px;background:#fff}
+/*div.home_categories div:hover{}*/
+

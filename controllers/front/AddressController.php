@@ -218,7 +218,7 @@ class AddressControllerCore extends FrontController
 		
 		// Save address
 		if ($result = $address->save())
-		{	
+		{			
 			// Update id address of the current cart if necessary
 			if (isset($address_old) && $address_old->isUsed())
 				$this->context->cart->updateAddressId($address_old->id, $address->id);
@@ -380,6 +380,4 @@ class AddressControllerCore extends FrontController
 			die(Tools::jsonEncode($return));
 		}
 	}
-	
-	
 }

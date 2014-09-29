@@ -1,23 +1,23 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-08-20 15:51:32
+<?php /* Smarty version Smarty-3.1.14, created on 2014-09-29 19:16:24
          compiled from "D:\xampp\htdocs\bookstore\backend\themes\default\template\controllers\shop\helpers\list\list_content.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2035153f476ac89c8c2-64753313%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:32434542962b0418f42-72729942%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ad0eef4297d03fe6f7b63a82c168f68ae3daf01e' => 
     array (
       0 => 'D:\\xampp\\htdocs\\bookstore\\backend\\themes\\default\\template\\controllers\\shop\\helpers\\list\\list_content.tpl',
-      1 => 1407409085,
+      1 => 1411997129,
       2 => 'file',
     ),
     '64a9f49c84d6302c16e5097630364efdcc0b05d9' => 
     array (
       0 => 'D:\\xampp\\htdocs\\bookstore\\backend\\themes\\default\\template\\helpers\\list\\list_content.tpl',
-      1 => 1407409046,
+      1 => 1411997108,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2035153f476ac89c8c2-64753313',
+  'nocache_hash' => '32434542962b0418f42-72729942',
   'function' => 
   array (
   ),
@@ -51,9 +51,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.14',
-  'unifunc' => 'content_53f476ad1da146_55854061',
+  'unifunc' => 'content_542962b09cc519_21676176',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_53f476ad1da146_55854061')) {function content_53f476ad1da146_55854061($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'D:\\xampp\\htdocs\\bookstore\\tools\\smarty\\plugins\\modifier.escape.php';
+<?php if ($_valid && !is_callable('content_542962b09cc519_21676176')) {function content_542962b09cc519_21676176($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_escape')) include 'D:\\xampp\\htdocs\\bookstore\\tools\\smarty\\plugins\\modifier.escape.php';
 ?>
 <tbody>
 <?php if (count($_smarty_tpl->tpl_vars['list']->value)){?>

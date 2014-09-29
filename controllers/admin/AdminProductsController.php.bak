@@ -96,7 +96,7 @@ class AdminProductsControllerCore extends AdminController
 
 		//$this->available_tabs = array('Quantities' => 6, 'Warehouses' => 14);
 		$res = array();
-		$this->available_tabs = array('Informations' => 0, 'Seo' =>2, 'Pack' =>7, 'VirtualProduct' =>8,'Warehouses' => 14);
+		$this->available_tabs = array('Informations' => 0, 'Pack' =>7, 'VirtualProduct' =>8);
 		$my_sql = 'SELECT product_tabs from ps_profile_product_tabs where id_profile ='.$this->context->cookie->profile;
 		$res = Db::getInstance()->getValue($my_sql);
 		//print"<pre>";print_r($res);die("me");
@@ -1996,16 +1996,13 @@ class AdminProductsControllerCore extends AdminController
 		}
 
 		// Check multilingual required fields
-		foreach ($rules['requiredLang'] as $fieldLang){
-			
+		foreach ($rules['requiredLang'] as $fieldLang)
 			if ($this->isProductFieldUpdated($fieldLang, $default_language->id) && !Tools::getValue($fieldLang.'_'.$default_language->id))
 				$this->errors[] = sprintf(
 					Tools::displayError('This %1$s field is required at least in %2$s'),
 					call_user_func(array($className, 'displayFieldName'), $fieldLang, $className),
 					$default_language->name
 				);
-		}
-		
 
 		// Check fields sizes
 		foreach ($rules['size'] as $field => $maxLength)
@@ -2089,19 +2086,6 @@ class AdminProductsControllerCore extends AdminController
 
 		if ($this->isProductFieldUpdated('id_category_default') && (!is_array(Tools::getValue('categoryBox')) || !in_array(Tools::getValue('id_category_default'), Tools::getValue('categoryBox'))))
 			$this->errors[] = $this->l('This product must be in the default category.');
-
-		if (Tools::getValue('reference'))
-		{
-			if(Tools::getValue('id_product')){
-				$reference = Product::getReferenceById(Tools::getValue('reference'), Tools::getValue('id_product'));
-			}else{
-				$reference = Product::getReference(Tools::getValue('reference'));
-			}
-			
-			if($reference){
-			$this->errors[] = $this->l('This reference already exists in database. Please use other reference.');
-			}
-		}
 
 		// Tags
 		foreach ($languages as $language)
@@ -2354,7 +2338,7 @@ class AdminProductsControllerCore extends AdminController
 	public function renderList()
 	{
 		$this->addRowAction('edit');
-		//$this->addRowAction('duplicate');
+		$this->addRowAction('duplicate');
 		$this->addRowAction('delete');
 		return parent::renderList();
 	}
@@ -2456,13 +2440,12 @@ class AdminProductsControllerCore extends AdminController
 				{
 					// adding button for duplicate this product
 					if ($this->tabAccess['add'] && $this->display != 'add')
-						/*$this->toolbar_btn['duplicate'] = array(
+						$this->toolbar_btn['duplicate'] = array(
 							'short' => 'Duplicate',
 							'desc' => $this->l('Duplicate'),
 							'confirm' => 1,
 							'js' => 'if (confirm(\''.$this->l('Also copy images').' ?\')) document.location = \''.$this->context->link->getAdminLink('AdminProducts').'&amp;id_product='.(int)$product->id.'&amp;duplicateproduct\'; else document.location = \''.$this->context->link->getAdminLink('AdminProducts').'&amp;id_product='.(int)$product->id.'&amp;duplicateproduct&amp;noimage=1\';'
 						);
-						*/
 
 					// adding button for preview this product
 					if ($url_preview = $this->getPreviewUrl($product))
@@ -3551,7 +3534,7 @@ class AdminProductsControllerCore extends AdminController
 
 		$product->name['class'] = 'updateCurrentText';
 		if (!$product->id)
-			$product->name['class'] .= 'copy2friendlyUrl';
+			$product->name['class'] .= ' copy2friendlyUrl';
 
 		$images = Image::getImages($this->context->language->id, $product->id);
 
@@ -3587,7 +3570,7 @@ class AdminProductsControllerCore extends AdminController
 	}
 
 	public function initFormShipping($obj)
-	{
+	{die("here");
 		$data = $this->createTemplate($this->tpl_form);
 		$data->assign(array(
 						  'product' => $obj,

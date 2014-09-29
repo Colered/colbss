@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.14, created on 2014-09-29 14:56:19
+<?php /* Smarty version Smarty-3.1.14, created on 2014-09-29 19:17:26
          compiled from "D:\xampp\htdocs\bookstore\modules\blockwishlist\blockwishlist-extra.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1878542925bb2d11f9-55437921%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:3329542962ee48e7d5-89955205%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'e5f7f110c9a0b45593bb23eae6e70f3416bc00b1' => 
     array (
       0 => 'D:\\xampp\\htdocs\\bookstore\\modules\\blockwishlist\\blockwishlist-extra.tpl',
-      1 => 1407407939,
+      1 => 1411996728,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1878542925bb2d11f9-55437921',
+  'nocache_hash' => '3329542962ee48e7d5-89955205',
   'function' => 
   array (
   ),
@@ -21,9 +21,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.14',
-  'unifunc' => 'content_542925bb2f82e8_02399636',
+  'unifunc' => 'content_542962ee4fc0a7_82411100',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_542925bb2f82e8_02399636')) {function content_542925bb2f82e8_02399636($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_542962ee4fc0a7_82411100')) {function content_542962ee4fc0a7_82411100($_smarty_tpl) {?>
 
 <p class="buttons_bottom_block">
 	<a href="#" id="wishlist_button" onclick="WishlistCart('wishlist_block_list', 'add', '<?php echo intval($_smarty_tpl->tpl_vars['id_product']->value);?>

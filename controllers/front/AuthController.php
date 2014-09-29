@@ -420,7 +420,7 @@ class AuthControllerCore extends FrontController
 
 		// Check the requires fields which are settings in the BO
 		$this->errors = $this->errors + $customer->validateFieldsRequiredDatabase();
-		
+
 		if (!Configuration::get('PS_REGISTRATION_PROCESS_TYPE') && !$this->ajax && !Tools::isSubmit('submitGuestAccount'))
 		{
 			if (!count($this->errors))
@@ -436,13 +436,11 @@ class AuthControllerCore extends FrontController
 				// New Guest customer
 				$customer->is_guest = (Tools::isSubmit('is_new_customer') ? !Tools::getValue('is_new_customer', 1) : 0);
 				$customer->active = 1;
-				
+
 				if (!count($this->errors))
 				{
 					if ($customer->add())
 					{
-					    // $this->context->cookie->id_customer= (int)($customer->id);
-						 //$this->addStoreAddress();
 						if (!$customer->is_guest)
 							if (!$this->sendConfirmationMail($customer))
 								$this->errors[] = Tools::displayError('The email cannot be sent.');

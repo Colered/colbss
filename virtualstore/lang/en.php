@@ -21,7 +21,5 @@ $lang_form_lable_4child_grade = "4th Child Grade:";
 $lang_select_school = "Please select school url";
 $lang_for_blank = "Please fill out this field";
 $lang_choose_one_grade = "Please choose atleast one out of 4 child";
-
-
-
+$lang_store_link="Go directly to store";
 ?>

@@ -2,9 +2,9 @@
 
 class AddressController extends AddressControllerCore
 {
-	
-	
-	protected  function processSubmitAddress()
+
+
+	protected function processSubmitAddress()
 	{
 		$address = new Address();
 		$this->errors = $address->validateController();
@@ -34,8 +34,8 @@ class AddressController extends AddressControllerCore
 				$address->address1 = $normalize->AddressLineStandardization($address->address1);
 				$address->address2 = $normalize->AddressLineStandardization($address->address2);
 			}
-			
-			$postcode = Tools::getValue('postcode');		
+
+			$postcode = Tools::getValue('postcode');
 			/* Check zip code format */
 			if ($country->zip_code_format && !$country->checkZipCode($postcode))
 				$this->errors[] = sprintf(Tools::displayError('The Zip/Postal code you\'ve entered is invalid. It must follow this format: %s'), str_replace('C', $country->iso_code, str_replace('N', '0', str_replace('L', 'A', $country->zip_code_format))));
@@ -56,7 +56,7 @@ class AddressController extends AddressControllerCore
 			$id_address = Tools::getValue('id_address');
 			if(Configuration::get('PS_ORDER_PROCESS_TYPE') && (int)Tools::getValue('opc_id_address_'.Tools::getValue('type')) > 0)
 				$id_address = Tools::getValue('opc_id_address_'.Tools::getValue('type'));
- 	
+
 			if (Db::getInstance()->getValue('
 				SELECT count(*)
 				FROM '._DB_PREFIX_.'address
@@ -91,10 +91,10 @@ class AddressController extends AddressControllerCore
 				}
 			}
 		}
-		
+
 		if ($this->ajax && Tools::getValue('type') == 'invoice' && Configuration::get('PS_ORDER_PROCESS_TYPE'))
 		{
-			$this->errors = array_unique(array_merge($this->errors, $address->validateController()));			
+			$this->errors = array_unique(array_merge($this->errors, $address->validateController()));
 			if (count($this->errors))
 			{
 				$return = array(
@@ -104,10 +104,10 @@ class AddressController extends AddressControllerCore
 				die(Tools::jsonEncode($return));
 			}
 		}
-		
+
 		// Save address
 		if ($result = $address->save())
-		{	
+		{
 			$this->addStoreAddress();
 			// Update id address of the current cart if necessary
 			if (isset($address_old) && $address_old->isUsed())
@@ -142,12 +142,12 @@ class AddressController extends AddressControllerCore
 			}
 			else
 				Tools::redirect('index.php?controller=addresses');
-		}		
+		}
 		$this->errors[] = Tools::displayError('An error occurred while updating your address.');
 	}
-	
+
 	protected function addStoreAddress()
-	{        
+	{
 				$sql =Db::getInstance()->getRow('SELECT * FROM '._DB_PREFIX_.'shop_address WHERE id_shop='.$this->context->shop->id.'');
 				$id_country=$sql['id_country'];
 				$id_state=$sql['id_state'];
@@ -159,31 +159,33 @@ class AddressController extends AddressControllerCore
 				$date_upd=strtotime($sql['date_upd']);
 				$phone=$sql['phone'];
 				$school_address="School address";
-				$sql_alias =Db::getInstance()->ExecuteS('SELECT alias,date_upd FROM '._DB_PREFIX_.'address WHERE id_customer="'.$this->context->cookie->id_customer.'" and alias="'.$school_address.'"');
-				if (Db::getInstance()->NumRows()){
-				    if($date_upd >= strtotime($sql_alias[0]['date_upd'])){
-					Db::getInstance()->execute("UPDATE "._DB_PREFIX_."address SET id_country = '".$id_country."',id_state = '".$id_state."',id_customer='".$id_customer."',address1='".$address1."',address2='".$address2."',postcode='".$postcode."',city='".$city."',phone='".$phone."',date_upd = '".date("Y-m-d H:i:s")."' WHERE id_customer='".$this->context->cookie->id_customer."'");
-					 } 
+				$sql_alias =Db::getInstance()->ExecuteS('SELECT alias,date_upd FROM '._DB_PREFIX_.'address WHERE id_customer="'.$id_customer.'" and alias="'.$school_address.'"');
+				if (Db::getInstance()->NumRows() && $date_upd >= strtotime($sql_alias[0]['date_upd'])){
+
+						Db::getInstance()->execute("UPDATE "._DB_PREFIX_."address SET id_country = '".$id_country."',id_state = '".$id_state."',address1='".$address1."',address2='".$address2."',postcode='".$postcode."',city='".$city."',phone='".$phone."',date_upd = '".date("Y-m-d H:i:s")."' WHERE id_customer='".$id_customer."' and alias='".$school_address."'");
+
 				}else{
 					$insertData = array(
 									'id_country'  => $id_country,
-                             		'id_state'  => $id_state, 
-         							'id_customer'  => $id_customer, 
-        							'address1'   => $address1, 
+                             		'id_state'  => $id_state,
+         							'id_customer'  => $id_customer,
+        							'address1'   => $address1,
          							'address2'  => $address2,
 		 							'postcode'  => $postcode,
 		 							'city'  => $city,
 									'phone'=>$phone,
 		 							'alias'  => $school_address,
 									'date_add' =>date("Y-m-d H:i:s")
-									
+
 		        				);
-			
+
                    $inserted=Db::getInstance()->insert("address", $insertData);
-				  
+
+
+
 				}
-				
+
 	}
-	
-	
+
+
 }

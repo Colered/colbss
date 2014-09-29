@@ -22,9 +22,9 @@ RewriteRule . - [E=REWRITEBASE:/bookstore/]
 RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
 
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^abc/?$ /bookstore/abc/index.php [L,R]
+RewriteRule ^solly/?$ /bookstore/solly/index.php [L,R]
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^abc/(.*) /bookstore/$1 [L]
+RewriteRule ^solly/(.*) /bookstore/$1 [L]
 
 # AlphaImageLoader for IE and fancybox
 RewriteCond %{HTTP_HOST} ^localhost$
@@ -34,9 +34,9 @@ RewriteRule . - [E=REWRITEBASE:/bookstore/]
 RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
 
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^xyz/?$ /bookstore/xyz/index.php [L,R]
+RewriteRule ^lp/?$ /bookstore/lp/index.php [L,R]
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^xyz/(.*) /bookstore/$1 [L]
+RewriteRule ^lp/(.*) /bookstore/$1 [L]
 
 # AlphaImageLoader for IE and fancybox
 RewriteCond %{HTTP_HOST} ^localhost$
@@ -46,9 +46,9 @@ RewriteRule . - [E=REWRITEBASE:/bookstore/]
 RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
 
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^efg/?$ /bookstore/efg/index.php [L,R]
+RewriteRule ^baluchstore/?$ /bookstore/baluchstore/index.php [L,R]
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^efg/(.*) /bookstore/$1 [L]
+RewriteRule ^baluchstore/(.*) /bookstore/$1 [L]
 
 # AlphaImageLoader for IE and fancybox
 RewriteCond %{HTTP_HOST} ^localhost$
@@ -58,21 +58,9 @@ RewriteRule . - [E=REWRITEBASE:/bookstore/]
 RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
 
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^baluchastore/?$ /bookstore/baluchastore/index.php [L,R]
+RewriteRule ^ck/?$ /bookstore/ck/index.php [L,R]
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^baluchastore/(.*) /bookstore/$1 [L]
-
-# AlphaImageLoader for IE and fancybox
-RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^images_ie/?([^/]+)\.(jpe?g|png|gif)$ js/jquery/plugins/fancybox/images/$1.$2 [L]
-RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule . - [E=REWRITEBASE:/bookstore/]
-RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
-
-RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^test2/?$ /bookstore/test2/index.php [L,R]
-RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^test2/(.*) /bookstore/$1 [L]
+RewriteRule ^ck/(.*) /bookstore/$1 [L]
 
 # AlphaImageLoader for IE and fancybox
 RewriteCond %{HTTP_HOST} ^localhost$
@@ -85,9 +73,3 @@ ErrorDocument 404 /bookstore/index.php?controller=404
 # ~~end~~ Do not remove this comment, Prestashop will keep automatically the code outside this comment when .htaccess will be generated again
 
 
-# start ~ module watermark section
-Options +FollowSymLinks
-RewriteEngine On
-RewriteCond expr "! %{HTTP_REFERER} -strmatch '*://%{HTTP_HOST}*/backend/*'"
-RewriteRule [0-9/]+/[0-9]+\.jpg$ - [F]
-# end ~ module watermark section

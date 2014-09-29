@@ -1,6 +1,6 @@
 <?php
 /*
- * 2007-2013 PrestaShop
+ * 2007-2014 PrestaShop
  *
  * NOTICE OF LICENSE
  *
@@ -19,7 +19,7 @@
  * needs please refer to http://www.prestashop.com for more information.
  *
  *  @author PrestaShop SA <contact@prestashop.com>
- *  @copyright  2007-2013 PrestaShop SA
+ *  @copyright  2007-2014 PrestaShop SA
  *  @version  Release: $Revision: 7060 $
  *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  *  International Registered Trademark & Property of PrestaShop SA
@@ -34,15 +34,36 @@ class PSCleaner extends Module
 	{
 		$this->name = 'pscleaner';
 		$this->tab = 'administration';
-		$this->version = '1.0';
+		$this->version = '1.8';
 		$this->author = 'PrestaShop';
 		$this->need_instance = 0;
+		if (version_compare(_PS_VERSION_, '1.5.0.0 ', '>='))
+			$this->multishop_context = Shop::CONTEXT_ALL;
 
-		parent::__construct();
+		$this->bootstrap = true;
+		parent::__construct();	
 
 		$this->displayName = $this->l('PrestaShop Cleaner');
 		$this->description = $this->l('Check and fix functional integrity constraints and remove default data');
 		$this->secure_key = Tools::encrypt($this->name);
+	}
+	
+	protected function getMultiShopValues($key)
+	{
+		if (version_compare(_PS_VERSION_, '1.6.0.3', '>=') === true)
+			return Configuration::getMultiShopValues($key);
+		else
+		{
+			$shops = Shop::getShops(false, null, true);
+			$id_lang = (int) $this->context->language->id;
+			$results = array();
+			array_push($results, Configuration::get($key));
+
+			foreach ($shops as $id_shop)
+				array_push($results, Configuration::get($key, $id_lang, null, $id_shop));
+
+			return $results;
+		}
 	}
 
 	public function getContent()
@@ -59,71 +80,63 @@ class PSCleaner extends Module
 				$conf .= '</ul>';
 			}
 			else
+				$conf = $this->l('Nothing that need to be fixed');
+			$html .= $this->displayConfirmation($conf);
+		}
+		elseif (Tools::isSubmit('submitCleanAndOptimize'))
+		{
+			$logs = self::cleanAndOptimize();
+			if (count($logs))
+			{
+				$conf = $this->l('The following queries successfuly cleaned your database').'<br /><ul>';
+				foreach ($logs as $query => $entries)
+					$conf .= '<li>'.Tools::htmlentitiesUTF8($query).'<br />'.sprintf($this->l('%d line(s)'), $entries).'</li>';
+				$conf .= '</ul>';
+			}
+			else
 				$conf = $this->l('Nothing that need to be cleaned');
 			$html .= $this->displayConfirmation($conf);
 		}
-		if (Tools::isSubmit('submitTruncateCatalog'))
+		elseif (Tools::getValue('submitTruncateCatalog') && Tools::getValue('checkTruncateCatalog'))
 		{
 			self::truncate('catalog');
-			$html .= '<div class="conf">'.$this->l('Catalog truncated').'</div>';
+			$html .= $this->displayConfirmation($this->l('Catalog truncated'));
 		}
-		if (Tools::isSubmit('submitTruncateSales'))
+		elseif (Tools::getValue('submitTruncateSales') && Tools::getValue('checkTruncateSales'))
 		{
 			self::truncate('sales');
-			$html .= '<div class="conf">'.$this->l('Orders and customers truncated').'</div>';
+			$html .= $this->displayConfirmation($this->l('Orders and customers truncated'));
 		}
+		
+		// d($_POST);
 
 		$html .= '
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$("#submitTruncateCatalog").submit(function(){
-					if (!$(\'#checkTruncateCatalog\').attr(\'checked\'))
-						alert(\''.addslashes($this->l('Please tick the checkbox above')).'\');
-					else if (confirm(\''.addslashes($this->l('Are you sure that you want to delete all catalog data?')).'\'))
-						return true; 
+				$("#submitTruncateCatalog").click(function(){
+					if ($(\'#checkTruncateCatalog_on\').attr(\'checked\') != "checked")
+					{
+						alert(\''.addslashes(html_entity_decode($this->l('Please read the disclaimer and click "Yes" above'))).'\');
+						return false;
+					}
+					if (confirm(\''.addslashes(html_entity_decode($this->l('Are you sure that you want to delete all catalog data?'))).'\'))
+						return true;
 					return false;
 				});
-				$("#submitTruncateSales").submit(function(){
-					if (!$(\'#checkTruncateSales\').attr(\'checked\'))
-						alert(\''.addslashes($this->l('Please tick the checkbox above')).'\');
-					else if (confirm(\''.addslashes($this->l('Are you sure that you want to delete all sales data?')).'\'))
-						return true; 
+				$("#submitTruncateSales").click(function(){
+					if ($(\'#checkTruncateSales_on\').attr(\'checked\') != "checked")
+					{
+						alert(\''.addslashes(html_entity_decode($this->l('Please read the disclaimer and click "Yes" above'))).'\');
+						return false;
+					}
+					if (confirm(\''.addslashes(html_entity_decode($this->l('Are you sure that you want to delete all sales data?'))).'\'))
+						return true;
 					return false;
 				});
 			});
-		</script>
-		<form id="submitTruncateCatalog" action="'.Tools::htmlentitiesUTF8($_SERVER['REQUEST_URI']).'" method="post">
-			<fieldset><legend>'.$this->l('Catalog').'</legend>
-				<p>
-					<label style="float:none;width:auto">
-						<input id="checkTruncateCatalog" type="checkbox" />
-						'.$this->l('I understand that all the catalog data will be removed without possible rollback:').'
-						'.$this->l('products, features, categories, tags, images, prices, attachments, scenes, stocks, attribute groups and values, manufacturers, suppliers...').'
-					</label>
-				</p>
-				<input type="submit" class="button" name="submitTruncateCatalog" value="'.$this->l('Delete catalog').'" />
-			</fieldset>
-		</form>
-		<br /><br />
-		<form id="submitTruncateSales" action="'.Tools::htmlentitiesUTF8($_SERVER['REQUEST_URI']).'" method="post">
-			<fieldset><legend>'.$this->l('Orders and customers').'</legend>
-				<p>
-					<label style="float:none;width:auto">
-						<input id="checkTruncateSales" type="checkbox" />
-						'.$this->l('I understand that all the orders and customers will be removed without possible rollback:').'
-						'.$this->l('customers, carts, orders, connections, guests, messages, stats...').'
-					</label>
-				</p>
-				<input type="submit" class="button" id="submitTruncateSales" name="submitTruncateSales" value="'.$this->l('Delete orders & customers').'"/>
-			</fieldset>
-		</form>
-		<br /><br />
-		<form action="'.Tools::htmlentitiesUTF8($_SERVER['REQUEST_URI']).'" method="post">
-			<fieldset><legend>'.$this->l('Functional integrity constraints').'</legend>
-				<input type="submit" class="button" name="submitCheckAndFix" value="'.$this->l('Check & fix').'" />
-			</fieldset>
-		</form>';
-		return $html;
+		</script>';
+		
+		return $html.$this->renderForm();
 	}
 
 	public static function checkAndFix()
@@ -388,11 +401,11 @@ class PSCleaner extends Module
 		switch ($case)
 		{
 			case 'catalog':
-				$id_home = Configuration::get('PS_HOME_CATEGORY');
-				$id_root = Configuration::get('PS_ROOT_CATEGORY');
-				$db->execute('DELETE FROM `'._DB_PREFIX_.'category` WHERE id_category NOT IN ('.(int)$id_home.', '.(int)$id_root.')');
-				$db->execute('DELETE FROM `'._DB_PREFIX_.'category_lang` WHERE id_category NOT IN ('.(int)$id_home.', '.(int)$id_root.')');
-				$db->execute('DELETE FROM `'._DB_PREFIX_.'category_shop` WHERE id_category NOT IN ('.(int)$id_home.', '.(int)$id_root.')');
+				$id_home = $this->getMultiShopValues('PS_HOME_CATEGORY');
+				$id_root = $this->getMultiShopValues('PS_ROOT_CATEGORY');
+				$db->execute('DELETE FROM `'._DB_PREFIX_.'category` WHERE id_category NOT IN ('.implode(array_map('intval', $id_home), ',').', '.implode(array_map('intval',$id_root), ',').')');
+				$db->execute('DELETE FROM `'._DB_PREFIX_.'category_lang` WHERE id_category NOT IN ('.implode(array_map('intval', $id_home), ',').', '.implode(array_map('intval',$id_root), ',').')');
+				$db->execute('DELETE FROM `'._DB_PREFIX_.'category_shop` WHERE id_category NOT IN ('.implode(array_map('intval', $id_home), ',').', '.implode(array_map('intval',$id_root), ',').')');
 				foreach (scandir(_PS_CAT_IMG_DIR_) as $dir)
 					if (preg_match('/^[0-9]+(\-(.*))?\.jpg$/', $dir))
 						unlink(_PS_CAT_IMG_DIR_.$dir);
@@ -403,6 +416,7 @@ class PSCleaner extends Module
 					'product_lang',
 					'category_product',
 					'product_tag',
+					'tag',
 					'image',
 					'image_lang',
 					'image_shop',
@@ -474,7 +488,6 @@ class PSCleaner extends Module
 					'stock',
 					'stock_available',
 					'stock_mvt',
-					'tag',
 				);
 				foreach ($tables as $table)
 					$db->execute('TRUNCATE TABLE `'._DB_PREFIX_.bqSQL($table).'`');
@@ -521,12 +534,21 @@ class PSCleaner extends Module
 					'order_slip',
 					'order_slip_detail',
 					'page',
-					'pagenotfound',
 					'page_type',
 					'page_viewed',
+					'product_sale',
 					'referrer_cache',
-					'sekeyword',
 				);
+
+				$modules_tables = array(
+					'sekeywords' => array('sekeyword'),
+					'pagesnotfound' => array('pagenotfound')
+				);
+
+				foreach ($modules_tables as $name => $module_tables)
+					if (Module::isInstalled($name))
+						$tables = array_merge($tables, $module_tables);
+
 				foreach ($tables as $table)
 					$db->execute('TRUNCATE TABLE `'._DB_PREFIX_.bqSQL($table).'`');
 				$db->execute('DELETE FROM `'._DB_PREFIX_.'address` WHERE id_customer > 0');
@@ -540,7 +562,30 @@ class PSCleaner extends Module
 	// Not called yet
 	public static function cleanAndOptimize()
 	{
-		Db::getInstance()->execute('DELETE FROM `'._DB_PREFIX_.'cart` WHERE id_cart NOT IN (SELECT id_cart FROM `'._DB_PREFIX_.'cart`) AND date_add < "'.pSQL(date('Y-m-d', strtotime('-1 month'))).'"');
+		$logs = array();
+		$query = '
+		DELETE FROM `'._DB_PREFIX_.'cart`
+		WHERE id_cart NOT IN (SELECT id_cart FROM `'._DB_PREFIX_.'orders`)
+		AND date_add < "'.pSQL(date('Y-m-d', strtotime('-1 month'))).'"';
+		if (Db::getInstance()->Execute($query))
+			if ($affected_rows = Db::getInstance()->Affected_Rows())
+				$logs[$query] = $affected_rows;
+
+		$parents = Db::getInstance()->ExecuteS('SELECT DISTINCT id_parent FROM '._DB_PREFIX_.'tab');
+		foreach ($parents as $parent)
+		{
+			$children = Db::getInstance()->ExecuteS('SELECT id_tab FROM '._DB_PREFIX_.'tab WHERE id_parent = '.(int)$parent['id_parent'].' ORDER BY IF(class_name IN ("AdminHome", "AdminDashboard"), 1, 2), position ASC');
+			$i = 1;
+			foreach ($children as $child)
+			{
+				$query = 'UPDATE '._DB_PREFIX_.'tab SET position = '.(int)($i++).' WHERE id_tab = '.(int)$child['id_tab'].' AND id_parent = '.(int)$parent['id_parent'];
+				if (Db::getInstance()->Execute($query))
+					if ($affected_rows = Db::getInstance()->Affected_Rows())
+						$logs[$query] = $affected_rows;
+			}
+		}
+
+		return $logs;
 	}
 	
 	protected static function bulle($array)
@@ -569,5 +614,131 @@ class PSCleaner extends Module
 		Tools::deleteDirectory(_PS_TMP_IMG_DIR_, false);
 		file_put_contents(_PS_TMP_IMG_DIR_.'index.php', $index);
 		Context::getContext()->smarty->clearAllCache();
+	}
+	
+	public function renderForm()
+	{
+		$fields_form_1 = array(
+			'form' => array(
+				'legend' => array(
+					'title' => $this->l('Catalog'),
+					'icon' => 'icon-cogs'
+				),
+				'input' => array(
+					array(
+						'type' => 'switch',
+						'is_bool' => true,
+						'label' => $this->l('I understand that all the catalog data will be removed without possible rollback: products, features, categories, tags, images, prices, attachments, scenes, stocks, attribute groups and values, manufacturers, suppliers...'),
+						'name' => 'checkTruncateCatalog',
+						'values' => array(
+							array(
+								'id' => 'checkTruncateCatalog_on',
+								'value' => 1,
+								'label' => $this->l('Enabled')
+							),
+							array(
+								'id' => 'checkTruncateCatalog_off',
+								'value' => 0,
+								'label' => $this->l('Disabled')
+							)
+						)
+					)
+				),
+				'submit' => array(
+					'title' => $this->l('Delete catalog'),
+					'class' => 'btn btn-default pull-right',
+					'name' => 'submitTruncateCatalog',
+					'id' => 'submitTruncateCatalog',
+				)
+			)
+		);
+		
+		$fields_form_2 = array(
+			'form' => array(
+				'legend' => array(
+					'title' => $this->l('Orders and customers'),
+					'icon' => 'icon-cogs'
+				),
+				'input' => array(
+					array(
+						'type' => 'switch',
+						'is_bool' => true,
+						'label' => $this->l('I understand that all the orders and customers will be removed without possible rollback: customers, carts, orders, connections, guests, messages, stats...'),
+						'name' => 'checkTruncateSales',
+						'values' => array(
+							array(
+								'id' => 'checkTruncateSales_on',
+								'value' => 1,
+								'label' => $this->l('Enabled')
+							),
+							array(
+								'id' => 'checkTruncateSales_off',
+								'value' => 0,
+								'label' => $this->l('Disabled')
+							)
+						)
+					)
+				),
+				'submit' => array(
+					'title' => $this->l('Delete orders & customers'),
+					'class' => 'btn btn-default pull-right',
+					'name' => 'submitTruncateSales',
+					'id' => 'submitTruncateSales',
+				)
+			)
+		);
+		
+		$fields_form_3 = array(
+			'form' => array(
+				'legend' => array(
+					'title' => $this->l('Functional integrity constraints'),
+					'icon' => 'icon-cogs'
+				),
+				'submit' => array(
+					'title' => $this->l('Check & fix'),
+					'class' => 'btn btn-default pull-right',
+					'name' => 'submitCheckAndFix',
+				)
+			)
+		);
+		$fields_form_4 = array(
+			'form' => array(
+				'legend' => array(
+					'title' => $this->l('Database cleaning'),
+					'icon' => 'icon-cogs'
+				),
+				'submit' => array(
+					'title' => $this->l('Clean & Optimize'),
+					'class' => 'btn btn-default pull-right',
+					'name' => 'submitCleanAndOptimize',
+				)
+			)
+		);
+		
+		$helper = new HelperForm();
+		$helper->module = $this;
+		$helper->show_toolbar = false;
+		$helper->table =  $this->table;
+		$lang = new Language((int)Configuration::get('PS_LANG_DEFAULT'));
+		$helper->default_form_language = $lang->id;
+		$helper->allow_employee_form_lang = Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') ? Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') : 0;
+		$this->fields_form = array();
+		$helper->id = (int)Tools::getValue('id_carrier');
+		$helper->identifier = $this->identifier;
+		$helper->submit_action = 'btnSubmit';
+		$helper->currentIndex = $this->context->link->getAdminLink('AdminModules', false).'&configure='.$this->name.'&tab_module='.$this->tab.'&module_name='.$this->name;
+		$helper->token = Tools::getAdminTokenLite('AdminModules');
+		$helper->tpl_vars = array(
+			'fields_value' => $this->getConfigFieldsValues(),
+			'languages' => $this->context->controller->getLanguages(),
+			'id_language' => $this->context->language->id
+		);
+
+		return $helper->generateForm(array($fields_form_1, $fields_form_2, $fields_form_3, $fields_form_4));
+	}
+	
+	public function getConfigFieldsValues()
+	{
+		return array('checkTruncateSales' => 0, 'checkTruncateCatalog' => 0);
 	}
 }

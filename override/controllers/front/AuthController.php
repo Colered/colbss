@@ -57,8 +57,8 @@ class AuthController extends AuthControllerCore
 			if (!$authentication || !$customer->id)
 				$this->errors[] = Tools::displayError('Authentication failed.');
 			else
-			{   
-			
+			{
+
 				$this->context->cookie->id_compare = isset($this->context->cookie->id_compare) ? $this->context->cookie->id_compare: CompareProduct::getIdCompareByIdCustomer($customer->id);
 				$this->context->cookie->id_customer = (int)($customer->id);
 				$this->context->cookie->customer_lastname = $customer->lastname;
@@ -71,7 +71,7 @@ class AuthController extends AuthControllerCore
 				$this->addStoreAddress();
 				// Add customer to the context
 				$this->context->customer = $customer;
-				
+
 				if (Configuration::get('PS_CART_FOLLOWING') && (empty($this->context->cookie->id_cart) || Cart::getNbProducts($this->context->cookie->id_cart) == 0) && $id_cart = (int)Cart::lastNoneOrderedCart($this->context->customer->id))
 					$this->context->cart = new Cart($id_cart);
 				else
@@ -115,7 +115,7 @@ class AuthController extends AuthControllerCore
 			$this->context->smarty->assign('authentification_error', $this->errors);
 	}
 	protected function addStoreAddress()
-	{        
+	{
 				$sql =Db::getInstance()->getRow('SELECT * FROM '._DB_PREFIX_.'shop_address WHERE id_shop='.$this->context->shop->id.'');
 				$id_country=$sql['id_country'];
 				$id_state=$sql['id_state'];
@@ -127,29 +127,31 @@ class AuthController extends AuthControllerCore
 				$date_upd=strtotime($sql['date_upd']);
 				$phone=$sql['phone'];
 				$school_address="School address";
-				$sql_alias =Db::getInstance()->ExecuteS('SELECT alias,date_upd FROM '._DB_PREFIX_.'address WHERE id_customer="'.$this->context->cookie->id_customer.'" and alias="'.$school_address.'"');
-				if (Db::getInstance()->NumRows()){
-				    if($date_upd >= strtotime($sql_alias[0]['date_upd'])){
-					Db::getInstance()->execute("UPDATE "._DB_PREFIX_."address SET id_country = '".$id_country."',id_state = '".$id_state."',id_customer='".$id_customer."',address1='".$address1."',address2='".$address2."',postcode='".$postcode."',city='".$city."',phone='".$phone."',date_upd = '".date("Y-m-d H:i:s")."' WHERE id_customer='".$this->context->cookie->id_customer."'");
-					 } 
+
+				$sql_alias =Db::getInstance()->ExecuteS('SELECT alias,date_upd FROM '._DB_PREFIX_.'address WHERE id_customer="'.$id_customer.'" and alias="'.$school_address.'"');
+				if (Db::getInstance()->NumRows() && $date_upd >= strtotime($sql_alias[0]['date_upd'])){
+
+						Db::getInstance()->execute("UPDATE "._DB_PREFIX_."address SET id_country = '".$id_country."',id_state = '".$id_state."',address1='".$address1."',address2='".$address2."',postcode='".$postcode."',city='".$city."',phone='".$phone."',date_upd = '".date("Y-m-d H:i:s")."' WHERE id_customer='".$id_customer."' and alias='".$school_address."'");
+
+
 				}else{
 					$insertData = array(
 									'id_country'  => $id_country,
-                             		'id_state'  => $id_state, 
-         							'id_customer'  => $id_customer, 
-        							'address1'   => $address1, 
+                             		'id_state'  => $id_state,
+         							'id_customer'  => $id_customer,
+        							'address1'   => $address1,
          							'address2'  => $address2,
 		 							'postcode'  => $postcode,
 		 							'city'  => $city,
 									'phone'=>$phone,
 		 							'alias'  => $school_address,
 									'date_add' =>date("Y-m-d H:i:s")
-									
+
 		        				);
-			
+
                    $inserted=Db::getInstance()->insert("address", $insertData);
-				  
+
 				}
-				
+
 	}
 }

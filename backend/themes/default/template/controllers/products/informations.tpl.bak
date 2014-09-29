@@ -115,7 +115,7 @@
 			<td style="padding-bottom:5px;" class="translatable">
 			{foreach from=$languages item=language}
 				<div class="lang_{$language.id_lang}" style="{if !$language.is_default}display: none;{/if} float: left;">
-						<input class="{$class_input_ajax}{if !$product->id}copy2friendlyUrl{/if} updateCurrentText" size="43" type="text" {if !$product->id}disabled="disabled"{/if}
+						<input class="{$class_input_ajax}{if !$product->id}copy2friendlyUrl{/if} updateCurrentText" size="43" type="text" {*if !$product->id}disabled="disabled"{/if*}
 						id="name_{$language.id_lang}" name="name_{$language.id_lang}"
 						value="{$product->name[$language.id_lang]|htmlentitiesUTF8|default:''}"/><sup> *</sup>
 					<span class="hint" name="help_box">{l s='Invalid characters:'} <>;=#{}<span class="hint-pointer">&nbsp;</span>
@@ -127,8 +127,8 @@
 		<tr>
 			<td class="col-left"><label>{$bullet_common_field} {l s='Reference:'}</label></td>
 			<td style="padding-bottom:5px;">
-				<input class="{if !$product->id}copy2friendlyUrl{/if}" size="55" type="text" name="reference" onkeypress="enableSave();" value="{$product->reference|htmlentitiesUTF8}" style="width: 130px;/>
-			<sup> *</sup>
+				<input size="55" type="text" name="reference" value="{$product->reference|htmlentitiesUTF8}" style="width: 130px; margin-right: 44px;" />
+				<span class="hint" name="help_box">{l s='Special characters allowed:'}.-_#\<span class="hint-pointer">&nbsp;</span></span>
 			</td>
 		</tr>
 		<tr>
