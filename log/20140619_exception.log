@@ -1,7 +1,0 @@
-*ERROR* 	2014/06/19 - 08:50:25: Table 'cidot_bookstore.ps_shop_url' doesn't exist<br /><br /><pre>SELECT s.id_shop, CONCAT(su.physical_uri, su.virtual_uri) AS uri, su.domain, su.main
-					FROM ps_shop_url su
-					LEFT JOIN ps_shop s ON (s.id_shop = su.id_shop)
-					WHERE (su.domain = 'localhost' OR su.domain_ssl = 'localhost')
-						AND s.active = 1
-						AND s.deleted = 0
-					ORDER BY LENGTH(CONCAT(su.physical_uri, su.virtual_uri)) DESC</pre> at line 613 in file classes/db/Db.php

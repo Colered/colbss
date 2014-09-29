@@ -31,8 +31,8 @@
 <!-- ADDRESSES -->
 <table style="width: 100%">
 	<tr>
-		<td style="width: 16%"></td>
-		<td style="width: 84%">
+		<td style="width: 17%"></td>
+		<td style="width: 83%">
 			{if !empty($delivery_address)}
 				<table style="width: 100%">
 					<tr>
@@ -67,59 +67,39 @@
 
 <div style="line-height: 1pt">&nbsp;</div>
 
-<!-- Oredre reference -->
-<table style="width:100%">
-   <tr>
-     <td style="width: 16%"></td>
-     <td style="width: 84%">
-		  <table width="100%">
-			   <tr style="line-height:6px;">
-							<td style="text-align: left; background-color: #4D4D4D; color: #FFF; padding-left: 10px; font-weight: bold; width: 30%">&nbsp;&nbsp;{l s='Order Number' pdf='true'}</td>
-							<td style="background-color: #4D4D4D; color: #FFF; text-align: left; font-weight: bold; width: 15%">{l s='Order Date' pdf='true'}</td>
-							
-							<td style="background-color: #4D4D4D; color: #FFF; text-align: left; font-weight: bold; width: 35%">{l s='Payment Method' pdf='true'}							</td>
-							<td style="background-color: #4D4D4D; color: #FFF; text-align: left; font-weight: bold; width: 20%; white-space: nowrap;">{if isset($carrier)}
-					{l s='Carrier' pdf='true'}{/if}</td>
-							
-							
-						</tr>
-			   <tr style="line-height:6px;">
-				 <td>&nbsp;&nbsp;{$order->getUniqReference()}</td>
-				 <td>{dateFormat date=$order->date_add full=0}</td>
-				 <td><table style="width: 100%;">
-					{foreach from=$order_invoice->getOrderPaymentCollection() item=payment}
-						<tr>
-							<td style="width: 100%">{$payment->payment_method}</td>
-							
-						</tr>
-					{foreachelse}
-						<tr>
-							<td>{l s='No payment' pdf='true'}</td>
-						</tr>
-					{/foreach}
-					</table></td>
-				 <td>
-					{if isset($carrier)}
-					
-					{$carrier->name}
-					
-					{/if}
-				 </td>
-			   </tr>		
-		  </table> 	
-	 </td>
-   </tr>
-  
-</table>
-<!-- /Oredre reference -->
-
-<div style="line-height: 1pt">&nbsp;</div>
-
 <!-- PRODUCTS TAB -->
 <table style="width: 100%">
 	<tr>
-	    <td style="width: 17%"></td>
-		<td style="width: 83%">
+		<td style="width: 17%; padding-right: 7px; text-align: right; vertical-align: top; font-size: 7pt;">
+			<!-- CUSTOMER INFORMATION -->
+			<b>{l s='Order Number:' pdf='true'}</b><br />
+			{$order->getUniqReference()}<br />
+			<br />
+			<b>{l s='Order Date:' pdf='true'}</b><br />
+			{dateFormat date=$order->date_add full=0}<br />
+			<br />
+			<b>{l s='Payment Method:' pdf='true'}</b><br />
+			<table style="width: 100%;">
+			{foreach from=$order_invoice->getOrderPaymentCollection() item=payment}
+				<tr>
+					<td style="width: 50%">{$payment->payment_method}</td>
+					<td style="width: 50%">{displayPrice price=$payment->amount currency=$order->id_currency}</td>
+				</tr>
+			{foreachelse}
+				<tr>
+					<td>{l s='No payment' pdf='true'}</td>
+				</tr>
+			{/foreach}
+			</table>
+			<br />
+			{if isset($carrier)}
+			<b>{l s='Carrier:' pdf='true'}</b><br />
+			{$carrier->name}<br />
+			<br />
+			{/if}				
+			<!-- / CUSTOMER INFORMATION -->
+		</td>
+		<td style="width: 83%; text-align: right">
 			<table style="width: 100%; font-size: 8pt;">
 				<tr style="line-height:4px;">
 					<td style="text-align: left; background-color: #4D4D4D; color: #FFF; padding-left: 10px; font-weight: bold; width: {if !$tax_excluded_display}35%{else}45%{/if}">{l s='Product / Reference' pdf='true'}</td>
@@ -311,8 +291,8 @@
 <div style="line-height: 1pt">&nbsp;</div>
 <table style="width: 100%">
 	<tr>
-	 <td style="width: 17%"></td>
-	 <td style="width: 83%">{$order_invoice->note|nl2br}</td>
+		<td style="width: 17%"></td>
+		<td style="width: 83%">{$order_invoice->note|nl2br}</td>
 	</tr>
 </table>
 {/if}
@@ -321,7 +301,7 @@
 <div style="line-height: 1pt">&nbsp;</div>
 <table style="width: 100%">
 	<tr>
-	    <td style="width: 17%"></td>
+		<td style="width: 17%"></td>
 		<td style="width: 83%">{$HOOK_DISPLAY_PDF}</td>
 	</tr>
 </table>

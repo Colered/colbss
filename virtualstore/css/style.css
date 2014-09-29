@@ -186,7 +186,7 @@ select option{
  	clear: both;
     color: #FF0000;
     font-size: 12px;
-    margin-left: 151px;
+    margin-left: 120px;
     padding: 4px 8px 8px;
 }
 
@@ -421,7 +421,3 @@ select option{
     font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	
 }
-.store-link{
-	margin-left:44px
-}
-

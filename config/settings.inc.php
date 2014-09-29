@@ -1,6 +1,5 @@
 <?php
 define('_DB_SERVER_', 'localhost');
-//define('_DB_NAME_', 'cidot_bookstore_07');
 define('_DB_NAME_', 'cidot_bookstore');
 define('_DB_USER_', 'root');
 define('_DB_PASSWD_', '');

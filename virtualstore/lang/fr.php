@@ -21,5 +21,7 @@ $lang_form_lable_4child_grade = "4to Grado Niño:";
 $lang_select_school = "Por favor seleccione url escuela";
 $lang_for_blank = "Por favor llene este campo";
 $lang_choose_one_grade = "Por favor, elija al menos una de cada 4 niños";
-$lang_store_link="Ir directamente al almacenar";
+
+
+
 ?>

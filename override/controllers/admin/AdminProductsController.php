@@ -35,7 +35,7 @@ class AdminProductsController extends AdminProductsControllerCore
 	}
 	public function initToolbar()
 	{
-		AdminController::initToolbar();
+		parent::initToolbar();
 		if ($this->display == 'edit' || $this->display == 'add')
 		{
 			if ($product = $this->loadObject(true))
@@ -91,7 +91,7 @@ class AdminProductsController extends AdminProductsControllerCore
 						'desc' => $this->l('New combination'),
 						'class' => 'toolbar-new'
 					);
-
+				
 					// adding button for delete this product
 					if ($this->tabAccess['delete'] && $this->display != 'add')
 						$this->toolbar_btn['delete'] = array(
@@ -101,7 +101,7 @@ class AdminProductsController extends AdminProductsControllerCore
 							'confirm' => 1,
 							'js' => 'if (confirm(\''.$this->l('Delete product?').'\')){return true;}else{event.preventDefault();}'
 						);
-				}
+				}				
 			}
 		}
 		else
@@ -109,7 +109,7 @@ class AdminProductsController extends AdminProductsControllerCore
 					'href' => $this->context->link->getAdminLink('AdminImport', true).'&import_type=products',
 					'desc' => $this->l('Import')
 				);
-
+		
 		$this->context->smarty->assign('toolbar_scroll', 1);
 		$this->context->smarty->assign('show_toolbar', 1);
 		$this->context->smarty->assign('toolbar_btn', $this->toolbar_btn);
@@ -144,7 +144,7 @@ class AdminProductsController extends AdminProductsControllerCore
 
 		// Check multilingual required fields
 		foreach ($rules['requiredLang'] as $fieldLang){
-
+			
 			if ($this->isProductFieldUpdated($fieldLang, $default_language->id) && !Tools::getValue($fieldLang.'_'.$default_language->id))
 				$this->errors[] = sprintf(
 					Tools::displayError('This %1$s field is required at least in %2$s'),
@@ -152,7 +152,7 @@ class AdminProductsController extends AdminProductsControllerCore
 					$default_language->name
 				);
 		}
-
+		
 
 		// Check fields sizes
 		foreach ($rules['size'] as $field => $maxLength)
@@ -244,7 +244,7 @@ class AdminProductsController extends AdminProductsControllerCore
 			}else{
 				$reference = Product::getReference(Tools::getValue('reference'));
 			}
-
+			
 			if($reference){
 			$this->errors[] = $this->l('This reference already exists in database. Please use other reference.');
 			}

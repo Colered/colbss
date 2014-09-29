@@ -36,10 +36,6 @@ class ShopAddress extends ObjectModel
 	public $id_country;
 	public $id_state;
 	public $id_shop;
-	public $phone;
-	public $date_add;
-	public $date_upd;
-
 
 	/**
 	 * @see ObjectModel::$definition
@@ -49,23 +45,19 @@ class ShopAddress extends ObjectModel
 		'primary' => 'id_shop_address',
 		'fields' => array(
 			'id_shop' => 		array('type' => self::TYPE_INT, 'required' => true),
-			'phone' => 				array('type' => self::TYPE_STRING, 'validate' => 'isPhoneNumber', 'size' => 32),
 			'address1' => 			array('type' => self::TYPE_STRING, 'validate' => 'isAddress', 'required' => true, 'size' => 128),
 			'address2' => 			array('type' => self::TYPE_STRING, 'validate' => 'isAddress', 'size' => 128),
 			'postcode' => 			array('type' => self::TYPE_STRING, 'validate' => 'isPostCode', 'size' => 12),
 			'city' => 				array('type' => self::TYPE_STRING, 'validate' => 'isCityName', 'required' => true, 'size' => 64),
 			'id_country' => 		array('type' => self::TYPE_INT, 'validate' => 'isUnsignedId', 'required' => true),
 			'id_state' => 			array('type' => self::TYPE_INT, 'validate' => 'isNullOrUnsignedId'),
-			'date_add' => 			array('type' => self::TYPE_DATE, 'validate' => 'isDate'),
-			'date_upd' => 			array('type' => self::TYPE_DATE, 'validate' => 'isDate'),
-			
 		),
 	);
 
 	
 	public static function getAddressIdByShopId($id_shop)
 	{
-		$sql = 'SELECT address1,address2,postcode,city,id_state,id_country,phone
+		$sql = 'SELECT address1,address2,postcode,city,id_state
 		FROM '._DB_PREFIX_.'shop_address
 		WHERE id_shop = '.(int)$id_shop;
 		$result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);

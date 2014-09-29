@@ -418,10 +418,6 @@ class AdminIsbnController extends ModuleAdminController {
 
           $prod_id = $prodObj->id;
 
-		  // to do the search indesing
-		  Search::indexation(false, $prod_id);
-
-
           $prodObj = null;
           unset($prodObj);
 

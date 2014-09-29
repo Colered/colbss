@@ -1,0 +1,99 @@
+h1{margin-bottom:10px;}
+
+.resumecat {
+	background: none repeat scroll 0 0 #FFFFE0;
+    border: 1px solid #E6DB55;
+    margin:15px 0 10px 0;
+    padding:8px 7px;
+}
+
+.content_scene_cat {
+
+}
+
+.cat_desc {
+	font-size:12px;
+	line-height:18px;
+}
+.cat_desc p {padding: 0 0 5px;
+    text-align: justify;}
+.cat_desc .lnk_more {
+   padding:0 10px;
+   color:#222222;
+	background:url(../img/arrow_right_1.png) no-repeat 100% 4px transparent;
+}
+
+
+/* ************************************************************************************************
+      SUB CATEGORIES
+************************************************************************************************ */
+#subcategories {margin-top:15px}
+#subcategories h3 {
+	color: #50493C;
+	border-bottom:1px solid #E1D4BE;
+	text-transform:capitalize;
+	background: #d1c4ac; /* Old browsers */
+	background: -moz-linear-gradient(top, #ece4d5  0%, #d1c4ac 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ece4d5), color-stop(100%,#d1c4ac)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ece4d5 0%,#d1c4ac 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ece4d5 0%,#d1c4ac 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ece4d5 0%,#d1c4ac 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ece4d5 0%,#d1c4ac 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ece4d5', endColorstr='#d1c4ac',GradientType=0 ); /* IE6-9 */
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	border-radius:5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	font-weight:normal;
+	font-family:Della Respira,Arial,Helvetica,sans-serif;
+	-moz-box-shadow:0 1px 2px 0 #B3A68C;
+  	-webkit-box-shadow:0 1px 2px 0 #B3A68C;
+  	box-shadow:0 1px 2px 0 #B3A68C;
+	padding:10px;
+}
+
+#subcategories ul {
+	list-style-type:none;
+	
+}
+.item_count { padding:0;}
+
+
+#subcategories .inline_list img,#subcategory_block_center .product-inner img
+{
+	display: block;
+    float: left;
+    margin-right: 14px;
+    vertical-align: bottom;
+	border:1px solid #D7CBB5;
+	border-radius:5px;
+
+}
+#subcategory_block_center .product-inner img	{margin-bottom:10px;}
+#subcategories .subcat-1 .inline_list{margin:8px 0;}
+#subcategories .inline_list{
+	border: 1px solid #D7CBB5;
+    border-radius: 5px;
+    padding: 12px 8px;
+	margin:8px;
+	overflow:auto;
+	background:#fff;
+}
+.subcategory_default_width	{ width:250px;}
+
+
+#subcategory_block_center .product_list li		
+{ 	
+	float:left; 
+	margin: 0;
+    padding: 0;
+    position: relative;
+    vertical-align: top;
+    width:100%;
+}
+
+#subcategory_block_center .product-inner	{ text-align:left;}
+.subcategory_list .subcat-1 { width:100%}
+.subcategory_list .subcat-2 { width:50%}
+.subcategory_list .subcat-3 { width:33%}
+.subcategory_list li { width:33%}

@@ -1,0 +1,9 @@
+/* Block Viewed Products */
+#viewed-products_block_left .products li.last_item {
+	padding-bottom:0;
+	border:none;
+}
+
+#viewed-products_block_left .content_img {
+	float:left;
+}

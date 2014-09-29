@@ -230,7 +230,7 @@ class AdminShopControllerCore extends AdminController
 			if ($shop_group->shopNameExists(Tools::getValue('name'), (int)Tools::getValue('id_shop')))
 				$this->errors[] = Tools::displayError('You cannot have two shops with the same name in the same group.');
 		}
-
+		
 		if (count($this->errors))
 			return false;
 

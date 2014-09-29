@@ -116,7 +116,7 @@ abstract class PaymentModuleCore extends Module
 			$country_ids[] = $country['id_country'];
 		return Country::addModuleRestrictions($shops, $countries, array(array('id_module' => (int)$this->id)));
 	}
-
+	
 	/**
 	* Validate an order in database
 	* Function called from a payment module
@@ -186,19 +186,19 @@ abstract class PaymentModuleCore extends Module
 					}
 			// Make sure CarRule caches are empty
 			CartRule::cleanCache();
-
+			
 			foreach ($package_list as $id_address => $packageByAddress)
 				foreach ($packageByAddress as $id_package => $package)
 				{
 					$order = new Order();
 					$order->product_list = $package['product_list'];
-
+					
 					if (Configuration::get('PS_TAX_ADDRESS_TYPE') == 'id_address_delivery')
 					{
 						$address = new Address($id_address);
 						$this->context->country = new Country($address->id_country, $this->context->cart->id_lang);
 					}
-
+					
 					$carrier = null;
 					if (!$this->context->cart->isVirtualCart() && isset($package['id_carrier']))
 					{
@@ -211,7 +211,7 @@ abstract class PaymentModuleCore extends Module
 						$order->id_carrier = 0;
 						$id_carrier = 0;
 					}
-
+					
 					$order->id_customer = (int)$this->context->cart->id_customer;
 					$order->id_address_invoice = (int)$this->context->cart->id_address_invoice;
 					$order->id_address_delivery = (int)$id_address;
@@ -233,7 +233,7 @@ abstract class PaymentModuleCore extends Module
 					$order->conversion_rate = $this->context->currency->conversion_rate;
 					$amount_paid = !$dont_touch_amount ? Tools::ps_round((float)$amount_paid, 2) : $amount_paid;
 					$order->total_paid_real = 0;
-
+					
 					$order->total_products = (float)$this->context->cart->getOrderTotal(false, Cart::ONLY_PRODUCTS, $order->product_list, $id_carrier);
 					$order->total_products_wt = (float)$this->context->cart->getOrderTotal(true, Cart::ONLY_PRODUCTS, $order->product_list, $id_carrier);
 
@@ -244,7 +244,7 @@ abstract class PaymentModuleCore extends Module
 					$order->total_shipping_tax_excl = (float)$this->context->cart->getPackageShippingCost((int)$id_carrier, false, null, $order->product_list);
 					$order->total_shipping_tax_incl = (float)$this->context->cart->getPackageShippingCost((int)$id_carrier, true, null, $order->product_list);
 					$order->total_shipping = $order->total_shipping_tax_incl;
-
+					
 					if (!is_null($carrier) && Validate::isLoadedObject($carrier))
 						$order->carrier_tax_rate = $carrier->getTaxesRate(new Address($this->context->cart->{Configuration::get('PS_TAX_ADDRESS_TYPE')}));
 
@@ -291,7 +291,7 @@ abstract class PaymentModuleCore extends Module
 						$order_carrier->add();
 					}
 				}
-
+			
 			// The country can only change if the address used for the calculation is the delivery address, and if multi-shipping is activated
 			if (Configuration::get('PS_TAX_ADDRESS_TYPE') == 'id_address_delivery')
 				$this->context->country = $context_country;
@@ -306,7 +306,7 @@ abstract class PaymentModuleCore extends Module
 					$transaction_id = $extra_vars['transaction_id'];
 				else
 					$transaction_id = null;
-
+				
 				if (!$order->addOrderPayment($amount_paid, null, $transaction_id))
 					throw new PrestaShopException('Can\'t save Order Payment');
 			}
@@ -316,10 +316,10 @@ abstract class PaymentModuleCore extends Module
 			$cart_rule_used = array();
 			$products = $this->context->cart->getProducts();
 			$cart_rules = $this->context->cart->getCartRules();
-
+			
 			// Make sure CarRule caches are empty
 			CartRule::cleanCache();
-
+			
 			foreach ($order_detail_list as $key => $order_detail)
 			{
 				$order = $order_list[$key];
@@ -485,7 +485,7 @@ abstract class PaymentModuleCore extends Module
 
 						}
 						$total_reduction_value_ti += $values['tax_incl'];
-						$total_reduction_value_tex += $values['tax_excl'];
+						$total_reduction_value_tex += $values['tax_excl'];	
 
 						$order->addCartRule($cart_rule['obj']->id, $cart_rule['obj']->name, $values, 0, $cart_rule['obj']->free_shipping);
 

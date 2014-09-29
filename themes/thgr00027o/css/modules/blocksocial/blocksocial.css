@@ -1,6 +1,0 @@
-/*************** Block SOCIAL ***************/
-#social_block {padding:15px 10px;line-height:1.8em}
-#social_block li {padding-left:22px !important;}
-#social_block li.facebook {background:url(img/sprite_pict_social_block.png) no-repeat 0 2px;}
-#social_block li.twitter {background:url(img/sprite_pict_social_block.png) no-repeat 0 -28px;}
-#social_block li.rss {background:url(img/sprite_pict_social_block.png) no-repeat 0 -57px;}

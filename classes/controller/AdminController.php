@@ -2576,7 +2576,6 @@ class AdminControllerCore extends Controller
 	 */
 	protected function copyFromPost(&$object, $table)
 	{
-		$_POST['id_shop'] = $this->context->cookie->id_shop;
 		/* Classical fields */
 		foreach ($_POST as $key => $value)
 			if (key_exists($key, $object) && $key != 'id_'.$table)

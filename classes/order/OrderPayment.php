@@ -45,7 +45,7 @@ class OrderPaymentCore extends ObjectModel
 		'table' => 'order_payment',
 		'primary' => 'id_order_payment',
 		'fields' => array(
-			'order_reference' => 	array('type' => self::TYPE_STRING, 'validate' => 'isAnything', 'size' => 19),
+			'order_reference' => 	array('type' => self::TYPE_STRING, 'validate' => 'isAnything', 'size' => 9),
 			'id_currency' => 		array('type' => self::TYPE_INT, 'validate' => 'isUnsignedId', 'required' => true),
 			'amount' => 			array('type' => self::TYPE_FLOAT, 'validate' => 'isNegativePrice', 'required' => true),
 			'payment_method' => 	array('type' => self::TYPE_STRING, 'validate' => 'isGenericName'),
@@ -96,7 +96,7 @@ class OrderPaymentCore extends ObjectModel
 			WHERE `order_reference` = \''.pSQL($order_reference).'\'')
 		);
 	}
-
+	
 	/**
 	 * Get Order Payments By Invoice ID
 	 * @static
@@ -108,19 +108,19 @@ class OrderPaymentCore extends ObjectModel
 		$payments = Db::getInstance()->executeS('SELECT id_order_payment FROM `'._DB_PREFIX_.'order_invoice_payment` WHERE id_order_invoice = '.(int)$id_invoice);
 		if (!$payments)
 			return array();
-
+		
 		$payment_list = array();
 		foreach ($payments as $payment)
 			$payment_list[] = $payment['id_order_payment'];
-
+		
 		$payments = new Collection('OrderPayment');
 		$payments->where('id_order_payment', 'IN', $payment_list);
 		return $payments;
 	}
-
+	
 	/**
 	 * Return order invoice object linked to the payment
-	 *
+	 * 
 	 * @param int $id_order Order Id
 	 *
 	 * @since 1.5.0.13
@@ -132,10 +132,10 @@ class OrderPaymentCore extends ObjectModel
 		FROM `'._DB_PREFIX_.'order_invoice_payment`
 		WHERE id_order_payment = '.(int)$this->id.'
 		AND id_order = '.(int)$id_order);
-
+		
 		if (!$res)
 			return false;
-
+		
 		return new OrderInvoice((int)$res);
 	}
 }

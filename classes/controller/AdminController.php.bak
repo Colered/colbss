@@ -1443,13 +1443,14 @@ class AdminControllerCore extends Controller
 			'controller_name' => htmlentities(Tools::getValue('controller')),
 			'currentIndex' => self::$currentIndex
 		));
-		
+		if(isset($this->context->cookie->profile)){
 		$sql = 'SELECT view from ps_access where id_profile ='.$this->context->cookie->profile.' and id_tab =1';
 		$res = Db::getInstance()->getValue($sql);
 		if($res == 1)				
 		 $this->context->smarty->assign('url', 'AdminHome');
 		else
 			 $this->context->smarty->assign('url', 'AdminDashboard');
+		}
 
 	}
 
@@ -1630,11 +1631,7 @@ class AdminControllerCore extends Controller
 		$helper->tpl_delete_link_vars = $this->tpl_delete_link_vars;
 
 		// For compatibility reasons, we have to check standard actions in class attributes
-		foreach ($this->actions_available as $action)
-		{
-			if (!in_array($action, $this->actions) && isset($this->$action) && $this->$action)
-				$this->actions[] = $action;
-		}
+		
 		$helper->is_cms = $this->is_cms;
 		$list = $helper->generateList($this->_list, $this->fields_list);
 

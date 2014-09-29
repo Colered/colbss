@@ -45,7 +45,6 @@ class AdminShopController extends AdminShopControllerCore
 						'name' => 'name',
 						'required' => true,
 					),
-
 				   array(
 						'type' => 'text',
 						'label' => $this->l('Address'),
@@ -56,7 +55,7 @@ class AdminShopController extends AdminShopControllerCore
 						'type' => 'text',
 						'label' => $this->l('Address(Line 2)'),
 						'name' => 'address2',
-
+						'required' => true,
 					),
 				  array(
 						'type' => 'text',
@@ -69,40 +68,42 @@ class AdminShopController extends AdminShopControllerCore
 						'label' => $this->l('City'),
 						'name' => 'city',
 						'required' => true,
-					),
-				   array(
+					)
+				)
+			);
+			$countries_list = $this->assignCountries();
+			$options[] = array(
+				'id_country' =>	$countries_list['id'],
+				'name' =>			$countries_list['name'],
+			);
+			$this->fields_form['input'][] = array(
 					'type' => 'select',
-					'label' => $this->l('Country:'),
+					'label' => $this->l('Country'),
 					'name' => 'id_country',
-					'required' => true,
-					'default_value' => (int)$this->context->country->id,
 					'options' => array(
-						'query' => Country::getCountries($this->context->language->id, false),
+						'query' => $options,
 						'id' => 'id_country',
 						'name' => 'name',
 					),
-				 ),
-				 array(
+				);
+			$states = $this->getStates($countries_list['id']);
+			foreach($states as $state){
+				$options[] = array(
+						'id_state' =>	$state['id_state'],
+						'name' =>		$state['name'],
+					);
+			}
+			$this->fields_form['input'][] = array(
 					'type' => 'select',
 					'label' => $this->l('State'),
 					'name' => 'id_state',
 					'options' => array(
+						'query' => $options,
 						'id' => 'id_state',
-						'query' => array(),
-						'name' => 'name'
-					)
-				),
-				array(
-					'type' => 'text',
-					'label' => $this->l('Phone'),
-					'name' => 'phone',
-
-
-				   )
-				)
-			);
-
-
+						'name' => 'name',
+					),
+				);
+			
 			$display_group_list = true;
 			if ($this->display == 'edit')
 			{
@@ -186,7 +187,27 @@ class AdminShopController extends AdminShopControllerCore
 				'category_tree' => $this->initCategoriesAssociation($parent),
 				'desc' => $this->l('By selecting associated categories, you are choosing to share the categories between shops. Once associated between shops, any alteration of this category will impact every shop.')
 			);
-
+			/*$this->fields_form['input'][] = array(
+				'type' => 'radio',
+				'label' => $this->l('Status:'),
+				'name' => 'active',
+				'required' => true,
+				'class' => 't',
+				'is_bool' => true,
+				'values' => array(
+					array(
+						'id' => 'active_on',
+						'value' => 1,
+						'label' => $this->l('Enabled')
+					),
+					array(
+						'id' => 'active_off',
+						'value' => 0,
+						'label' => $this->l('Disabled')
+					)
+				),
+				'desc' => $this->l('Enable or disable your store?')
+			);*/
 
 			$themes = Theme::getThemes();
 			if (!isset($obj->id_theme))
@@ -244,7 +265,7 @@ class AdminShopController extends AdminShopControllerCore
 				'zone' => $this->l('Zones'),
 				'cart_rule' => $this->l('Cart rules'),
 			);
-
+			
 			// Hook for duplication of shop data
 			$modules_list = Hook::getHookModuleExecList('actionShopDataDuplication');
 			if (is_array($modules_list) && count($modules_list) > 0)
@@ -252,7 +273,7 @@ class AdminShopController extends AdminShopControllerCore
 					$import_data['Module'.ucfirst($m['module'])] = Module::getModuleName($m['module']);
 
 			asort($import_data);
-
+					
 			if (!$this->object->id)
 				$this->fields_import_form = array(
 					'radio' => array(
@@ -277,7 +298,7 @@ class AdminShopController extends AdminShopControllerCore
 					),
 					'desc' => $this->l('Use this option to associate data (products, modules, etc.) the same way for each selected shop.')
 				);
-
+			
 			if ($this->display == 'edit'){
 				$shopaddress = ShopAddress::getAddressIdByShopId($obj->id);
 			}
@@ -288,15 +309,12 @@ class AdminShopController extends AdminShopControllerCore
 				'id_category' => (Tools::getValue('id_category') ? Tools::getValue('id_category') :
 					(isset($obj->id_category)) ? $obj->id_category : (int)Configuration::get('PS_HOME_CATEGORY')),
 				'id_theme_checked' => (isset($obj->id_theme) ? $obj->id_theme : $id_theme),
-				'phone' => (isset($shopaddress['0']['phone']) ? $shopaddress['0']['phone'] : Tools::getValue('phone')),
-				'address1' => (isset($_POST['address1']) ? $_POST['address1']: (isset($shopaddress['0']['address1']) ? $shopaddress['0']['address1'] : '')),
-				'address2' => (isset($shopaddress['0']['address2']) ? $shopaddress['0']['address2'] : Tools::getValue('address2')),
-				'postcode' => (isset($shopaddress['0']['postcode']) ? $shopaddress['0']['postcode'] : Tools::getValue('postcode')),
-				'city'     => (isset($shopaddress['0']['city']) ? $shopaddress['0']['city'] : Tools::getValue('city')),
-				'id_country' => (isset($shopaddress['0']['id_country']) ? $shopaddress['0']['id_country'] : Tools::getValue('id_country')),
-				'id_state' => (isset($shopaddress['0']['id_state']) ? $shopaddress['0']['id_state'] : Tools::getValue('id_state'))
-			);
-
+				'address1' => (isset($shopaddress['0']['address1']) ? $shopaddress['0']['address1'] : ''),
+				'address2' => (isset($shopaddress['0']['address2']) ? $shopaddress['0']['address2'] : ''),
+				'postcode' => (isset($shopaddress['0']['postcode']) ? $shopaddress['0']['postcode'] : ''),
+				'city'     => (isset($shopaddress['0']['city']) ? $shopaddress['0']['city'] : ''),
+				'id_state' => (isset($shopaddress['0']['id_state']) ? $shopaddress['0']['id_state'] : '')				
+			);	
 
 			$ids_category = array();
 			$shops = Shop::getShops(false);
@@ -339,7 +357,7 @@ class AdminShopController extends AdminShopControllerCore
 			$countries = Country::getCountries($this->context->language->id, true);
 
 		// @todo use helper
-		$list = '';
+		$list = '';		
 		foreach ($countries as $country)
 		{
 			$selected = ($country['id_country'] == $selected_country) ? 'selected="selected"' : '';
@@ -357,7 +375,7 @@ class AdminShopController extends AdminShopControllerCore
 	protected function getStates($id_country){
 		$db = Db::getInstance();
         $result = $db->query('SELECT id_state,name from ps_state where id_country ='.$id_country);
-
+		
 		$states = array();
 		$z = 0;
 		while ($row = $db->nextRow($result)) {
@@ -366,126 +384,13 @@ class AdminShopController extends AdminShopControllerCore
 			$z++;
         }
 		return $states;
+		
+
 
 	}
-
-	/**
-	 * Object creation
-	 */
-	public function processAdd()
-	{
-		if (!Tools::getValue('categoryBox') || !in_array(Tools::getValue('id_category'), Tools::getValue('categoryBox')))
-			$this->errors[] = $this->l('You need to select at least the root category.');
-
-
-
-		if (Tools::isSubmit('id_category_default'))
-			$_POST['id_category'] = (int)Tools::getValue('id_category_default');
-
-		/* Checking fields validity */
-		$this->validateRules();
-
-		if (!Tools::getValue('address1'))
-			$this->errors[] = $this->l('Address1 must not be empty.');
-
-		if (!Tools::getValue('postcode'))
-			$this->errors[] = $this->l('Postal Code must not be empty.');
-
-		if (!Tools::getValue('city'))
-			$this->errors[] = $this->l('City must not be empty.');
-
-		$regex = "/^(\d[\s-]?)?[\(\[\s-]{0,2}?\d{3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}$/i";
-		if(!preg_match( $regex, Tools::getValue('phone')) && Tools::getValue('phone'))
-			$this->errors[] = $this->l('Phone is invalid.');
-
-
-		if (!count($this->errors))
-		{
-			$object = new $this->className();
-			$this->copyFromPost($object, $this->table);
-			$this->beforeAdd($object);
-			if (!$object->add())
-			{
-				$this->errors[] = Tools::displayError('An error occurred while creating an object.').
-					' <b>'.$this->table.' ('.Db::getInstance()->getMsgError().')</b>';
-			}
-			/* voluntary do affectation here */
-			else if (($_POST[$this->identifier] = $object->id) && $this->postImage($object->id) && !count($this->errors) && $this->_redirect)
-			{
-				$parent_id = (int)Tools::getValue('id_parent', 1);
-				$this->afterAdd($object);
-				$this->updateAssoShop($object->id);
-				// Save and stay on same form
-				if (Tools::isSubmit('submitAdd'.$this->table.'AndStay'))
-					$this->redirect_after = self::$currentIndex.'&'.$this->identifier.'='.$object->id.'&conf=3&update'.$this->table.'&token='.$this->token;
-				// Save and back to parent
-				if (Tools::isSubmit('submitAdd'.$this->table.'AndBackToParent'))
-					$this->redirect_after = self::$currentIndex.'&'.$this->identifier.'='.$parent_id.'&conf=3&token='.$this->token;
-				// Default behavior (save and back)
-				if (empty($this->redirect_after))
-					$this->redirect_after = self::$currentIndex.($parent_id ? '&'.$this->identifier.'='.$object->id : '').'&conf=3&token='.$this->token;
-			}
-		}
-
-		$this->errors = array_unique($this->errors);
-		if (count($this->errors) > 0)
-		{
-			$this->display = 'add';
-			return;
-		}
-
-		// specific import for stock
-		if (isset($import_data['stock_available']) && isset($import_data['product']) && Tools::isSubmit('useImportData'))
-		{
-			$id_src_shop = (int)Tools::getValue('importFromShop');
-			if ($object->getGroup()->share_stock == false)
-				StockAvailable::copyStockAvailableFromShopToShop($id_src_shop, $object->id);
-		}
-
-		$categories = Tools::getValue('categoryBox');
-		array_unshift($categories, Configuration::get('PS_ROOT_CATEGORY'));
-		Category::updateFromShop($categories, $object->id);
-		Search::indexation(true);
-		return $object;
-	}
-	/**
-	 * Copy datas from $_POST to object
-	 *
-	 * @param object &$object Object
-	 * @param string $table Object table
-	 */
-	protected function copyFromPost(&$object, $table)
-	{
-		$_POST['id_shop'] = $this->context->cookie->id_shop;
-		/* Classical fields */
-		foreach ($_POST as $key => $value)
-			if (key_exists($key, $object) && $key != 'id_'.$table)
-			{
-				/* Do not take care of password field if empty */
-				if ($key == 'passwd' && Tools::getValue('id_'.$table) && empty($value))
-					continue;
-				/* Automatically encrypt password in MD5 */
-				if ($key == 'passwd' && !empty($value))
-					$value = Tools::encrypt($value);
-				$object->{$key} = $value;
-			}
-
-		/* Multilingual fields */
-		$rules = call_user_func(array(get_class($object), 'getValidationRules'), get_class($object));
-		if (count($rules['validateLang']))
-		{
-			$languages = Language::getLanguages(false);
-			foreach ($languages as $language)
-				foreach (array_keys($rules['validateLang']) as $field)
-					if (isset($_POST[$field.'_'.(int)$language['id_lang']]))
-						$object->{$field}[(int)$language['id_lang']] = $_POST[$field.'_'.(int)$language['id_lang']];
-		}
-	}
-
-
 	protected function afterAdd($new_shop)
 	{
-
+		
 		$import_data = Tools::getValue('importData', array());
 
 		// The root category should be at least imported
@@ -502,129 +407,42 @@ class AdminShopController extends AdminShopControllerCore
 				';
 			Db::getInstance()->execute($sql);
 		}
-		//PRINT"<PRE>";print_r($_POST);die;
-		$this->context->cookie->id_shop = $new_shop->id;
-		$object = new ShopAddress();
-		$this->copyFromPost($object, "shop_address");
-		$this->beforeAdd($object);
-		if (!$object->add())
-		{
-			$this->errors[] = Tools::displayError('An error occurred while creating an object.').
-				' <b>shop_address ('.Db::getInstance()->getMsgError().')</b>';
+		if(empty(Tools::getValue('address1')))
+			$this->errors[] = Tools::displayError('Address cannot be empty.');
+		else
+			$address1 = Tools::getValue('address1');
+
+		if(!empty(Tools::getValue('address2')))
+			$address2 = Tools::getValue('address2');
+		
+		if(empty(Tools::getValue('postcode')))
+			$this->errors[] = Tools::displayError('Zipcode cannot be empty.');
+		else
+			$postcode = Tools::getValue('postcode');
+
+		if(empty(Tools::getValue('city')))
+			$this->errors[] = Tools::displayError('City cannot be empty.');
+		else
+			$city = Tools::getValue('city');
+
+		if(!empty(Tools::getValue('id_country')))
+			$id_country = Tools::getValue('id_country');
+
+		if(!empty(Tools::getValue('id_state')))
+			$id_state = Tools::getValue('id_state');
+
+		//echo self::$currentIndex;die;
+		//print_r($this->errors);die;
+		if(empty($this->errors)){
+		$sql = "INSERT INTO "._DB_PREFIX_."shop_address (`id_shop`, `address1`, `address2`, `postcode`, `city`, `id_country`, `id_state`)
+					VALUES
+					('".$new_shop->id."', '".$address1."', '".$address2."', '".$postcode."', '".$city."', '".$id_country."', '".$id_state."')";
+		Db::getInstance()->execute($sql);
+		
 		}
+		
 		return parent::afterAdd($new_shop);
-
-	}
-
-	/**
-	 * Object update
-	 */
-	public function processUpdate()
-	{
-
-
-		/* Checking fields validity */
-		$this->validateRules();
-
-		if (!Tools::getValue('address1'))
-			$this->errors[] = $this->l('Address1 must not be empty.');
-
-
-		if (!Tools::getValue('postcode'))
-			$this->errors[] = $this->l('Postal Code must not be empty.');
-
-		if (!Tools::getValue('city'))
-			$this->errors[] = $this->l('City must not be empty.');
-
-		$regex = "/^(\d[\s-]?)?[\(\[\s-]{0,2}?\d{3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}$/i";
-		if(!preg_match( $regex, Tools::getValue('phone') ) && Tools::getValue('phone'))
-			$this->errors[] = $this->l('Phone is invalid.');
-
-
-
-		if (empty($this->errors))
-		{
-			$id = (int)Tools::getValue($this->identifier);
-
-			/* Object update */
-			if (isset($id) && !empty($id))
-			{
-				$object = new $this->className($id);
-				if (Validate::isLoadedObject($object))
-				{
-					/* Specific to objects which must not be deleted */
-					if ($this->deleted && $this->beforeDelete($object))
-					{
-						// Create new one with old objet values
-						$object_new = $object->duplicateObject();
-						if (Validate::isLoadedObject($object_new))
-						{
-							// Update old object to deleted
-							$object->deleted = 1;
-							$object->update();
-
-							// Update new object with post values
-							$this->copyFromPost($object_new, $this->table);
-							$result = $object_new->update();
-							if (Validate::isLoadedObject($object_new))
-								$this->afterDelete($object_new, $object->id);
-						}
-					}
-					else
-					{
-						$this->copyFromPost($object, $this->table);
-						$result = $object->update();
-						$this->afterUpdate($object);
-					}
-
-					if ($object->id)
-						$this->updateAssoShop($object->id);
-
-					if (!$result)
-					{
-						$this->errors[] = Tools::displayError('An error occurred while updating an object.').
-							' <b>'.$this->table.'</b> ('.Db::getInstance()->getMsgError().')';
-					}
-					elseif ($this->postImage($object->id) && !count($this->errors) && $this->_redirect)
-					{
-						$parent_id = (int)Tools::getValue('id_parent', 1);
-						// Specific back redirect
-						if ($back = Tools::getValue('back'))
-							$this->redirect_after = urldecode($back).'&conf=4';
-						// Specific scene feature
-						// @todo change stay_here submit name (not clear for redirect to scene ... )
-						if (Tools::getValue('stay_here') == 'on' || Tools::getValue('stay_here') == 'true' || Tools::getValue('stay_here') == '1')
-							$this->redirect_after = self::$currentIndex.'&'.$this->identifier.'='.$object->id.'&conf=4&updatescene&token='.$this->token;
-						// Save and stay on same form
-						// @todo on the to following if, we may prefer to avoid override redirect_after previous value
-						if (Tools::isSubmit('submitAdd'.$this->table.'AndStay'))
-							$this->redirect_after = self::$currentIndex.'&'.$this->identifier.'='.$object->id.'&conf=4&update'.$this->table.'&token='.$this->token;
-						// Save and back to parent
-						if (Tools::isSubmit('submitAdd'.$this->table.'AndBackToParent'))
-							$this->redirect_after = self::$currentIndex.'&'.$this->identifier.'='.$parent_id.'&conf=4&token='.$this->token;
-
-						// Default behavior (save and back)
-						if (empty($this->redirect_after) && $this->redirect_after !== false)
-							$this->redirect_after = self::$currentIndex.($parent_id ? '&'.$this->identifier.'='.$object->id : '').'&conf=4&token='.$this->token;
-					}
-					Logger::addLog(sprintf($this->l('%s edition', 'AdminTab', false, false), $this->className), 1, null, $this->className, (int)$object->id, true, (int)$this->context->employee->id);
-				}
-				else
-					$this->errors[] = Tools::displayError('An error occurred while updating an object.').
-						' <b>'.$this->table.'</b> '.Tools::displayError('(cannot load object)');
-			}
-		}
-		$this->errors = array_unique($this->errors);
-		if (!empty($this->errors))
-		{
-			// if we have errors, we stay on the form instead of going back to the list
-			$this->display = 'edit';
-			return false;
-		}
-
-		if (isset($object))
-			return $object;
-		return;
+		
 	}
 
 	protected function afterUpdate($new_shop)
@@ -637,34 +455,24 @@ class AdminShopController extends AdminShopControllerCore
 		if (Tools::getValue('useImportData') && ($import_data = Tools::getValue('importData')) && is_array($import_data))
 			$new_shop->copyShopData((int)Tools::getValue('importFromShop'), $import_data);
 
-		if(Tools::getValue('address1'))
-			$address1 = Tools::getValue('address1');
-		if(Tools::getValue('address2'))
-			$address2 = Tools::getValue('address2');
-		if(Tools::getValue('postcode'))
-			$postcode = Tools::getValue('postcode');
-		if(Tools::getValue('city'))
-			$city = Tools::getValue('city');
-		if(Tools::getValue('id_country'))
-			$id_country = Tools::getValue('id_country');
-		if(Tools::getValue('id_state'))
-			$id_state = Tools::getValue('id_state');
-		if(Tools::getValue('phone'))
-			$phone = Tools::getValue('phone');
+		$address1 = Tools::getValue('address1');
+		$address2 = Tools::getValue('address2');
+		$postcode = Tools::getValue('postcode');
+		$city = Tools::getValue('city');
+		$id_country = Tools::getValue('id_country');
+		$id_state = Tools::getValue('id_state');
 
 		$sql = "UPDATE "._DB_PREFIX_."shop_address  SET `address1` = '".$address1."',
 														`address2` = '".$address2."',
 														`postcode` = '".$postcode."',
-														`city`     = '".$city."',
+														`city`     = '".$city."', 
 														`id_country` = '".$id_country."',
-														`id_state`   = '".$id_state."',
-														`phone`   = '".$phone."',
-														`date_upd`   = '".date("Y-m-d H:i:s")."'
+														`id_state`   = '".$id_state."'
 														where `id_shop` = '".$new_shop->id."'";
 		Db::getInstance()->execute($sql);
 		return parent::afterUpdate($new_shop);
 	}
-
-
+	
+	
 }
 ?>

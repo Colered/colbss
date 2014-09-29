@@ -1,0 +1,72 @@
+#favoriteproducts_block_account .favoriteproduct {
+	position:relative;
+   margin-bottom: 14px;
+   padding: 12px 8px;
+	border: 1px solid #D7CBB5;
+   border-radius: 5px 5px 5px 5px;
+   background:#fff;
+}
+
+.favoriteproduct a.product_img_link {
+    display: block;
+    float: left;
+    margin-right: 14px;
+    overflow: hidden;
+    position: relative;
+}
+
+.favoriteproduct h3 {
+    color: #000000;
+    font-size: 13px;
+    padding: 0 0 10px;
+}
+
+.favoriteproduct  p.product_desc {
+    line-height: 16px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.favoriteproduct .remove {
+	position:absolute;
+	top:10px;
+	right:10px
+}
+.favoriteproduct .remove .icon {cursor:pointer}
+
+
+/* lnk fiche produit */
+
+#usefull_link_block li#favoriteproducts_block_extra_add {
+	padding-left:20px;
+	background:url("../../../img/sprite_info.png") no-repeat scroll left -249px transparent;
+	cursor: pointer;
+	float:left;
+	clear:both;
+}
+
+#usefull_link_block li#favoriteproducts_block_extra_add:hover,ul#usefull_link_block li#favoriteproducts_block_extra_added:hover	,
+#usefull_link_block li#favoriteproducts_block_extra_remove:hover,ul#usefull_link_block li#favoriteproducts_block_extra_removed:hover
+{ background-position:left -301px; color:#840202; }
+
+#usefull_link_block li#favoriteproducts_block_extra_remove {
+	padding-left:20px;
+	background:url("../../../img/sprite_info.png") no-repeat scroll left -249px transparent;
+	cursor: pointer;
+	float:left;
+}
+
+ul#usefull_link_block li#favoriteproducts_block_extra_added {
+	padding-left:20px;
+	background:url("../../../img/sprite_info.png") no-repeat scroll left -236px transparent;
+	cursor: pointer;
+	display: none;
+	float:left;
+}
+ul#usefull_link_block li#favoriteproducts_block_extra_removed {
+	padding-left:20px;
+	background:url("../../../img/sprite_info.png") no-repeat scroll left -236px transparent;
+	cursor: pointer;
+	display: none;
+	float:left;
+}

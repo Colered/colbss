@@ -1,0 +1,35 @@
+#orderopc  #left_column #left_column_inner{display:none}
+#orderopc #center_column{}
+#orderopc  #left_column h2 {margin-top:20px}
+#opc_account_choice {padding:0 15px;}
+#opc_account_choice .opc_float {
+	float:left;
+	width:48%;
+}
+#opc_account_choice .opc_float ul {margin:0 0 20px 30px}
+#new_account_form  fieldset {
+		padding:0 0 15px 0;
+		border:1px solid #ededed;
+		background:#FBFBFB
+}
+#new_account_form fieldset fieldset { border:none; background:none;} 
+#new_account_form fieldset.customerprivacy { border:none; background:none;}
+#new_account_form p.radio label { padding-right:10px; }
+#new_account_form p.checkbox label, #new_account_form p.checkbox label b {font-weight:normal;}
+
+#new_account_form p.select select { margin-right:10px; }
+#new_account_form p.textarea textarea {
+	height:80px;
+	width:360px;
+}
+#new_account_form span.form_info,
+#new_account_form span.inline-infos, #new_account_form p.inline-infos { display:block;}
+#new_account_form .id_state, #new_account_form .dni, #new_account_form .postcode { display: none; }
+#opc_account_errors { margin: 10px; margin-bottom: 15px; }
+#center_column #new_account_form p#opc_account_saved {
+	color: green;
+	float: right;
+	margin-right: 20px;
+	padding: 0;
+}
+#address_invoice_form {padding: 0px;}

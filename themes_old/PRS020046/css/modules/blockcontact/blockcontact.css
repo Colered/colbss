@@ -1,0 +1,31 @@
+/* block CONTACT ******************************************************************************* */
+#contact_block .block_content {
+	padding:10px 0 15px 0;
+	background: url(../../../img/icon/block_contact_bg.png) no-repeat right bottom #ECE4D5;
+}
+
+#contact_block p {	
+	 background: url("../../../img/icon/clock_icon.png") no-repeat scroll 12px 0 transparent;
+    padding: 0 12px 15px 56px;
+}
+
+#contact_block .title_block,   #contact_block h4 {
+	
+}
+#contact_block p.tel {
+
+	 background: url("../../../img/icon/block_contact_pict_tel.png") no-repeat scroll 11px 1px transparent;
+    padding:2px 0 15px 59px;
+    word-wrap: break-word;
+}
+#contact_block a {
+	 border-radius: 3px 3px 3px 3px;
+    color: #555;
+    display: block;
+    padding: 6px 8px;
+    text-align: left;
+    text-transform: capitalize;
+}
+#contact_block a:hover {text-decoration:none}
+
+#contact_block .label {display: none}

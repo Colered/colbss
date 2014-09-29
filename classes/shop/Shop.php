@@ -78,6 +78,7 @@ class ShopCore extends ObjectModel
 			'id_theme' => 		array('type' => self::TYPE_INT, 'required' => true),
 			'id_category' => 	array('type' => self::TYPE_INT, 'required' => true),
 			'id_shop_group' => 	array('type' => self::TYPE_INT, 'required' => true),
+			
 		),
 	);
 
