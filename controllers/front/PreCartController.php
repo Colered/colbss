@@ -52,31 +52,20 @@ class PreCartControllerCore extends FrontController
 	public function init()
 	{
 		parent::init();
-
 		// Send noindex to avoid ghost carts by bots
 		header("X-Robots-Tag: noindex, nofollow", true);
-
 	}
 
 	public function postProcess()
 	{
-		//echo '<pre>';
-		//print_r($this->context);
-        //die;
 		// Update the cart ONLY if $this->cookies are available, in order to avoid ghost carts created by bots
 		//if ($this->context->cookie->exists() && !$this->errors && !($this->context->customer->isLogged() && !$this->isTokenValid()))
 		if ($this->context->cookie->exists() && !$this->errors && !$this->isTokenValid())
 		{
- 			//echo '<pre>';
- 			//print_r($this->context);
-
             for( $i = 1; $i <= 4; $i++ ) {
-
 				$this->id_category = (int)Tools::getValue('s'.$i.'g'.$i, null);
 				$category = new Category((int)$this->id_category);
-				$categoryProducts = $category->getAvailableProducts($context->language->id, 1, 100); /* 100 products max. */
-				//print_r($categoryProducts);
-                //die;
+				$categoryProducts = $category->getProducts($this->context->language->id, 1, 100); /* 100 products max. */
 				foreach($categoryProducts as $prow){
 					if($prow['id_product']<>''){
 						//Get page main parameters
@@ -92,8 +81,6 @@ class PreCartControllerCore extends FrontController
 					}
 				}
             }
-            //die;
-
 			// Make redirection
 			if (!$this->errors && !$this->ajax)
 			{
@@ -236,9 +223,6 @@ class PreCartControllerCore extends FrontController
 		if (count($removed) && (int)Tools::getValue('allow_refresh'))
 			$this->ajax_refresh = true;
 	}
-
-
-
 	/**
 	 * @see FrontController::initContent()
 	 */
