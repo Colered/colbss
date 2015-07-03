@@ -26,7 +26,6 @@
 
 class OrderConfirmationController extends OrderConfirmationControllerCore
 {
-
 	/**
 	 * Assign template vars related to page content
 	 * @see FrontController::initContent()
@@ -34,157 +33,117 @@ class OrderConfirmationController extends OrderConfirmationControllerCore
 	public function initContent()
 	{
 		parent::initContent();
-
         $order = new Order((int)($this->id_order));
-        $this->createFile_940($order);
-
+		//check if order file has already been generated for shipping
+		$orderFileName = $_SERVER['DOCUMENT_ROOT']."/bookstore/docs/ffp/940_".$order->reference.'.txt';
+		if (file_exists($orderFileName)) {
+			//do nothing
+		}else{
+        	$this->createFile_940($order);
+		}
 	}
-
 	public function createFile_940($order)
 	{
-
 			$order_invoice = new OrderInvoice((int)($this->id_order));
-
             $customer= new Customer((int)$order->id_customer);
-
 			$address = new Address(intval($order->id_address_delivery));
 			$state = State::getNameById($address->id_state);
-
 			$carrier = new Carrier($order->id_carrier);
-
-            $productInfo = $order->getProducts();
-
-            // get total products in this order
-            $totalProdQty = 0;
-            foreach($productInfo as $i=>$k){
-               $totalProdQty += $k['product_quantity'];
-            }
-
+            $allProductInfo = $order->getProducts();
             $back_order_flag = (int)Configuration::get('PS_ORDER_OUT_OF_STOCK');
-
 			$dataArrHDR = array(
 			            '1'=>'HDR',
 			            '2'=>'A',
-			            '3'=>$order->id_customer,
+						'3'=>'',
 			            '4'=>'O',
-			            '5'=>date('mdY'),
-			            '6'=>'',
-			            '7'=>'',
-			            '8'=>'', // not clear- Facility-its required field
+						'5'=>'',
+			            '6'=>date('mdY'),
+			            '7'=>date('mdY'),
+			            '8'=>'',
 			            '9'=>'',
-			            '10'=>$address->address1,
+						'10'=>'',
 			            '11'=>'',
 			            '12'=>'A',
 			            '13'=>'',
 			            '14'=>'T',
-			            '15'=>$carrier->delay[1],
+						'15'=>'',
 			            '16'=>$order->reference,
 			            '17'=>'3RD',
 			            '18'=>$address->firstname.' '.$address->lastname,
-			            '19'=>$address->firstname.' '.$address->lastname, // not clear
+			            '19'=>$address->firstname.' '.$address->lastname,
 			            '20'=>$address->address1,
 			            '21'=>$address->address2,
 			            '22'=>$address->city,
-			            '23'=>$state,
+			            '23'=>strtoupper(substr($state, 0, 2)),
 			            '24'=>$address->postcode,
-			            '25'=>$address->country,
+			            '25'=>strtoupper(substr($address->country, 0, 3)),
 			            '26'=>$address->phone,
 			            '27'=>'',
 			            '28'=>$customer->email,
 			            '29'=>$address->firstname.' '.$address->lastname,
-			            '30'=>$address->firstname.' '.$address->lastname, // not clear
+			            '30'=>$address->firstname.' '.$address->lastname,
 			            '31'=>$address->address1,
 			            '32'=>$address->address2,
 			            '33'=>$address->city,
-						'34'=>$state,
+						'34'=>strtoupper(substr($state, 0, 2)),
 						'35'=>$address->postcode,
-			            '36'=>$address->country,
-			            '37'=>$address->phone,
+			            '36'=>strtoupper(substr($address->country, 0, 3)),
+			            '37'=>'',
 			            '38'=>'',
 			            '39'=>$customer->email,
 			            '40'=>'','41'=>'','42'=>'','43'=>'','44'=>'','45'=>'','46'=>'','47'=>'','48'=>'',
 			            '49'=>'','50'=>'','51'=>'','52'=>'','53'=>'','54'=>'','55'=>'','56'=>'','57'=>'',
 			            '58'=>'','59'=>'','60'=>'','61'=>'','62'=>'','63'=>'','64'=>'','65'=>'','66'=>'',
 			            '67'=>'','68'=>'','69'=>'','70'=>'','71'=>'','72'=>'','73'=>'','74'=>'','75'=>'',
-			            '76'=>'','77'=>'','78'=>'','79'=>'','80'=>'','81'=>'','82'=>'','83'=>'','84'=>'',
-			            '85'=>'','86'=>'','87'=>'','88'=>'','89'=>'','90'=>'','91'=>'','92'=>'','93'=>''
-
-
-
+			            '76'=>'','77'=>'','78'=>'','79'=>'',
+						'80'=>date('mdY'),
+						'81'=>'','82'=>'','83'=>'','84'=>'','85'=>'','86'=>'','87'=>'','88'=>'','89'=>'','90'=>'','91'=>'','92'=>'','93'=>''
 			           );
-
-
-			          $dataArrNTE = array(
-
-			             '1'=>'NTE|BOL|IMPORTANT    orders cannot deliver more than 3',
-						 '2'=>'NTE|BOL|calendar days early and cannot deliver past the',
-						 '3'=>'NTE|BOL|requested delivery date. A 3% penalty will be',
-						 '4'=>'NTE|BOL|incurred if the delivery schedule is not',
-						 '5'=>'NTE|BOL|followed.If these dates are missed  the carrier',
-						 '6'=>'NTE|BOL|MUST contact TRANSPLACE (3PL). Anything delivered',
-						 '7'=>'NTE|BOL|outside of the four calendar day window (early or',
-						 '8'=>'NTE|BOL|late) will be subject to reimbursement',
-						 '9'=>'NTE|BOL|charges.       2 PACKING SLIPS REQUIRED FOR EACH',
-						 '10'=>'NTE|BOL|SHIPMENT. 1 ATTACHED TO FREIGHT  1 ON BOL/GIVEN TO',
-						 '11'=>'NTE|BOL|DRIVER.    MARK B/L: CARRIER SHOULD USE RETAIL',
-						 '12'=>'NTE|BOL|LINK TO SCHEDULE DELIVERY APPTS.',
-					     '13'=>'NTE|BOL|PO MUST APPEAR ON B/L  MANIFEST  & EACH CASE.'
-
-
-			           );
-
-
-			 $dataArrDTL = array(
-			              '1'=>'DTL',
-			              '2'=>'', // its item- not clear in case of multiple products ordered
-			              '3'=>$order->reference, //its lot number --not clear
-			              '4'=>'', // Unit of Measure -- not clear
-			              '5'=>$totalProdQty,
-			              '6'=>$back_order_flag,
-			              '7'=>'','8'=>'','9'=>'','10'=>'','11'=>'','12'=>'','13'=>'','14'=>'','15'=>'','16'=>'',
-			              '17'=>'','18'=>'','19'=>'','20'=>'','21'=>'','22'=>'','23'=>'','24'=>'','25'=>'','26'=>'',
-			              '27'=>'','28'=>'','29'=>'','30'=>'','31'=>'','32'=>'','33'=>'','34'=>'','35'=>'','36'=>'',
-			              '37'=>'','38'=>'','39'=>'','40'=>'','41'=>'','42'=>'','43'=>'','44'=>'','45'=>'','46'=>'',
-			              '47'=>'','48'=>'','49'=>'','50'=>'','51'=>'','52'=>'','53'=>'','54'=>''
-
-			            );
-
-
-
-
+			//prepare an array for all product details
+			$dataArrDTL = array();
+			foreach($allProductInfo as $productInfo){
+			 $dataArrDTL[] = array('DTL',
+			              $productInfo['product_id'], // its item-
+			              '','', 
+			              $productInfo['product_quantity'],'','',
+						  'E',
+						  '','','','','','','','','','','','','','','','','','',
+			              '','','','','','','','','','','','','','','','','','',
+						  '','','','','','','',
+						  'A',
+						  '',
+						  $order->reference);
+			}
 			  // concate data with pipe for HDR
 			  $dataHDR = '';
 			  $dataString = '';
 			  for($i=1;$i<=93;$i++){
 			     $dataHDR .= $dataArrHDR[$i].'|';
 			  }
-			  // concate data with pipe for NTE
-			  $dataNTE = '';
-			  for($i=1;$i<=13;$i++){
-			     $dataNTE .= $dataArrNTE[$i].PHP_EOL;
-			  }
 			  // concate data with pipe for DTL
 			  $dataDTL = '';
-			  for($i=1;$i<=54;$i++){
-			     $dataDTL .= $dataArrDTL[$i].'|';
+			 foreach($dataArrDTL as $dataArr){
+				  for($i=0;$i<=53;$i++){
+					 $dataDTL .= $dataArr[$i].'|';
+				  }
+				  $dataDTL .= PHP_EOL;
 			  }
 
 			$dataString .= $dataHDR.PHP_EOL.PHP_EOL;
-			$dataString .= $dataNTE.PHP_EOL;
 			$dataString .= $dataDTL;
-
-			$filename = '940_'.$order->reference.'_'.time().'.txt';
-			$this->writeFile($filename,$dataString);
-
-
+			$filename = '940_'.$order->reference.'.txt';
+			//if filename doesnt exist create a new order file
+			$filepath = $_SERVER['DOCUMENT_ROOT']."/bookstore/docs/ffp/sent/";
+			$this->writeFile($filename,$dataString,$filepath);
 	}
-
-	public function writeFile($filename,$content)
+	public function writeFile($filename,$content,$filepath)
 	{
-        $filepath = $_SERVER['DOCUMENT_ROOT'] . "/bookstore/docs/ffp/";
+        
+		$as2filepath = $_SERVER['DOCUMENT_ROOT']."/mendelson/messages/fschad/outbox/cidot/";
 		$fp = fopen($filepath.$filename,"w+");
 		fwrite($fp,$content);
 		fclose($fp);
+		copy($filepath.$filename, $as2filepath.$filename);
 
 	}
 
