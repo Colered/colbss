@@ -39,7 +39,7 @@ class ContactControllerCore extends FrontController
 		{
 			$extension = array('.txt', '.rtf', '.doc', '.docx', '.pdf', '.zip', '.png', '.jpeg', '.gif', '.jpg');
 			$fileAttachment = Tools::fileAttachment('fileUpload');
-			$message = Tools::getValue('message'); // Html entities is not usefull, iscleanHtml check there is no bad html tags.
+			$message = trim(Tools::getValue('message')); // Html entities is not usefull, iscleanHtml check there is no bad html tags.
 			if (!($from = trim(Tools::getValue('from'))) || !Validate::isEmail($from))
 				$this->errors[] = Tools::displayError('Invalid email address.');
 			else if (!$message)
@@ -170,9 +170,9 @@ class ContactControllerCore extends FrontController
 						$var_list['{attached_file}'] = $fileAttachment['name'];
 
 					$id_order = (int)Tools::getValue('id_order');
-					
+
 					$id_product = (int)Tools::getValue('id_product');
-					
+
 					if (isset($ct) && Validate::isLoadedObject($ct) && $ct->id_order)
 						$id_order = $ct->id_order;
 
@@ -182,7 +182,7 @@ class ContactControllerCore extends FrontController
 						$var_list['{order_name}'] = $order->getUniqReference();
 						$var_list['{id_order}'] = $id_order;
 					}
-					
+
 					if ($id_product)
 					{
 						$product = new Product((int)$id_product);
@@ -193,7 +193,7 @@ class ContactControllerCore extends FrontController
 					if (empty($contact->email))
 						Mail::Send($this->context->language->id, 'contact_form', ((isset($ct) && Validate::isLoadedObject($ct)) ? sprintf(Mail::l('Your message has been correctly sent #ct%1$s #tc%2$s'), $ct->id, $ct->token) : Mail::l('Your message has been correctly sent')), $var_list, $from, null, null, null, $fileAttachment);
 					else
-					{					
+					{
 						if (!Mail::Send($this->context->language->id, 'contact', Mail::l('Message from contact form').' [no_sync]',
 							$var_list, $contact->email, $contact->name, $from, ($customer->id ? $customer->firstname.' '.$customer->lastname : ''),
 									$fileAttachment) ||
@@ -201,7 +201,7 @@ class ContactControllerCore extends FrontController
 									$this->errors[] = Tools::displayError('An error occurred while sending the message.');
 					}
 				}
-				
+
 				if (count($this->errors) > 1)
 					array_unique($this->errors);
 				else
@@ -239,15 +239,15 @@ class ContactControllerCore extends FrontController
 		if (($id_customer_thread = (int)Tools::getValue('id_customer_thread')) && $token = Tools::getValue('token'))
 		{
 			$customerThread = Db::getInstance()->getRow('
-				SELECT cm.* 
+				SELECT cm.*
 				FROM '._DB_PREFIX_.'customer_thread cm
-				WHERE cm.id_customer_thread = '.(int)$id_customer_thread.' 
-				AND cm.id_shop = '.(int)$this->context->shop->id.' 
+				WHERE cm.id_customer_thread = '.(int)$id_customer_thread.'
+				AND cm.id_shop = '.(int)$this->context->shop->id.'
 				AND token = \''.pSQL($token).'\'
 			');
 			$this->context->smarty->assign('customerThread', $customerThread);
 		}
-		
+
 		$this->context->smarty->assign(array(
 			'contacts' => Contact::getContacts($this->context->language->id),
 			'message' => html_entity_decode(Tools::getValue('message'))
@@ -274,7 +274,7 @@ class ContactControllerCore extends FrontController
 			foreach ($result as $row)
 			{
 				$order = new Order($row['id_order']);
-				$date = explode(' ', $order->date_add);				
+				$date = explode(' ', $order->date_add);
 				$tmp = $order->getProducts();
 				foreach ($tmp as $key => $val)
 					$products[$row['id_order']][$val['product_id']] = array('value' => $val['product_id'], 'label' => $val['product_name']);

@@ -1,0 +1,114 @@
+/* Special style for block cart*/
+#left_column #cart_block, #right_column #cart_block {}
+#header  #cart_block .title_block, #header  #cart_block h4 {
+	display: none;
+}
+#header #cart_block {
+	z-index: 10;
+	display:none;
+	position: absolute;
+	right: 0;
+	top: 95px;
+	height: auto;
+	width: 250px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius:5px;
+	border-radius: 5px;
+	background:#fff;
+	border:1px solid #D7CBB5;
+}
+.cart_left_img	{ float:left; margin:0 5px 0 0;}
+.header_container #cart_block .cart-right-part{ float:left; width:160px;}
+#left_column .cart-right-part,#right_column .cart-right-part{ float:left; width:125px;}
+
+
+#header #cart_block  .block_content	{ margin:0;background: none repeat scroll 0 0 #FFFFFF;
+    margin: 0;
+    padding: 8px 8px 0;}
+#cart_block.cart_block_hover {display:block}
+#cart_block .title_block  span, #header  #cart_block h4 {
+	float: right;
+	text-transform: none;
+	cursor: pointer
+}
+
+#cart_block  .block_content {padding:8px 8px 16px 8px;}
+
+#cart_block #cart_block_summary {display:none}
+#cart_block .quantity-formated {
+	float:left;
+	margin-right:5px;
+	min-width:18px;
+	vertical-align: top;
+}
+#cart_block .remove_link, #cart_block .deleteCustomizableProduct {
+	float:right;
+	display:inline-block;
+	margin:1px 0 0 5px;
+	height:12px;
+	width:12px
+}
+#cart_block .remove_link a, #cart_block .ajax_cart_block_remove_link {
+	display:inline-block;
+	height:12px;
+	width:12px;
+	background: url(../../../img/icon/delete.gif) no-repeat 0 2px;
+}
+#cart_block .price {
+	float: left;
+    margin: 4px 0 0;
+    width: 73%;
+}
+
+#cart_block #cart_block_list dl {
+	padding-bottom:10px;
+	overflow:hidden;
+}
+#cart_block #cart_block_list dt 
+{
+	float:left;
+	width:100%;
+	padding:0;
+	margin:5px 0;
+}
+#cart_block #cart_block_list dd {
+	float:left;
+	display:none;
+}
+
+
+#cart_block #cart-prices {
+	padding:10px 4px;
+	line-height:20px;
+	font-weight:normal;
+	border-top:1px solid #D7CBB5;
+	clear:both;
+	margin:8px 0 0 0;
+}
+#cart_block #cart_block_shipping_cost,
+#cart_block #cart_block_total {
+	float:right;
+	width:auto;
+	margin:0;
+}
+#cart_block #cart_block_shipping_cost {font-weight:normal}
+
+#cart_block #cart-buttons .button_small {margin:0 5px 0 0;}
+#cart_block table#vouchers {
+	clear: both;
+	width:100%
+}
+#cart_block table#vouchers tr td{
+	padding: 2px;
+}
+#cart_block table#vouchers tr td.quantity{
+	margin-right:5px;
+	min-width:18px
+}
+#cart_block table#vouchers tr td.delete{
+	padding-left: 0;
+	padding-right: 0;
+	text-align: right;
+	width: 15px;
+}
+#block_cart_collapse { display:none;}

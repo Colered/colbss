@@ -67,12 +67,12 @@ if($lang=='en'){
 
         <form name="frmParentInfo" id="frmParentInfo" action="" method="post">
         <input type="hidden" name="id_lang" value="<?php echo $lang_id_shopmatch;?>" />
-           <div class="form-step">
+		<div class="form-step">
                     <div class="form-text">
                         <div class="numbers"><img src="virtualstore/images/1.png"  /></div>
 						<div class="num-text"><?php echo utf8_encode($lang_form_desc_about_form);?></div>
                     </div>
-                    <div class="row" style="padding-top:30px;">
+					<div class="row" style="padding-top:30px;">
                         <div class="form-left fform"><?php echo utf8_encode($lang_form_lable_school);?></div>
                         <div class="form-right">
 						<select name="school_url" id="school_url"  onchange="removeErr();">
@@ -99,7 +99,7 @@ if($lang=='en'){
 						</div>
                         <div class="form-error"></div>
                     </div>
-                    <div class="rowright">
+					<div class="rowright">
                         <div class="form-left fform"><?php echo utf8_encode($lang_form_lable_2child_grade);?></div>
                         <div class="form-right">
 						<select name="s2g2" id="s2g2">
@@ -118,7 +118,7 @@ if($lang=='en'){
 						</div>
                          <div class="form-error"></div>
                     </div>
-                    <div class="rowright">
+					<div class="rowright">
                         <div class="form-left fform"><?php echo utf8_encode($lang_form_lable_4child_grade);?></div>
                         <div class="form-right">
 						<select name="s4g4" id="s4g4">
@@ -127,10 +127,9 @@ if($lang=='en'){
 						</div>
                          <div class="form-error"></div>
                     </div>
-
 					<div class="row"><input type="button" name="proceed" id="btnProceed" value="<?php echo utf8_encode($lang_submitBtn[2]);?>" class="submit-btn"/></div>
-
-                </div>
+					
+		</div>
         </form>
 
     </div>

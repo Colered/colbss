@@ -1,0 +1,75 @@
+/* block top currencies */
+#header_right #currencies_block_top {
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background: none repeat scroll 0 0 #DACFBA;
+    border: 1px solid #f1ebe0;
+ 	float: left;
+    left: 80px;
+    margin:0;
+    padding: 2px 5px;
+    position: absolute;
+    top: 172px;
+}
+
+
+#header_right #currencies_block_top p {
+	clear: left;
+	 padding: 0 7px;
+	 color:#B70707;
+}
+#currencies_block_top  .top_downarrow {
+	background-image:url(../../../img/sprite.png) ;
+	background-repeat:no-repeat;
+	background-position:left -7px;
+	display: inline-block;
+    height: 15px;
+    width: 15px;
+}
+#currencies_block_top.active .top_downarrow{
+	background-position:-148px -7px;
+}
+
+#currencies_block_top ul#first-currencies li {
+	margin-right: 3px
+}
+#currencies_block_top ul#first-currencies li.selected {
+	opacity: 1 !important;
+}
+#currencies_block_top ul#first-currencies li.selected a {
+	
+	color:#840202;
+}
+/*languages with jquery*/
+#setCurrency {
+	cursor: pointer;
+	position: relative;
+	top: 1px;
+}
+#setCurrency p {
+	position: relative;
+	top: 0;
+	margin:0;
+	padding: 0;
+}
+#setCurrency p img {
+	padding-left: 5px;
+}
+#setCurrency .currencies_ul{
+	display:none; 
+	list-style-type:none;
+	z-index: 5000;
+	position:absolute;
+	padding:5px 10px;
+	height:auto;
+	left:-7px;
+	text-align: left;
+    width:180px;
+	margin-top:2px;
+	 background: none repeat scroll 0 0 #F5F2ED;
+    border: 1px solid #D7CBB5;
+    border-radius: 5px 5px 5px 5px;
+}
+.ie7 #currencies_block_top .top_downarrow,.ie7 #languages_block_top .top_downarrow{background-position:left -10px;}
+.ie7 #currencies_block_top.active .top_downarrow,.ie7 #languages_block_top.active .top_downarrow{background-position:-148px -10px;}

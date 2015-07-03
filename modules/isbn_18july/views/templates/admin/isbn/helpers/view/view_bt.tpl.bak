@@ -1,0 +1,19 @@
+{include file="toolbar.tpl" toolbar_btn=$toolbar_btn toolbar_scroll=$toolbar_scroll title=$title}
+<form id="isbn_data" method="post" action="index.php?controller=AdminIsbn&amp;token={getAdminToken tab='AdminIsbn'}">
+  <fieldset id="fieldset_main_conf">
+    <legend>
+      <img alt="Edit carrier" src="../img/t/AdminPreferences.gif">  {l s='Add ISBN'}</legend>
+    <div class="margin-form">
+      <textarea id="isb_no" name="isb_no" style="width:500px;height:100px; resize: none;"></textarea>
+	  <br>
+	  <p style="display:block; position:relative; display:inline-block;" class="hint">
+	  		<span>Fill the commas separated ISBN values(i.e. xxx44, xxx55).</span>
+	  </p>
+	 <!--<span style="color: #D8000C;font-size: 12px;">Fill the comma separated ISBN values(i.e. xxx44,xxx55).</span>-->
+    </div>
+    <div class="clear"></div>
+    <div class="margin-form">
+      <input type="submit" class="button" name="isbn_data" value="{l s='Proceed'}" id="isbn_data_btn">
+    </div>
+  </fieldset>
+</form>

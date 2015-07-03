@@ -1,0 +1,27 @@
+*ERROR* 	2014/05/15 - 12:41:04: Shop not found at line 389 in file classes/shop/Shop.php
+*ERROR* 	2014/05/15 - 12:41:29: Shop not found at line 389 in file classes/shop/Shop.php
+*ERROR* 	2014/05/15 - 16:51:59: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`ps_shop_address
+		WHERE id_shop = 29 LIMIT 1' at line 2<br /><br /><pre>
+		SELECT(address1,address2,postcode)
+		FROM `ps_shop_address
+		WHERE id_shop = 29 LIMIT 1</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/05/15 - 16:52:10: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`ps_shop_address
+		WHERE id_shop = 29 LIMIT 1' at line 2<br /><br /><pre>
+		SELECT(address1,address2,postcode)
+		FROM `ps_shop_address
+		WHERE id_shop = 29 LIMIT 1</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/05/15 - 16:52:48: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`ps_shop_address
+		WHERE id_shop = 29 LIMIT 1' at line 2<br /><br /><pre>
+		SELECT("address1","address2","postcode")
+		FROM `ps_shop_address
+		WHERE id_shop = 29 LIMIT 1</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/05/15 - 16:53:57: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`ps_shop_address
+		WHERE id_shop = 29 LIMIT 1' at line 2<br /><br /><pre>
+		SELECT(address1)
+		FROM `ps_shop_address
+		WHERE id_shop = 29 LIMIT 1</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/05/15 - 16:54:39: Operand should contain 1 column(s)<br /><br /><pre>
+		SELECT(address1,address2,postcode,city)
+		FROM ps_shop_address
+		WHERE id_shop = 29 LIMIT 1</pre> at line 613 in file classes/db/Db.php
+*ERROR* 	2014/05/15 - 16:56:24: Db->executeS() must be used only with select, show, explain or describe queries at line 476 in file classes/db/Db.php

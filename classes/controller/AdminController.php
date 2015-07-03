@@ -33,7 +33,7 @@ class AdminControllerCore extends Controller
 	public $informations = array();
 	public $confirmations = array();
 	public $shopShareDatas = false;
-
+	
 	public $_languages = array();
 	public $default_form_language;
 	public $allow_employee_form_lang;
@@ -96,13 +96,13 @@ class AdminControllerCore extends Controller
 
 	/** @var array list to be generated */
 	protected $fields_list;
-
+	
 	/** @var array modules list filters */
 	protected $filter_modules_list = null;
-
+	
 	/** @var array modules list filters */
 	protected $modules_list = array();
-
+	
 	/** @var array edit form to be generated */
 	protected $fields_form;
 
@@ -177,7 +177,7 @@ class AdminControllerCore extends Controller
 
 	/** @var array required_fields to display in the Required Fields form */
 	public $required_fields = array();
-
+	
 	/** @var Helper */
 	protected $helper;
 
@@ -199,7 +199,7 @@ class AdminControllerCore extends Controller
 	 * @var array ids of the rows selected
 	 */
 	protected $boxes;
-
+	
 	/** @var string Do not automatically select * anymore but select only what is necessary */
 	protected $explicitSelect = false;
 
@@ -291,7 +291,7 @@ class AdminControllerCore extends Controller
 		$this->bo_theme = ((Validate::isLoadedObject($this->context->employee) && $this->context->employee->bo_theme) ? $this->context->employee->bo_theme : 'default');
 		if (!file_exists(_PS_BO_ALL_THEMES_DIR_.$this->bo_theme.DIRECTORY_SEPARATOR.'template'))
 			$this->bo_theme = 'default';
-
+		
 		$this->context->smarty->setTemplateDir(array(
 			_PS_BO_ALL_THEMES_DIR_.$this->bo_theme.DIRECTORY_SEPARATOR.'template',
 			_PS_OVERRIDE_DIR_.'controllers'.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'templates'
@@ -382,7 +382,7 @@ class AdminControllerCore extends Controller
 				break;
 		}
 		$this->toolbar_title = $bread_extended;
-
+    
 		if (Tools::isSubmit('submitFilter'))
 		{
 			$filter = '';
@@ -394,7 +394,7 @@ class AdminControllerCore extends Controller
 				{
 					if(!is_array($val) && !empty($val))
 						$filter .= ($filter ?  ', ' : $this->l(' filter by ')).$t['title'].' : ';
-
+		
 					if (isset($t['type']) && $t['type'] == 'bool')
 						$filter .= ((bool)$val) ? $this->l('yes') : $this->l('no');
 					elseif(is_string($val))
@@ -408,7 +408,7 @@ class AdminControllerCore extends Controller
 						if(Tools::strlen($tmp))
 						{
 							$tmp = ltrim($tmp, ' - ');
-							$filter .= ($filter ?  ', ' : $this->l(' filter by ')).$t['title'].' : ';
+							$filter .= ($filter ?  ', ' : $this->l(' filter by ')).$t['title'].' : ';							
 							$filter .= $tmp;
 						}
 					}
@@ -416,7 +416,7 @@ class AdminControllerCore extends Controller
 			}
 			if ($filter)
 				$this->toolbar_title[] = $filter;
-		}
+		}	
 	}
 
 	/**
@@ -612,7 +612,7 @@ class AdminControllerCore extends Controller
 		$this->errors[] = Tools::displayError('An error occurred while attempting to delet the image. (cannot load object).');
 		return $object;
 	}
-
+	
 	public function processExport()
 	{
 		// clean buffer
@@ -645,7 +645,7 @@ class AdminControllerCore extends Controller
 					else
 						$path_to_image = Tools::getShopDomain(true)._PS_IMG_.$params['image'].'/'.Image::getImgFolderStatic($row['id_image']).(int)$row['id_image'].'.'.$this->imageType;
 					if ($path_to_image)
-						$field_value = $path_to_image;
+						$field_value = $path_to_image;  
 				}
 				$content[$i][] = $field_value;
 			}
@@ -1004,7 +1004,7 @@ class AdminControllerCore extends Controller
 					continue;
 
 				// Check if field is required
-				if ((!Shop::isFeatureActive() && isset($values['required']) && $values['required'])
+				if ((!Shop::isFeatureActive() && isset($values['required']) && $values['required']) 
 					|| (Shop::isFeatureActive() && isset($_POST['multishopOverrideOption'][$field]) && isset($values['required']) && $values['required']))
 					if (isset($values['type']) && $values['type'] == 'textLang')
 					{
@@ -1383,7 +1383,7 @@ class AdminControllerCore extends Controller
 					$sub_tabs[$index2]['current'] = ($sub_tab['class_name'].'Controller' == get_class($this));
 				}
 				else
-					unset($sub_tabs[$index2]);
+					unset($sub_tabs[$index2]);					
 			}
 			$tabs[$index]['sub_tabs'] = $sub_tabs;
 
@@ -1391,7 +1391,7 @@ class AdminControllerCore extends Controller
 			if (empty($sub_tabs))
 				unset($tabs[$index]);
 		}
-
+		
 		if (Validate::isLoadedObject($this->context->employee))
 		{
 			$accesses = Profile::getProfileAccesses($this->context->employee->id_profile, 'class_name');
@@ -1446,7 +1446,7 @@ class AdminControllerCore extends Controller
 		if(isset($this->context->cookie->profile)){
 		$sql = 'SELECT view from ps_access where id_profile ='.$this->context->cookie->profile.' and id_tab =1';
 		$res = Db::getInstance()->getValue($sql);
-		if($res == 1)
+		if($res == 1)				
 		 $this->context->smarty->assign('url', 'AdminHome');
 		else
 			 $this->context->smarty->assign('url', 'AdminDashboard');
@@ -1487,7 +1487,7 @@ class AdminControllerCore extends Controller
 			$this->errors[] = Tools::displayError('You do not have permission to view this.');
 			return;
 		}
-
+		
 		$this->getLanguages();
 		// toolbar (save, cancel, new, ..)
 		$this->initToolbar();
@@ -1522,7 +1522,7 @@ class AdminControllerCore extends Controller
 			'url_post' => self::$currentIndex.'&token='.$this->token,
 		));
 	}
-
+	
 	/**
 	 * init tab modules list and add button in toolbar
 	 */
@@ -1532,11 +1532,11 @@ class AdminControllerCore extends Controller
 			@file_put_contents(_PS_ROOT_DIR_.Module::CACHE_FILE_MUST_HAVE_MODULES_LIST, Tools::addonsRequest('must-have'));
 		if (!$this->isFresh(Module::CACHE_FILE_TAB_MODULES_LIST, 604800))
 			$this->refresh(Module::CACHE_FILE_TAB_MODULES_LIST, 'http://'.Tab::TAB_MODULE_LIST_URL);
-
+		
 		$this->tab_modules_list = Tab::getTabModulesList($this->id);
 
 		if (is_array($this->tab_modules_list['default_list']) && count($this->tab_modules_list['default_list']))
-			$this->filter_modules_list = $this->tab_modules_list['default_list'];
+			$this->filter_modules_list = $this->tab_modules_list['default_list'];	
 		elseif (is_array($this->tab_modules_list['slider_list']) && count($this->tab_modules_list['slider_list']))
 		{
 			$this->addToolBarModulesListButton();
@@ -1548,12 +1548,12 @@ class AdminControllerCore extends Controller
 			));
 		}
 	}
-
+	
 	protected function addToolBarModulesListButton()
 	{
 		if (!$this->isFresh(Module::CACHE_FILE_DEFAULT_COUNTRY_MODULES_LIST, 86400))
 			file_put_contents(_PS_ROOT_DIR_.Module::CACHE_FILE_DEFAULT_COUNTRY_MODULES_LIST, Tools::addonsRequest('native'));
-
+		
 		libxml_use_internal_errors(true);
 		$country_module_list = file_get_contents(_PS_ROOT_DIR_.Module::CACHE_FILE_DEFAULT_COUNTRY_MODULES_LIST);
 		if (!empty($country_module_list) && is_string($country_module_list) && $country_module_list_xml = simplexml_load_string($country_module_list))
@@ -1564,7 +1564,7 @@ class AdminControllerCore extends Controller
 					$country_module_list_array[] = (string)$m->name;
 			$this->tab_modules_list['slider_list'] = array_intersect($this->tab_modules_list['slider_list'], $country_module_list_array);
 		}
-
+		
 		if (is_array($this->tab_modules_list['slider_list']) && count($this->tab_modules_list['slider_list']))
 			$this->toolbar_btn['modules-list'] = array(
 				'href' => '#',
@@ -1597,7 +1597,7 @@ class AdminControllerCore extends Controller
 			'iso_is_fr' => strtoupper($this->context->language->iso_code) == 'FR',
 		));
 	}
-
+	
 	public function renderModulesList()
 	{
 		if ($this->getModulesList($this->filter_modules_list))
@@ -1606,8 +1606,8 @@ class AdminControllerCore extends Controller
 			return $helper->renderModulesList($this->modules_list);
 		}
 	}
-
-
+	
+	
 	/**
 	 * Function used to render the list to display for this controller
 	 */
@@ -1618,7 +1618,7 @@ class AdminControllerCore extends Controller
 		$this->getList($this->context->language->id);
 
 		$helper = new HelperList();
-
+		
 		// Empty list is ok
 		if (!is_array($this->_list))
 		{
@@ -1768,7 +1768,7 @@ class AdminControllerCore extends Controller
 
 		// For each action, try to add the corresponding skip elements list
 		$helper->list_skip_actions = $this->list_skip_actions;
-
+		
 		$this->helper = $helper;
 	}
 
@@ -1876,10 +1876,10 @@ class AdminControllerCore extends Controller
 			'token' => $this->token,
 			'stock_management' => (int)Configuration::get('PS_STOCK_MANAGEMENT')
 		));
-
+		
 		if ($this->display_header)
 			$this->context->smarty->assign('displayBackOfficeHeader', Hook::exec('displayBackOfficeHeader', array()));
-
+		
 		$this->context->smarty->assign(
 			array(
 				'displayBackOfficeTop' => Hook::exec('displayBackOfficeTop', array()),
@@ -1954,10 +1954,10 @@ class AdminControllerCore extends Controller
 			$this->context->shop = new Shop(Configuration::get('PS_SHOP_DEFAULT'));
 		elseif ($this->context->shop->id != $shop_id)
 			$this->context->shop = new Shop($shop_id);
-
-		// Replace current default country
+		
+		// Replace current default country		
 		$this->context->country = new Country((int)Configuration::get('PS_COUNTRY_DEFAULT'));
-
+				
 		$this->initBreadcrumbs();
 	}
 
@@ -1970,7 +1970,7 @@ class AdminControllerCore extends Controller
 			$this->list_id = $this->table;
 
 		// Manage list filtering
-		if (Tools::isSubmit('submitFilter'.$this->list_id)
+		if (Tools::isSubmit('submitFilter'.$this->list_id) 
 			|| $this->context->cookie->{'submitFilter'.$this->list_id} !== false
 			|| Tools::getValue($this->list_id.'Orderby')
 			|| Tools::getValue($this->list_id.'Orderway'))
@@ -2185,7 +2185,7 @@ class AdminControllerCore extends Controller
 
 		/* Determine offset from current page */
 
-
+		
 		if ((isset($_POST['submitFilter'.$this->list_id]) ||
 		isset($_POST['submitFilter'.$this->list_id.'_x']) ||
 		isset($_POST['submitFilter'.$this->list_id.'_y'])) &&
@@ -2272,7 +2272,7 @@ class AdminControllerCore extends Controller
 		$this->_listsql = '
 		SELECT SQL_CALC_FOUND_ROWS
 		'.($this->_tmpTableFilter ? ' * FROM (SELECT ' : '');
-
+		
 		if ($this->explicitSelect)
 		{
 			foreach ($this->fields_list as $key => $array_value)
@@ -2280,7 +2280,7 @@ class AdminControllerCore extends Controller
 				// Add it only if it is not already in $this->_select
 				if (isset($this->_select) && preg_match('/[\s]`?'.preg_quote($key, '/').'`?\s*,/', $this->_select))
 					continue;
-
+			
 				if (isset($array_value['filter_key']))
 					$this->_listsql .= str_replace('!', '.', $array_value['filter_key']).' as '.$key.',';
 				elseif ($key == 'id_'.$this->table)
@@ -2313,15 +2313,15 @@ class AdminControllerCore extends Controller
 		else
 			$this->_listTotal = Db::getInstance()->getValue('SELECT FOUND_ROWS() AS `'._DB_PREFIX_.$this->table.'`');
 	}
-
+	
 	public function getModulesList($filter_modules_list)
 	{
 		if (!is_array($filter_modules_list) && !is_null($filter_modules_list))
 			$filter_modules_list = array($filter_modules_list);
-
+		
 		if (!count($filter_modules_list))
 			return false; //if there is no modules to display just return false;
-
+		
 		$all_modules = Module::getModulesOnDisk(true);
 		$this->modules_list = array();
 		foreach ($all_modules as $module)
@@ -2334,14 +2334,14 @@ class AdminControllerCore extends Controller
 				$id_admin_module = Tab::getIdFromClassName('AdminModules');
 				$access = Profile::getProfileAccess($this->context->employee->id_profile, $id_admin_module);
 				if (!$access['edit'])
-					$perm &= false;
+					$perm &= false; 
 			}
-
+			
 			if (in_array($module->name, $filter_modules_list) && $perm)
 			{
 				$this->fillModuleData($module, 'select');
 				$this->modules_list[array_search($module->name, $filter_modules_list)] = $module;
-			}
+			}		
 		}
 		ksort($this->modules_list);
 
@@ -2349,7 +2349,7 @@ class AdminControllerCore extends Controller
 			return true;
 
 		return false; //no module found on disk just return false;
-
+		
 	}
 
 	public function getLanguages()
@@ -2358,7 +2358,7 @@ class AdminControllerCore extends Controller
 		$this->allow_employee_form_lang = (int)Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG');
 		if ($this->allow_employee_form_lang && !$cookie->employee_form_lang)
 			$cookie->employee_form_lang = (int)Configuration::get('PS_LANG_DEFAULT');
-
+		
 		$lang_exists = false;
 		$this->_languages = Language::getLanguages(false);
 		foreach ($this->_languages as $lang)
@@ -2576,6 +2576,7 @@ class AdminControllerCore extends Controller
 	 */
 	protected function copyFromPost(&$object, $table)
 	{
+		$_POST['id_shop'] = $this->context->cookie->id_shop;
 		/* Classical fields */
 		foreach ($_POST as $key => $value)
 			if (key_exists($key, $object) && $key != 'id_'.$table)
@@ -2783,7 +2784,7 @@ class AdminControllerCore extends Controller
 							$result = false;
 							$delete_ok = false;
 						}
-
+					
 					if ($delete_ok)
 						Logger::addLog(sprintf($this->l('%s deletion', 'AdminTab', false, false), $this->className), 1, null, $this->className, (int)$to_delete->id, true, (int)$this->context->employee->id);
 					else
@@ -2802,7 +2803,7 @@ class AdminControllerCore extends Controller
 		else
 			return false;
 	}
-
+	
 	/**
 	 * Enable multiple items
 	 *
@@ -2812,7 +2813,7 @@ class AdminControllerCore extends Controller
 	{
 		return $this->processBulkStatusSelection(1);
 	}
-
+	
 	/**
 	 * Disable multiple items
 	 *
@@ -2822,7 +2823,7 @@ class AdminControllerCore extends Controller
 	{
 		return $this->processBulkStatusSelection(0);
 	}
-
+	
 	/**
 	 * Toggle status of multiple items
 	 *
@@ -2948,7 +2949,7 @@ class AdminControllerCore extends Controller
 		self::$is_prestashop_up = false;
 		return false;
 	}
-
+	
 	public function fillModuleData(&$module, $output_type = 'link', $back = null)
 	{
 		$obj = null;
@@ -2962,7 +2963,7 @@ class AdminControllerCore extends Controller
 			$module->logo = 'logo.png';
 		$module->optionsHtml = $this->displayModuleOptions($module, $output_type);
 		$link_admin_modules = $this->context->link->getAdminLink('AdminModules', true);
-
+		
 		$module->options['install_url'] = $link_admin_modules.'&install='.urlencode($module->name).'&tab_module='.$module->tab.'&module_name='.$module->name.'&anchor=anchor'.ucfirst($module->name);
 		$module->options['update_url'] = $link_admin_modules.'&update='.urlencode($module->name).'&tab_module='.$module->tab.'&module_name='.$module->name.'&anchor=anchor'.ucfirst($module->name);
 		$module->options['uninstall_url'] = $link_admin_modules.'&uninstall='.urlencode($module->name).'&tab_module='.$module->tab.'&module_name='.$module->name.'&anchor=anchor'.ucfirst($module->name);
@@ -2977,19 +2978,19 @@ class AdminControllerCore extends Controller
 		if ((Tools::getValue('module_name') == $module->name || in_array($module->name, explode('|', Tools::getValue('modules_list')))) && (int)Tools::getValue('conf') > 0)
 		unset($obj);
 	}
-
+	
 	/**
 	 * Display modules list
 	 *
 	 * @param $module
 	 * @param $output_type (link or select)
-	 * @param $back
+	 * @param $back 
 	 *
 	 * @return string
 	 */
 	protected $translationsTab = array();
 	public function displayModuleOptions($module, $output_type = 'link', $back = null)
-	{
+	{	
 		if (!isset($this->translationsTab['Disable this module']))
 		{
 			$this->translationsTab['Disable this module'] = $this->l('Disable this module');
@@ -3002,7 +3003,7 @@ class AdminControllerCore extends Controller
 			$this->translationsTab['Install'] = $this->l('Install');
 			$this->translationsTab['Uninstall'] =  $this->l('Uninstall');
 			$this->translationsTab['This action will permanently remove the module from the server. Are you sure you want to do this?'] = $this->l('This action will permanently remove the module from the server. Are you sure you want to do this?');
-		}
+		}	
 		$link_admin_modules = $this->context->link->getAdminLink('AdminModules', true);
 		$modules_options = array(
 			'configure-module' => array(

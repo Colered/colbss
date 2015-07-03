@@ -1,0 +1,25 @@
+#my-account #center_column h1 {margin-bottom:20px}
+#my-account #center_column .title_block  {
+	font-weight:normal;
+	color:#666
+}
+
+#my-account .myaccount_lnk_list {list-style-type:none}
+#my-account .myaccount_lnk_list li {
+	 background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D7CBB5;
+    border-radius: 5px 5px 5px 5px;
+    line-height: 30px;
+    margin: 5px 0;
+}
+#my-account .myaccount_lnk_list li a	{ padding:0 0 0 20px;}
+#my-account .myaccount_lnk_list img.icon		
+{
+	position:relative;
+	top:6px;
+	left:-10px;
+}
+#my-account p img.icon 	{ left: 10px;
+    position: relative;
+    top: 8px;}
+#my-account p .home	{ position:relative; left:12px;}

@@ -1,0 +1,186 @@
+.tm-hide { opacity: 0; filter:alpha(opacity=0); cursor:pointer;}
+.tm-checkbox {
+	background: transparent url('../../img/sprite.png') -2px -330px no-repeat;
+	display:inline-block;
+	width:17px;
+	height:17px;
+	
+	cursor:pointer;
+}
+.tm-radio { background: transparent url('../../img/sprite.png') -2px -295px no-repeat;	display:inline-block;padding:0 2px; cursor:pointer;}
+
+.tm-checked { background-position:-75px -331px ;cursor:pointer; }
+.tm-selected { background-position: -75px -295px; cursor:pointer;}
+
+/*#order .delivery_option .tm-radio, #order-opc .delivery_option .tm-radio { background-position:-9px -417px; }
+#order .delivery_option .tm-selected, #order-opc .delivery_option .tm-selected { background-position:-342px -418px; }*/
+
+.tm-checkbox-green {
+	background: transparent url('../../img/megnor/checkbox-green.png') 0 1px no-repeat;
+	display:inline-block;
+}
+.ie7 .tm-checkbox-green,.ie8 .tm-checkbox-green,.ie9 .tm-checkbox-green	,
+.ie7 .tm-checkbox, .ie8 .tm-checkbox,.ie9 .tm-checkbox,
+.ie7 .tm-radio,.ie8 .tm-radio,.ie9 .tm-radio
+{display: inline;zoom: 1}
+
+.tm-checked-green { background-position: 0 -18px; }
+.ie7 .tm-checkbox, .ie8 .tm-checkbox,.ie9 .tm-checkbox,
+.ie7 .tm-radio,.ie8 .tm-radio,.ie9 .tm-radio
+ {height:18px; float:left; }
+
+/*==================================== START Carousel Css ===========================*/
+.tm_manufacture  { width:100%; margin:15px 0; clear:both;}
+
+/* display none until init */
+.product-carousel{
+	display: none;
+	position: relative;
+	width: 100%;
+	-ms-touch-action: pan-y;
+}
+.product-carousel .slider-wrapper{
+	display: none;
+	position: relative;
+	-webkit-transform: translate3d(0px, 0px, 0px);
+	-webkit-perspective: 1000;
+}
+.product-carousel .slider-wrapper-outer{
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+.product-carousel .slider-wrapper-outer.autoHeight{
+	-webkit-transition: height 500ms ease-in-out;
+	-moz-transition: height 500ms ease-in-out;
+	-ms-transition: height 500ms ease-in-out;
+	-o-transition: height 500ms ease-in-out;
+	transition: height 500ms ease-in-out;
+}
+	
+.product-carousel .slider-item{
+	float: left;
+}
+.slider-controls .slider-page,
+.slider-controls .slider-buttons div{
+	cursor: pointer;
+}
+.slider-controls {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* mouse grab icon */
+.grabbing { 
+    cursor:url("../../img/megnor/grabbing.png") 8 8, move;
+}
+
+/* fix */
+.product-carousel  .slider-wrapper,
+.product-carousel  .slider-item{
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility:    hidden;
+	-ms-backface-visibility:     hidden;
+}
+.customNavigation    { text-align: center; position:relative;width:100%}
+.customNavigation a{
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    display: block;
+    float: right;
+    height: 22px;
+    position: absolute;	
+    top: -34px;
+    width: 22px;
+}
+
+.customNavigation a.next {
+  	background: url("../../img/sprite.png") no-repeat scroll -234px 3px transparent;
+    right:8px;
+}
+.customNavigation a.next:hover 	{ background-position: -234px -26px; text-decoration:none;}
+.customNavigation a.prev {
+	background: url("../../img/sprite.png") no-repeat scroll -204px 2px transparent;
+    right: 20px;
+}
+.customNavigation a.prev:hover 	{ background-position: -204px -27px; text-decoration:none;}
+
+/* Custom Select*/
+span.customSelect {
+	
+	padding:3px 7px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px 5px;
+	
+	border: 1px solid #D7CBB5;
+	background-color: #fff;
+	color: #777;
+	text-decoration: none;
+	white-space: nowrap;
+	text-align:left;
+}
+span.customSelect.changed {
+	background-color: #f0dea4;
+}
+.customSelectOpen {-moz-box-shadow: #bbb 0 0 3px;
+  -webkit-box-shadow: #bbb 0 0 3px;
+  box-shadow: #bbb 0 0 3px;}
+
+.customSelectInner {
+	background:url('../../img/megnor/select-arrow-down.gif') no-repeat center right;
+}
+.customSelectOpen .customSelectInner{ background:url('../../img/megnor/select-arrow-up.gif') no-repeat center right;  }
+
+
+.table-responsive { display:none; visibility:hidden;}	
+.tm_responsive_container,
+.tm_responsive_container_footer{ width:auto; overflow:hidden;}
+
+.tm_responsive_group{
+	float:left;
+	margin:15px;
+	padding:15px;
+	border:1px solid #D7CBB5;
+	color:#555;
+	background:#fff
+}
+.tm_responsive_row label{
+  width: 100px;
+  display:block;
+  float:left;
+  font-weight: bold;
+}
+.tm_responsive_row span{
+  width: 250px;
+  display:block;
+  float:left;
+}
+.tm_responsive_row{
+ overflow:hidden;
+ border-bottom: 1px solid #D7CBB5;
+ padding:10px 0;
+}
+
+#layered_block_left .ui-widget-content { border:1px solid #ddd;}
+#layered_block_left .ui-slider-horizontal { height:8px;}
+#layered_block_left .ui-slider-horizontal .ui-slider-handle {   margin-left:-6px;  top:-6px;}
+#layered_block_left .ui-slider .ui-slider-handle {   background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D7CBB5;
+    height: 18px;
+    width: 7px; }
+#layered_block_left .ui-slider-horizontal .ui-slider-range {background:#D3C6AE; }
+
+.last_item_tm .product-block{}
+.first_item_tm .product-block{}
+
+.fancybox-skin { background:#fff;}

@@ -1,0 +1,12 @@
+#contact  fieldset {
+	padding:0 0 15px 0;
+	/*border:1px solid #ededed;
+	background:#FBFBFB*/
+}
+#contact #center_column p.desc_contact { text-align: center; padding-left: 10px; padding-right: 10px; }
+#contact p.textarea label {vertical-align:top; }
+#contact p.textarea textarea {
+	height:80px;
+	width:40%;
+}
+#contact p.submit input {margin-left:213px;}

@@ -160,10 +160,10 @@ class AddressController extends AddressControllerCore
 				$phone=$sql['phone'];
 				$school_address="School address";
 				$sql_alias =Db::getInstance()->ExecuteS('SELECT alias,date_upd FROM '._DB_PREFIX_.'address WHERE id_customer="'.$id_customer.'" and alias="'.$school_address.'"');
-				if (Db::getInstance()->NumRows()){
-				    if($date_upd >= strtotime($sql_alias[0]['date_upd'])){
-						Db::getInstance()->execute("UPDATE "._DB_PREFIX_."address SET id_country = '".$id_country."',id_state = '".$id_state."',address1='".$address1."',address2='".$address2."',postcode='".$postcode."',city='".$city."',phone='".$phone."',date_upd = '".date("Y-m-d H:i:s")."' WHERE id_customer='".$id_customer."'");
-					 }
+				if (Db::getInstance()->NumRows() && $date_upd >= strtotime($sql_alias[0]['date_upd'])){
+
+						Db::getInstance()->execute("UPDATE "._DB_PREFIX_."address SET id_country = '".$id_country."',id_state = '".$id_state."',address1='".$address1."',address2='".$address2."',postcode='".$postcode."',city='".$city."',phone='".$phone."',date_upd = '".date("Y-m-d H:i:s")."' WHERE id_customer='".$id_customer."' and alias='".$school_address."'");
+
 				}else{
 					$insertData = array(
 									'id_country'  => $id_country,
