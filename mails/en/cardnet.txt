@@ -1,0 +1,40 @@
+﻿create a mail template in /mail directory
+
+Hi {firstname} {lastname},
+
+Thank you for shopping at {shop_name}!
+
+Your order with the reference {order_name} has been placed successfully and will be shipped as soon as we receive your payment.
+
+You have selected to pay by CardNet. 
+
+Amount: {total_paid}
+
+You can review your order and download your invoice from the "Order history" section of your customer account by clicking "My account" on our shop.
+
+If you have guest account, you can follow your order using this link: {shop_url}?controller=guest-tracking
+
+{shop_name} - {shop_url}
+
+{shop_url} powered by Libreria.do
+
+
+create a new module status for waiting payment
+
+
+
+Insert the new config setting
+
+INSERT INTO `ps_configuration` (
+`id_configuration` ,
+`id_shop_group` ,
+`id_shop` ,
+`name` ,
+`value` ,
+`date_add` ,
+`date_upd`
+)
+VALUES (
+NULL , NULL ,  '1',  'PS_OS_CARDNET',  '14',  '2015-07-10 16:41:04',  '2015-07-10 16:41:07'
+);
+

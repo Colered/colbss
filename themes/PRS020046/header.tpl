@@ -91,7 +91,6 @@
 <script type="text/javascript" src="{$js_dir}megnor/jquery.formalize.min.js"></script> 
 <!--[if lt IE 9]><script type="text/javascript" src="{$js_dir}megnor/respond.min.js"></script><![endif]-->
 <!-- ================ By Tempaltemela : END  ============= -->	
-	
 </head>
 	
 	<body {if isset($page_name)}id="{$page_name|escape:'htmlall':'UTF-8'}"{/if} class="{if $hide_left_column}hide-left-column {/if} {if $hide_right_column}hide-right-column {/if} {if $content_only} content_only {/if}">

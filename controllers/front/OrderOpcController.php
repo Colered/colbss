@@ -63,6 +63,21 @@ class OrderOpcControllerCore extends ParentOrderController
 								die(true);
 							}
 							break;
+							
+						/*case 'updateNcfData':
+							if (Tools::isSubmit('perName'))
+							{
+								$txtperName = urldecode(Tools::getValue('perName'));
+								$txtrncId = urldecode(Tools::getValue('rncId'));
+								$txtidphone = urldecode(Tools::getValue('idphone'));
+								$txtidaddress = urldecode(Tools::getValue('idaddress'));
+								$txtncftype1 = urldecode(Tools::getValue('ncftype1'));
+								$this->_updateNcfData($txtMessage);
+								if (count($this->errors))
+									die('{"hasError" : true, "errors" : ["'.implode('\',\'', $this->errors).'"]}');
+								die(true);
+							}
+							break;*/
 
 						case 'updateCarrierAndGetPayments':
 							if ((Tools::isSubmit('delivery_option') || Tools::isSubmit('id_carrier')) && Tools::isSubmit('recyclable') && Tools::isSubmit('gift') && Tools::isSubmit('gift_message'))
@@ -383,6 +398,8 @@ class OrderOpcControllerCore extends ParentOrderController
 			$this->_assignAddress(); 
 		// CARRIER
 		$this->_assignCarrier();
+		// NCF
+		//$this->_assignNcfdata();
 		// PAYMENT
 		$this->_assignPayment();
 		Tools::safePostVars();
@@ -484,7 +501,19 @@ class OrderOpcControllerCore extends ParentOrderController
 		else
 			parent::_assignCarrier();
 	}
-
+	
+	/*protected function _assignNcfdata()
+	{
+		$class_infos = new NcfOrder;
+		$oldNcfData = $class_infos->getNcfdataByCartId((int)($this->context->cart->id));
+		$this->context->smarty->assign(array(
+			'oldName' => isset($oldNcfData['rnc_name'])? $oldNcfData['rnc_name'] : '',
+			'oldrnc_phone' => isset($oldNcfData['rnc_phone'])? $oldNcfData['rnc_phone'] : '',
+			'oldrnc_address' => isset($oldNcfData['rnc_address'])? $oldNcfData['rnc_address'] : '',
+			'oldrnc_id' => isset($oldNcfData['rnc_id'])? $oldNcfData['rnc_id'] : '',
+			'oldrnc_type' => isset($oldNcfData['rnc_type'])? $oldNcfData['rnc_type'] : '',
+		));
+	}*/
 	protected function _assignPayment()
 	{
 		$this->context->smarty->assign(array(

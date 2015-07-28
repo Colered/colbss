@@ -97,7 +97,9 @@
 		<!-- Carrier -->
 		{include file="$tpl_dir./order-carrier.tpl"}
 		<!-- END Carrier -->
-	
+		<!-- NCF -->
+		{include file="$tpl_dir./order-ncf.tpl"}
+		<!-- END NCF -->
 		<!-- Payment -->
 		{include file="$tpl_dir./order-payment.tpl"}
 		<!-- END Payment -->

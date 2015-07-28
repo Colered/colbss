@@ -305,6 +305,44 @@
 
 <div style="line-height: 1pt">&nbsp;</div>
 
+<!-- Oredre reference -->
+<table style="width:100%">
+   <tr>
+     <td style="width: 16%"></td>
+     <td style="width: 84%">
+		  <table width="100%">
+			   <tr style="line-height:6px;">
+					<td colspan="2" style="text-align: left; background-color: #4D4D4D; color: #FFF; padding-left: 10px; font-weight: bold;">&nbsp;&nbsp;{l s='Fiscal Receipt Details:' pdf='true'}</td>
+				</tr>
+			   <tr style="line-height:6px;">
+				 <td>&nbsp;&nbsp;{l s='NCF No' pdf='true'}</td>
+				 <td>{$ncfNo}</td>
+				</tr>
+				 <tr style="line-height:6px;">
+				 <td>&nbsp;&nbsp;{l s='Name Person or Business' pdf='true'}</td>
+				 <td>{$namePerson}</td>
+				</tr>
+				 <tr style="line-height:6px;">
+				 <td>&nbsp;&nbsp;{l s='ID(Cedula or RNC)' pdf='true'}</td>
+				 <td>{$rncId}</td>
+				</tr>
+				 <tr style="line-height:6px;">
+				 <td>&nbsp;&nbsp;{l s='Phone No' pdf='true'}</td>
+				 <td>{$phnNo}</td>
+				</tr>
+				 <tr style="line-height:6px;">
+				 <td>&nbsp;&nbsp;{l s='Address' pdf='true'}</td>
+				 <td>{$addr}</td>
+				</tr>
+		  </table> 	
+	 </td>
+   </tr>
+  
+</table>
+<!-- /Oredre reference -->
+
+<div style="line-height: 1pt">&nbsp;</div>
+
 {$tax_tab}
 
 {if isset($order_invoice->note) && $order_invoice->note}

@@ -182,13 +182,13 @@ class CartControllerCore extends FrontController
 	 */
 	protected function processChangeProductInCart()
 	{
+		//echo $this->qty; die;
 		$mode = (Tools::getIsset('update') && $this->id_product) ? 'update' : 'add';
-
 		if ($this->qty == 0)
 			$this->errors[] = Tools::displayError('Null quantity.');
-		//elseif (is_numeric($this->qty) === FALSE)
-			//$this->errors[] = Tools::displayError('Please provide numeric value only in quantity.');
-		elseif (ctype_digit($this->qty) === FALSE)
+		elseif (is_numeric($this->qty) === FALSE)
+			$this->errors[] = Tools::displayError('Please provide numeric value only in quantity.');
+		elseif (is_int((int)$this->qty) === FALSE)
 			$this->errors[] = Tools::displayError('Please provide integer value only in quantity.');
 		elseif (!$this->id_product)
 			$this->errors[] = Tools::displayError('Product not found');
@@ -200,9 +200,8 @@ class CartControllerCore extends FrontController
 			return;
 		}
 
-		$qty_to_check = $this->qty;
+		$qty_to_check = $this->qty; 
 		$cart_products = $this->context->cart->getProducts();
-
 		if (is_array($cart_products))
 			foreach ($cart_products as $cart_product)
 			{

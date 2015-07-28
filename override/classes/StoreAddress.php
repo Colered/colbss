@@ -29,7 +29,6 @@ class StoreAddress extends ObjectModel
 
     public  function addStoreAddress()
 	      {     
-		  		echo "hello";die;
 				$sql =Db::getInstance()->getRow('SELECT * FROM '._DB_PREFIX_.'shop_address WHERE id_shop='.$this->context->shop->id.'');
 				$id_country=$sql['id_country'];
 				$id_state=$sql['id_state'];

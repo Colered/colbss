@@ -1,0 +1,6 @@
+*ERROR* 	2015/07/26 - 19:39:49: Property NcfOrder->school_id is empty at line 837 in file classes/ObjectModel.php
+*ERROR* 	2015/07/26 - 19:39:56: Property NcfOrder->school_id is empty at line 837 in file classes/ObjectModel.php
+*ERROR* 	2015/07/26 - 19:55:07: Property NcfOrder->school_id is empty at line 837 in file classes/ObjectModel.php
+*ERROR* 	2015/07/26 - 20:01:27: Property NcfOrder->school_id is empty at line 837 in file classes/ObjectModel.php
+*ERROR* 	2015/07/26 - 20:14:08: Property NcfOrder->school_id is empty at line 837 in file classes/ObjectModel.php
+*ERROR* 	2015/07/26 - 20:19:46: Property Message->message is empty at line 837 in file classes/ObjectModel.php

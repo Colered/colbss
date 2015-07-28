@@ -103,7 +103,7 @@ class OrderConfirmationController extends OrderConfirmationControllerCore
 			$dataArrDTL = array();
 			foreach($allProductInfo as $productInfo){
 			 $dataArrDTL[] = array('DTL',
-			              $productInfo['product_id'], // its item-
+			              $productInfo['reference'], // its item-
 			              '','', 
 			              $productInfo['product_quantity'],'','',
 						  'E',

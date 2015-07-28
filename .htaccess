@@ -22,9 +22,9 @@ RewriteRule . - [E=REWRITEBASE:/bookstore/]
 RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
 
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^solly/?$ /bookstore/solly/index.php [L,R]
+RewriteRule ^inevang/?$ /bookstore/inevang/index.php [L,R]
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^solly/(.*) /bookstore/$1 [L]
+RewriteRule ^inevang/(.*) /bookstore/$1 [L]
 
 # AlphaImageLoader for IE and fancybox
 RewriteCond %{HTTP_HOST} ^localhost$
@@ -34,9 +34,9 @@ RewriteRule . - [E=REWRITEBASE:/bookstore/]
 RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
 
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^lp/?$ /bookstore/lp/index.php [L,R]
+RewriteRule ^cesa/?$ /bookstore/cesa/index.php [L,R]
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^lp/(.*) /bookstore/$1 [L]
+RewriteRule ^cesa/(.*) /bookstore/$1 [L]
 
 # AlphaImageLoader for IE and fancybox
 RewriteCond %{HTTP_HOST} ^localhost$
@@ -46,9 +46,9 @@ RewriteRule . - [E=REWRITEBASE:/bookstore/]
 RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
 
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^baluchstore/?$ /bookstore/baluchstore/index.php [L,R]
+RewriteRule ^libcebc/?$ /bookstore/libcebc/index.php [L,R]
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^baluchstore/(.*) /bookstore/$1 [L]
+RewriteRule ^libcebc/(.*) /bookstore/$1 [L]
 
 # AlphaImageLoader for IE and fancybox
 RewriteCond %{HTTP_HOST} ^localhost$
@@ -58,9 +58,76 @@ RewriteRule . - [E=REWRITEBASE:/bookstore/]
 RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
 
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^ck/?$ /bookstore/ck/index.php [L,R]
+RewriteRule ^renacer/?$ /bookstore/renacer/index.php [L,R]
 RewriteCond %{HTTP_HOST} ^localhost$
-RewriteRule ^ck/(.*) /bookstore/$1 [L]
+RewriteRule ^renacer/(.*) /bookstore/$1 [L]
+
+# AlphaImageLoader for IE and fancybox
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^images_ie/?([^/]+)\.(jpe?g|png|gif)$ js/jquery/plugins/fancybox/images/$1.$2 [L]
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule . - [E=REWRITEBASE:/bookstore/]
+RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
+
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^libcetls/?$ /bookstore/libcetls/index.php [L,R]
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^libcetls/(.*) /bookstore/$1 [L]
+
+# AlphaImageLoader for IE and fancybox
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^images_ie/?([^/]+)\.(jpe?g|png|gif)$ js/jquery/plugins/fancybox/images/$1.$2 [L]
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule . - [E=REWRITEBASE:/bookstore/colered/]
+RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
+
+# AlphaImageLoader for IE and fancybox
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^images_ie/?([^/]+)\.(jpe?g|png|gif)$ js/jquery/plugins/fancybox/images/$1.$2 [L]
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule . - [E=REWRITEBASE:/bookstore/]
+RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
+
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^colered/?$ /bookstore/colered/index.php [L,R]
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^colered/(.*) /bookstore/$1 [L]
+
+# AlphaImageLoader for IE and fancybox
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^images_ie/?([^/]+)\.(jpe?g|png|gif)$ js/jquery/plugins/fancybox/images/$1.$2 [L]
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule . - [E=REWRITEBASE:/bookstore/]
+RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
+
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^coleredbs/?$ /bookstore/coleredbs/index.php [L,R]
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^coleredbs/(.*) /bookstore/$1 [L]
+
+# AlphaImageLoader for IE and fancybox
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^images_ie/?([^/]+)\.(jpe?g|png|gif)$ js/jquery/plugins/fancybox/images/$1.$2 [L]
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule . - [E=REWRITEBASE:/bookstore/]
+RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
+
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^colered1/?$ /bookstore/colered1/index.php [L,R]
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^colered1/(.*) /bookstore/$1 [L]
+
+# AlphaImageLoader for IE and fancybox
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^images_ie/?([^/]+)\.(jpe?g|png|gif)$ js/jquery/plugins/fancybox/images/$1.$2 [L]
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule . - [E=REWRITEBASE:/bookstore/]
+RewriteRule ^api/?(.*)$ %{ENV:REWRITEBASE}webservice/dispatcher.php?url=$1 [QSA,L]
+
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^coleredstore/?$ /bookstore/coleredstore/index.php [L,R]
+RewriteCond %{HTTP_HOST} ^localhost$
+RewriteRule ^coleredstore/(.*) /bookstore/$1 [L]
 
 # AlphaImageLoader for IE and fancybox
 RewriteCond %{HTTP_HOST} ^localhost$

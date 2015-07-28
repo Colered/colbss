@@ -688,6 +688,44 @@ function bindCheckbox()
 		$('#opc_invoice_address').slideUp('slow');
 }
 
+function savencf(){
+		if($('#ncf').is(':checked')){
+			if ( ($("#idperName").val().length > 0) && ($("#idrncId").val().length > 0) && ($("#idphone").val().length > 0) && ($("#idaddress").val().length > 0) ){
+					$.ajax({
+							type: 'POST',
+							headers: { "cache-control": "no-cache" },
+							url: orderOpcUrl + '?rand=' + new Date().getTime(),
+							async: false,
+							cache: false,
+							dataType : "json",
+								data: 'ajax=true&method=updateNcfData&perName='+encodeURIComponent($('#idperName').val())+'&rncId='+encodeURIComponent($('#idrncId').val())+'&idphone='+encodeURIComponent($('#idphone').val())+'&idaddress='+encodeURIComponent($('#idaddress').val())+'&ncftype1='+encodeURIComponent($('#ncftype1').val())+'&token=' + static_token ,
+							success: function(jsonData)
+							{
+								if (jsonData.hasError)
+								{
+									var errors = '';
+									for(var error in jsonData.errors)
+										//IE6 bug fix
+										if(error !== 'indexOf')
+											errors += $('<div />').html(jsonData.errors[error]).text() + "\n";
+									alert(errors);
+								}
+							else
+								$("#successDiv").show().delay(2000).fadeOut();
+							},
+							error: function(XMLHttpRequest, textStatus, errorThrown) {
+								if (textStatus !== 'abort')
+									alert("TECHNICAL ERROR: unable to save NCF data \n\nDetails:\nError thrown: " + XMLHttpRequest + "\n" + 'Text status: ' + textStatus);
+							}
+						});
+				}else{
+					alert('Please enter all the mendatory fields');
+				}
+		}else{
+			alert('Please select the checkbox: "Do you want a NCF?"');
+		}
+}
+
 function bindInputs()
 {
 	// Order message update
